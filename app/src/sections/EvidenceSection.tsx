@@ -301,7 +301,7 @@ function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
 /* ===================================================================== */
 /*  Main Component                                                     */
 /* ===================================================================== */export default function EvidenceSection() {
-  const { config, networkData, analysisData } = useLiteratureMap();
+  const { config, networkData, analysisData, evidenceSchoolFilter } = useLiteratureMap();
   const sectionRef = useScrollAnimation<HTMLElement>();
 
   const allPapers: EnrichedPaper[] = useMemo(() => {
@@ -365,6 +365,13 @@ function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
     setYearMin(corpusYears.min);
     setYearMax(corpusYears.max);
   }, [corpusYears]);
+
+  useEffect(() => {
+    if (evidenceSchoolFilter !== null && evidenceSchoolFilter !== undefined) {
+      setSelectedSchools(new Set([evidenceSchoolFilter]));
+      setPage(1);
+    }
+  }, [evidenceSchoolFilter]);
   const [sortKey, setSortKey] = useState<SortKey>('year');
   const [sortDir, setSortDir] = useState<SortDir>('desc');
   const [page, setPage] = useState(1);

@@ -111,6 +111,10 @@ interface LiteratureMapContextType {
   generateLiveTopicMap: (query: string, limit?: number) => Promise<void>;
   isLoadingBundle: boolean;
   topicHistory: TopicHistoryItem[];
+  focusedSchool: number | null;
+  setFocusedSchool: (id: number | null) => void;
+  evidenceSchoolFilter: number | null;
+  setEvidenceSchoolFilter: (id: number | null) => void;
 }
 
 const LiteratureMapContext = createContext<LiteratureMapContextType | undefined>(undefined);
@@ -273,6 +277,8 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
   const [networkData, setNetworkData] = useState<NetworkData>({ nodes: [], links: [] });
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
   const [isLoadingBundle, setIsLoadingBundle] = useState(true);
+  const [focusedSchool, setFocusedSchool] = useState<number | null>(null);
+  const [evidenceSchoolFilter, setEvidenceSchoolFilter] = useState<number | null>(null);
 
   // Live Topic Generation State
   const [isGeneratingTopic, setIsGeneratingTopic] = useState(false);
@@ -336,6 +342,8 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
   const switchPreset = async (presetId: string, skipUrlSync = false) => {
     setActivePresetId(presetId);
     setGenerationError(null);
+    setFocusedSchool(null);
+    setEvidenceSchoolFilter(null);
     if (!skipUrlSync) {
       syncUrlParam('preset', presetId);
     }
@@ -350,7 +358,7 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
         ]);
         setNetworkData({
           nodes: normalizeNodes(netRes.default.nodes),
-          links: netRes.default.links,
+          links: netRes.default.links as any,
         });
         setAnalysisData(anRes.default as any);
       } catch (e) {
@@ -537,7 +545,7 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
       value={{
         config,
         networkData,
-        analysisData,
+        analysisData: analysisData as any,
         activePresetId,
         availablePresets,
         featuredPresets: FEATURED_PRESETS,
@@ -546,6 +554,10 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
         loadCustomDataset,
         resetToDefault,
         isLoadingBundle,
+        focusedSchool,
+        setFocusedSchool,
+        evidenceSchoolFilter,
+        setEvidenceSchoolFilter,
         isGeneratingTopic,
         generationProgress,
         generationError,

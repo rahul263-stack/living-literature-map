@@ -155,12 +155,13 @@ export default function HeroSection() {
     activePresetId,
     switchPreset,
     featuredPresets,
+    focusedSchool,
+    setFocusedSchool,
   } = useLiteratureMap();
 
   const [colorMode, setColorMode] = useState<ColorMode>('school');
   const [selectedNode, setSelectedNode] = useState<NetworkNode | null>(null);
   const [hoveredSchool, setHoveredSchool] = useState<number | null>(null);
-  const [focusedSchool, setFocusedSchool] = useState<number | null>(null);
   const [entrancePhase, setEntrancePhase] = useState(-1);
   const [graphReady, setGraphReady] = useState(false);
   const [hoveredPill, setHoveredPill] = useState<string | null>(null);

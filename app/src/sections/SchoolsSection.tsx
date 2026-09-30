@@ -3,6 +3,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getCommunityColor } from '@/lib/colors';
 import { useLiteratureMap } from '@/context/LiteratureMapContext';
 import * as d3 from 'd3';
+import SchoolExplorerModal from '@/components/SchoolExplorerModal';
 
 interface School {
   id: number;
@@ -138,7 +139,17 @@ function MiniDonutChart({ schools, totalPapers }: { schools: School[]; totalPape
 /*  SCHOOL CARD                                                        */
 /* ------------------------------------------------------------------ */
 
-function SchoolCard({ school, maxPapers }: { school: School; maxPapers: number }) {
+function SchoolCard({
+  school,
+  maxPapers,
+  onExplore,
+  onFocus3D,
+}: {
+  school: School;
+  maxPapers: number;
+  onExplore: (school: School) => void;
+  onFocus3D: (school: School, e: React.MouseEvent) => void;
+}) {
   const color = getCommunityColor(school.commId);
   const [hovered, setHovered] = useState(false);
 
@@ -147,15 +158,23 @@ function SchoolCard({ school, maxPapers }: { school: School; maxPapers: number }
 
   return (
     <div
-      className="scroll-animate bg-[#FAF9F6] border border-[#E7E3DB] rounded-[4px] p-space-6 transition-all duration-200 cursor-pointer"
+      onClick={() => onExplore(school)}
+      className="scroll-animate bg-[#FAF9F6] border border-[#E7E3DB] hover:border-[#D4A853]/60 rounded-[6px] p-space-6 transition-all duration-200 cursor-pointer group shadow-sm hover:shadow-md"
       style={{
         borderTopWidth: '4px',
         borderTopColor: color,
         transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
-        boxShadow: 'none',
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onExplore(school);
+        }
+      }}
     >
       {/* Color dot + paper count row */}
       <div className="flex items-center justify-between mb-space-3">
@@ -213,11 +232,28 @@ function SchoolCard({ school, maxPapers }: { school: School; maxPapers: number }
         {school.description}
       </p>
 
-      {/* Explore link */}
-      <div className="mt-space-4 pt-space-3 border-t border-border-light">
-        <span className="font-mono text-[12px] text-accent-indigo hover:underline cursor-pointer transition-all duration-200">
-          Explore &rarr;
-        </span>
+      {/* Explore link & Quick actions */}
+      <div className="mt-space-4 pt-space-3 border-t border-border-light flex items-center justify-between">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onExplore(school);
+          }}
+          className="inline-flex items-center gap-1.5 font-mono text-[12px] text-accent-indigo hover:text-accent-gold font-semibold cursor-pointer transition-colors"
+        >
+          <span>Explore</span>
+          <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={(e) => onFocus3D(school, e)}
+          className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded border border-border-medium hover:border-[#D4A853] hover:text-[#D4A853] hover:bg-[#D4A853]/10 text-text-tertiary transition-colors cursor-pointer"
+          title="Highlight this cluster in 3D Constellation"
+        >
+          3D Focus
+        </button>
       </div>
     </div>
   );
@@ -228,7 +264,19 @@ function SchoolCard({ school, maxPapers }: { school: School; maxPapers: number }
 /* ------------------------------------------------------------------ */
 
 export default function SchoolsSection() {
-  const { config, analysisData } = useLiteratureMap();
+  const { config, analysisData, setFocusedSchool } = useLiteratureMap();
+  const [modalSchool, setModalSchool] = useState<School | null>(null);
+
+  const handleFocus3D = (school: School, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFocusedSchool(school.commId);
+    const heroEl = document.getElementById('hero') || document.getElementById('constellation');
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const schools: School[] = useMemo(() => {
     if (analysisData?.communities && Object.keys(analysisData.communities).length > 0) {
@@ -342,10 +390,23 @@ export default function SchoolsSection() {
         {/* School Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-6">
           {schools.map((school) => (
-            <SchoolCard key={school.id} school={school} maxPapers={maxPapers} />
+            <SchoolCard
+              key={school.id}
+              school={school}
+              maxPapers={maxPapers}
+              onExplore={(s) => setModalSchool(s)}
+              onFocus3D={handleFocus3D}
+            />
           ))}
         </div>
       </div>
+
+      {/* School Deep-Dive Exploration Modal */}
+      <SchoolExplorerModal
+        isOpen={!!modalSchool}
+        onClose={() => setModalSchool(null)}
+        school={modalSchool}
+      />
     </section>
   );
 }
