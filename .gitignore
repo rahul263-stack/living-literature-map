@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output (regenerated via `npm run build`)
+app/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Zip archives (can be regenerated)
+corpus.zip
+
+# Duplicate / scratch screenshots at root (keep screenshots/ folder)
+hero_v2_screenshot.png
+hero_blank.png
+hero_3d_v3.png
+app_screenshot.png
+schools_screenshot.png
+debates_screenshot.png
+schools_debates_v3.png
+schools_section_v3.png
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ppt
+.html
+plan.md
+
+# Pipeline Data & Outputs
+research/
+corpus/
+output_*/
