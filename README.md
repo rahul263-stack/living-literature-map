@@ -81,8 +81,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/connectome-constellation.git
-cd connectome-constellation
+git clone https://github.com/rahul263-stack/living-literature-map.git
+cd living-literature-map
 
 # Install dependencies
 cd app
