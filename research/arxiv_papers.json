@@ -1,0 +1,710 @@
+[
+  {
+    "id": "arxiv_2603.29903",
+    "title": "Multimodal Higher-Order Brain Networks: A Topological Signal Processing Perspective",
+    "authors": [
+      "Breno C. Bispo",
+      "Stefania Sardellitti",
+      "Juliano B. Lima",
+      "Fernando A. N. Santos"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Brain connectomics is still largely dominated by pairwise-based models, such as graphs, which cannot represent circulatory or higher-order functional interactions. In this paper, we propose a multimodal framework based on Topological Signal Processing (TSP) that models the brain as a higher-order topological domain and treats functional interactions as discrete vector fields. We integrate diffusion MRI and resting-state fMRI to learn subject-specific brain cell complexes, where statistically validated structural connectivity defines a sparse scaffold and phase-coupling functional edge signals drive the inference of higher-order interactions (HOIs). Using Hodge-theoretic tools, spectral filtering, and sparse signal representations, our framework disentangles brain connectivity into divergence (source-sink organization), gradient (potential-driven coordination), and curl (circulatory HOIs), enabling the characterization of temporal dynamics through the lens of discrete vector calculus. Across 100 healthy young adults from Human Connectome Project, node-based HOIs are highly individualized, yet robust mesoscale structure emerges under functional-system aggregation. We identify a distributed default mode network-centered gradient backbone and limbic-centered rotational flows; divergence polarization and curl profiles defining circulation regimes with insightful occupancy and dwell-time statistics. These topological signatures yield significant brain-behavior associations, revealing a relevant higher-order organization intrinsic to edge-based models. By making divergence, circulation, and recurrent mesoscale coordination directly measurable, this work enables a principled and interpretable topological phenotyping of brain function.",
+    "doi": "arXiv:2603.29903",
+    "keywords": [
+      "connectomics",
+      "structural connectivity",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "spectral analysis",
+      "multimodal",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2603.29903",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2603.29967",
+    "title": "Learning Structural-Functional Brain Representations through Multi-Scale Adaptive Graph Attention for Cognitive Insight",
+    "authors": [
+      "Badhan Mazumder",
+      "Sir-Lord Wiafe",
+      "Aline Kotoski",
+      "Vince D. Calhoun",
+      "Dong Hye Ye"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Understanding how brain structure and function interact is key to explaining intelligence yet modeling them jointly is challenging as the structural and functional connectome capture complementary aspects of organization. We introduced Multi-scale Adaptive Graph Network (MAGNet), a Transformer-style graph neural network framework that adaptively learns structure-function interactions. MAGNet leverages source-based morphometry from structural MRI to extract inter-regional morphological features and fuses them with functional network connectivity from resting-state fMRI. A hybrid graph integrates direct and indirect pathways, while local-global attention refines connectivity importance and a joint loss simultaneously enforces cross-modal coherence and optimizes the prediction objective end-to-end. On the ABCD dataset, MAGNet outperformed relevant baselines, demonstrating effective multimodal integration for advancing our understanding of cognitive function.",
+    "doi": "arXiv:2603.29967",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "deep learning",
+      "multimodal",
+      "attention mechanism",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2603.29967",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2602.16004",
+    "title": "Time-Varying Directed Interactions in Functional Brain Networks: Modeling and Validation",
+    "authors": [
+      "Nan Xu",
+      "Xiaodi Zhang",
+      "Wen-Ju Pan",
+      "Jeremy L. Smith",
+      "Eric H. Schumacher",
+      "Jason W. Allen",
+      "Vince D. Calhoun",
+      "Shella D. Keilholz"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Understanding the dynamic nature of brain connectivity is critical for elucidating neural processing, behavior, and brain disorders. Traditional approaches such as sliding-window correlation (SWC) characterize time-varying undirected associations but do not resolve directional interactions, limiting inference about time-resolved information flow in brain networks. We introduce sliding-window prediction correlation (SWpC), which embeds a directional linear time-invariant (LTI) model within each sliding window to estimate time-varying directed functional connectivity (FC). SWpC yields two complementary descriptors of directed interactions: a strength measure (prediction correlation) and a duration measure (window-wise duration of information transfer). Using concurrent local field potential (LFP) and fMRI BOLD recordings from rat somatosensory cortices, we demonstrate stable directionality estimates in both LFP band-limited power and BOLD. Using Human Connectome Project (HCP) motor task fMRI, SWpC detects significant task-evoked changes in directed FC strength and duration and shows higher sensitivity than SWC for identifying task-evoked connectivity differences. Finally, in post-concussion vestibular dysfunction (PCVD), SWpC reveals reproducible vestibular-multisensory brain-state shifts and improves healthy-control vs subacute patient (HC-ST) discrimination using state-derived features. Together, these results show that SWpC provides biologically interpretable, time-resolved directed connectivity patterns across multimodal validation and clinical application settings, supporting both basic and translational neuroscience.",
+    "doi": "arXiv:2602.16004",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "multimodal",
+      "effective connectivity",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2602.16004",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2603.29960",
+    "title": "NeuroBRIDGE: Behavior-Conditioned Koopman Dynamics with Riemannian Alignment for Early Substance Use Initiation Prediction from Longitudinal Functional Connectome",
+    "authors": [
+      "Badhan Mazumder",
+      "Sir-Lord Wiafe",
+      "Vince D. Calhoun",
+      "Dong Hye Ye"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Early identification of adolescents at risk for substance use initiation (SUI) is vital yet difficult, as most predictors treat connectivity as static or cross-sectional and miss how brain networks change over time and with behavior. We proposed NeuroBRIDGE (Behavior conditioned RIemannian Koopman Dynamics on lonGitudinal connEctomes), a novel graph neural network-based framework that aligns longitudinal functional connectome in a Riemannian tangent space and couples dual-time attention with behavioral-conditioned Koopman dynamics to capture temporal change. Evaluated on ABCD, NeuroBRIDGE improved future SUI prediction over relevant baselines while offering interpretable insights into neural pathways, refining our understanding of neurodevelopmental risk and informing targeted prevention.",
+    "doi": "arXiv:2603.29960",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "deep learning",
+      "GNN",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2603.29960",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2602.00561",
+    "title": "Uncovering Latent Communication Patterns in Brain Networks via Adaptive Flow Routing",
+    "authors": [
+      "Tianhao Huang",
+      "Guanghui Min",
+      "Zhenyu Lei",
+      "Aiying Zhang",
+      "Chen Chen"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Unraveling how macroscopic cognitive phenotypes emerge from microscopic neuronal connectivity remains one of the core pursuits of neuroscience. To this end, researchers typically leverage multi-modal information from structural connectivity (SC) and functional connectivity (FC) to complete downstream tasks. Recent methodologies explore the intricate coupling mechanisms between SC and FC, attempting to fuse their representations at the regional level. However, lacking fundamental neuroscientific insight, these approaches fail to uncover the latent interactions between neural regions underlying these connectomes, and thus cannot explain why SC and FC exhibit dynamic states of both coupling and heterogeneity. In this paper, we formulate multi-modal fusion through the lens of neural communication dynamics and propose the Adaptive Flow Routing Network (AFR-Net), a physics-informed framework that models how structural constraints (SC) give rise to functional communication patterns (FC), enabling interpretable discovery of critical neural pathways. Extensive experiments demonstrate that AFR-Net significantly outperforms state-of-the-art baselines. The code is available at https://anonymous.4open.science/r/DIAL-F0D1.",
+    "doi": "arXiv:2602.00561",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "structural connectivity",
+      "brain network",
+      "multimodal",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2602.00561",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2508.16414",
+    "title": "NeuroKoop: Neural Koopman Fusion of Structural-Functional Connectomes for Identifying Prenatal Drug Exposure in Adolescents",
+    "authors": [
+      "Badhan Mazumder",
+      "Aline Kotoski",
+      "Vince D. Calhoun",
+      "Dong Hye Ye"
+    ],
+    "year": 2025,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Understanding how prenatal exposure to psychoactive substances such as cannabis shapes adolescent brain organization remains a critical challenge, complicated by the complexity of multimodal neuroimaging data and the limitations of conventional analytic methods. Existing approaches often fail to fully capture the complementary features embedded within structural and functional connectomes, constraining both biological insight and predictive performance. To address this, we introduced NeuroKoop, a novel graph neural network-based framework that integrates structural and functional brain networks utilizing neural Koopman operator-driven latent space fusion. By leveraging Koopman theory, NeuroKoop unifies node embeddings derived from source-based morphometry (SBM) and functional network connectivity (FNC) based brain graphs, resulting in enhanced representation learning and more robust classification of prenatal drug exposure (PDE) status. Applied to a large adolescent cohort from the ABCD dataset, NeuroKoop outperformed relevant baselines and revealed salient structural-functional connections, advancing our understanding of the neurodevelopmental impact of PDE.",
+    "doi": "arXiv:2508.16414",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "deep learning",
+      "multimodal",
+      "neural operator",
+      "aging",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2508.16414",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2306.14080",
+    "title": "Leveraging Brain Modularity Prior for Interpretable Representation Learning of fMRI",
+    "authors": [
+      "Qianqian Wang",
+      "Wei Wang",
+      "Yuqi Fang",
+      "P. -T. Yap",
+      "Hongtu Zhu",
+      "Hong-Jun Li",
+      "Lishan Qiao",
+      "Mingxia Liu"
+    ],
+    "year": 2023,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Resting-state functional magnetic resonance imaging (rs-fMRI) can reflect spontaneous neural activities in brain and is widely used for brain disorder analysis.Previous studies propose to extract fMRI representations through diverse machine/deep learning methods for subsequent analysis. But the learned features typically lack biological interpretability, which limits their clinical utility. From the view of graph theory, the brain exhibits a remarkable modular structure in spontaneous brain functional networks, with each module comprised of functionally interconnected brain regions-of-interest (ROIs). However, most existing learning-based methods for fMRI analysis fail to adequately utilize such brain modularity prior. In this paper, we propose a Brain Modularity-constrained dynamic Representation learning (BMR) framework for interpretable fMRI analysis, consisting of three major components: (1) dynamic graph construction, (2) dynamic graph learning via a novel modularity-constrained graph neural network(MGNN), (3) prediction and biomarker detection for interpretable fMRI analysis. Especially, three core neurocognitive modules (i.e., salience network, central executive network, and default mode network) are explicitly incorporated into the MGNN, encouraging the nodes/ROIs within the same module to share similar representations. To further enhance discriminative ability of learned features, we also encourage the MGNN to preserve the network topology of input graphs via a graph topology reconstruction constraint. Experimental results on 534 subjects with rs-fMRI scans from two datasets validate the effectiveness of the proposed method. The identified discriminative brain ROIs and functional connectivities can be regarded as potential fMRI biomarkers to aid in clinical diagnosis.",
+    "doi": "arXiv:2306.14080",
+    "keywords": [
+      "brain network",
+      "graph theory",
+      "fMRI",
+      "resting-state",
+      "deep learning",
+      "community detection",
+      "topology",
+      "aging",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2306.14080",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2604.24614",
+    "title": "The Genetic and Environmental Architecture of the Human Functional Connectome",
+    "authors": [
+      "Tanu Raghav",
+      "Daniel Guerrero",
+      "Uttara Tipnis",
+      "Julie Sara Benny",
+      "Mintao Liu",
+      "Mario Dzemidzic",
+      "Arian Ashourvan",
+      "Alex P. Miller",
+      "Beau Ances",
+      "Jaroslaw Harezlak",
+      "Joaquín Goñi"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Functional connectivity varies across individuals due to genetic and environmental factors, yet classical twin models typically confound non-shared environment with measurement error and are largely limited to resting-state analyses. We hypothesized that: i) explicitly modeling measurement error from repeated fMRI sessions enables more accurate application of classical twin models (ACE/ADE) to functional connectivity; ii) model applicability depends on scan-length and parcellation granularity; iii) genetic and environmental effects on functional connectomes show differentiated functional modules across conditions. We extended ACE/ADE models to include a repeated-scan derived error term by analyzing monozygotic and dizygotic twins from the Young-Adult Human Connectome Project dataset. Genetic and environment variance components were estimated for all functional couplings across resting-state and task conditions, integrated across conditions using a minimum-error criterion, and analyzed using multilayer community detection across resolution scales. Functional couplings segregated into distinct categories characterized by shared environmental, additive, dominant, or epistatic influences, with a substantial fraction not meeting twin-model assumptions. Integrating across conditions revealed hierarchical community structure in genetic and environmental components observed across community resolution scales. Incorporating measurement error into twin models improves interpretability and applicability at the functional connectome level, revealing that genetic and environmental influences are structured into coherent, multiscale brain networks.",
+    "doi": "arXiv:2604.24614",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "community detection"
+    ],
+    "url": "https://arxiv.org/abs/2604.24614",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2511.14922",
+    "title": "Integrating Causal Inference with Graph Neural Networks for Alzheimer's Disease Analysis",
+    "authors": [
+      "Pranay Kumar Peddi",
+      "Dhrubajyoti Ghosh"
+    ],
+    "year": 2025,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Deep graph learning has advanced Alzheimer's (AD) disease classification from MRI, but most models remain correlational, confounding demographic and genetic factors with disease specific features. We present Causal-GCN, an interventional graph convolutional framework that integrates do-calculus-based back-door adjustment to identify brain regions exerting stable causal influence on AD progression. Each subject's MRI is represented as a structural connectome where nodes denote cortical and subcortical regions and edges encode anatomical connectivity. Confounders such as age, sec, and APOE4 genotype are summarized via principal components and included in the causal adjustment set. After training, interventions on individual regions are simulated by serving their incoming edges and altering node features to estimate average causal effects on disease probability. Applied to 484 subjects from the ADNI cohort, Causal-GCN achieves performance comparable to baseline GNNs while providing interpretable causal effect rankings that highlight posterior, cingulate, and insular hubs consistent with established AD neuropathology.",
+    "doi": "arXiv:2511.14922",
+    "keywords": [
+      "connectomics",
+      "structural connectivity",
+      "brain network",
+      "deep learning",
+      "Alzheimer",
+      "causality",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2511.14922",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2512.24901",
+    "title": "Spectral Graph Neural Networks for Cognitive Task Classification in fMRI Connectomes",
+    "authors": [
+      "Debasis Maji",
+      "Arghya Banerjee",
+      "Debaditya Barman"
+    ],
+    "year": 2025,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Cognitive task classification using machine learning plays a central role in decoding brain states from neuroimaging data. By integrating machine learning with brain network analysis, complex connectivity patterns can be extracted from functional magnetic resonance imaging connectomes. This process transforms raw blood-oxygen-level-dependent (BOLD) signals into interpretable representations of cognitive processes. Graph neural networks (GNNs) further advance this paradigm by modeling brain regions as nodes and functional connections as edges, capturing topological dependencies and multi-scale interactions that are often missed by conventional approaches. Our proposed SpectralBrainGNN model, a spectral convolution framework based on graph Fourier transforms (GFT) computed via normalized Laplacian eigendecomposition. Experiments on the Human Connectome Project-Task (HCPTask) dataset demonstrate the effectiveness of the proposed approach, achieving a classification accuracy of 96.25\\%. The implementation is publicly available at https://github.com/gnnplayground/SpectralBrainGNN to support reproducibility and future research.",
+    "doi": "arXiv:2512.24901",
+    "keywords": [
+      "connectomics",
+      "brain network",
+      "fMRI",
+      "deep learning",
+      "spectral analysis",
+      "aging",
+      "GNN",
+      "machine learning"
+    ],
+    "url": "https://arxiv.org/abs/2512.24901",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2409.04072",
+    "title": "Multi-Scale Graph Theoretical Analysis of Resting-State fMRI for Classification of Alzheimer's Disease, Mild Cognitive Impairment, and Healthy Controls",
+    "authors": [
+      "Ali Khazaee",
+      "Abdolreza Mohammadi",
+      "Ruairi O'Reilly"
+    ],
+    "year": 2024,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Alzheimer's disease (AD) is a neurodegenerative disorder marked by memory loss and cognitive decline, making early detection vital for timely intervention. However, early diagnosis is challenging due to the heterogeneous presentation of symptoms. Resting-state functional magnetic resonance imaging (rs-fMRI) captures spontaneous brain activity and functional connectivity, which are known to be disrupted in AD and mild cognitive impairment (MCI). Traditional methods, such as Pearson's correlation, have been used to calculate association matrices, but these approaches often overlook the dynamic and non-stationary nature of brain activity. In this study, we introduce a novel method that integrates discrete wavelet transform (DWT) and graph theory to model the dynamic behavior of brain networks. Our approach captures the time-frequency representation of brain activity, allowing for a more nuanced analysis of the underlying network dynamics. Machine learning was employed to automate the discrimination of different stages of AD based on learned patterns from brain network at different frequency bands. We applied our method to a dataset of rs-fMRI images from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database, demonstrating its potential as an early diagnostic tool for AD and for monitoring disease progression. Our statistical analysis identifies specific brain regions and connections that are affected in AD and MCI, at different frequency bands, offering deeper insights into the disease's impact on brain function.",
+    "doi": "arXiv:2409.04072",
+    "keywords": [
+      "functional connectivity",
+      "brain network",
+      "graph theory",
+      "fMRI",
+      "resting-state",
+      "Alzheimer",
+      "aging",
+      "temporal dynamics",
+      "machine learning"
+    ],
+    "url": "https://arxiv.org/abs/2409.04072",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2601.17073",
+    "title": "Attention-Based Variational Framework for Joint and Individual Components Learning with Applications in Brain Network Analysis",
+    "authors": [
+      "Yifei Zhang",
+      "Meimei Liu",
+      "Zhengwu Zhang"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Brain organization is increasingly characterized through multiple imaging modalities, most notably structural connectivity (SC) and functional connectivity (FC). Integrating these inherently distinct yet complementary data sources is essential for uncovering the cross-modal patterns that drive behavioral phenotypes. However, effective integration is hindered by the high dimensionality and non-linearity of connectome data, complex non-linear SC-FC coupling, and the challenge of disentangling shared information from modality-specific variations. To address these issues, we propose the Cross-Modal Joint-Individual Variational Network (CM-JIVNet), a unified probabilistic framework designed to learn factorized latent representations from paired SC-FC datasets. Our model utilizes a multi-head attention fusion module to capture non-linear cross-modal dependencies while isolating independent, modality-specific signals. Validated on Human Connectome Project Young Adult (HCP-YA) data, CM-JIVNet demonstrates superior performance in cross-modal reconstruction and behavioral trait prediction. By effectively disentangling joint and individual feature spaces, CM-JIVNet provides a robust, interpretable, and scalable solution for large-scale multimodal brain analysis.",
+    "doi": "arXiv:2601.17073",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "structural connectivity",
+      "brain network",
+      "multimodal",
+      "aging"
+    ],
+    "url": "https://arxiv.org/abs/2601.17073",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2604.17713",
+    "title": "Modeling Higher-Order Brain Interactions via a Multi-View Information Bottleneck Framework for fMRI-based Psychiatric Diagnosis",
+    "authors": [
+      "Kunyu Zhang",
+      "Qiang Li",
+      "Vince D. Calhoun",
+      "Shujian Yu"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Resting-state functional magnetic resonance imaging (fMRI) has emerged as a cornerstone for psychiatric diagnosis, yet most approaches rely on pairwise brain cortical or sub-cortical connectivities that overlooks higher-order interactions (HOIs) central to complex brain dynamics. While hypergraph methods encode HOIs through predefined hyperedges, their construction typically relies on heuristic similarity metrics and does not explicitly characterize whether interactions are synergy- or redundancy-dominated. In this paper, we introduce $O$-information, a signed measure that characterizes the informational nature of HOIs, and integrate third- and fourth-order $O$-information into a unified multi-view information bottleneck framework for fMRI-based psychiatric diagnosis. To enable scalable $O$-information estimation, we further develop two independent acceleration strategies: a Gaussian analytical approximation and a randomized matrix-based Rényi entropy estimator, achieving over a 30-fold computational speedup compared with conventional estimators. Our tri-view architecture systematically fuses pairwise, triadic, and tetradic brain interactions, capturing comprehensive brain connectivity while explicitly penalizing redundancy. Extensive evaluation across four benchmark datasets (REST-meta-MDD, ABIDE, UCLA, ADNI) demonstrates consistent improvements, outperforming 11 baseline methods including state-of-the-art graph neural network (GNN) and hypergraph based approaches. Moreover, our method reveals interpretable region-level synergy-redundancy patterns which are not explicitly characterized by conventional hypergraph formulations.",
+    "doi": "arXiv:2604.17713",
+    "keywords": [
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "deep learning",
+      "information theory",
+      "psychiatric",
+      "aging",
+      "GNN",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2604.17713",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2604.06469",
+    "title": "Predicting Alzheimer's disease progression using rs-fMRI and a history-aware graph neural network",
+    "authors": [
+      "Mahdi Moghaddami",
+      "Mohammad-Reza Siadat",
+      "Austin Toma",
+      "Connor Laming",
+      "Huirong Fu"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Alzheimer's disease (AD) is a neurodegenerative disorder that affects more than seven million people in the United States alone. AD currently has no cure, but there are ways to potentially slow its progression if caught early enough. In this study, we propose a graph neural network (GNN)-based model for predicting whether a subject will transition to a more severe stage of cognitive impairment at their next clinical visit. We consider three stages of cognitive impairment in order of severity: cognitively normal (CN), mild cognitive impairment (MCI), and AD. We use functional connectivity graphs derived from resting-state functional magnetic resonance imaging (rs-fMRI) scans of 303 subjects, each with a different number of visits. Our GNN-based model incorporates a recurrent neural network (RNN) block, enabling it to process data from the subject's entire visit history. It can also work with irregular time gaps between visits by incorporating visit distance information into our input features. Our model demonstrates robust predictive performance, even with missing visits in the subjects' visit histories. It achieves an accuracy of 82.9%, with an especially impressive accuracy of 68.8% on CN to MCI conversions - a task that poses a substantial challenge in the field. Our results highlight the effectiveness of rs-fMRI in predicting the onset of MCI or AD and, in conjunction with other modalities, could offer a viable method for enabling timely interventions to slow the progression of cognitive impairment.",
+    "doi": "arXiv:2604.06469",
+    "keywords": [
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "deep learning",
+      "Alzheimer",
+      "aging",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2604.06469",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2510.03306",
+    "title": "Atlas-free Brain Network Transformer",
+    "authors": [
+      "Shuai Huang",
+      "Xuan Kan",
+      "James J. Lah",
+      "Deqiang Qiu"
+    ],
+    "year": 2025,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Current atlas-based approaches to brain network analysis rely heavily on standardized anatomical or connectivity-driven brain atlases. However, these fixed atlases often introduce significant limitations, such as spatial misalignment across individuals, functional heterogeneity within predefined regions, and atlas-selection biases, collectively undermining the reliability and interpretability of the derived brain networks. To address these challenges, we propose a novel atlas-free brain network transformer (atlas-free BNT) that leverages individualized brain parcellations derived directly from subject-specific resting-state fMRI data. Our approach computes ROI-to-voxel connectivity features in a standardized voxel-based feature space, which are subsequently processed using the BNT architecture to produce comparable subject-level embeddings. Experimental evaluations on sex classification and brain-connectome age prediction tasks demonstrate that our atlas-free BNT consistently outperforms state-of-the-art atlas-based methods, including elastic net, BrainGNN, Graphormer and the original BNT. Our atlas-free approach significantly improves the precision, robustness, and generalizability of brain network analyses. This advancement holds great potential to enhance neuroimaging biomarkers and clinical diagnostic tools for personalized precision medicine. Reproducible code is available at https://github.com/shuai-huang/atlas_free_bnt",
+    "doi": "arXiv:2510.03306",
+    "keywords": [
+      "connectomics",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "aging",
+      "attention mechanism",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2510.03306",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2409.11174",
+    "title": "Identifying Influential nodes in Brain Networks via Self-Supervised Graph-Transformer",
+    "authors": [
+      "Yanqing Kang",
+      "Di Zhu",
+      "Haiyang Zhang",
+      "Enze Shi",
+      "Sigang Yu",
+      "Jinru Wu",
+      "Xuhui Wang",
+      "Xuan Liu",
+      "Geng Chen",
+      "Xi Jiang",
+      "Tuo Zhang",
+      "Shu Zhang"
+    ],
+    "year": 2024,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Studying influential nodes (I-nodes) in brain networks is of great significance in the field of brain imaging. Most existing studies consider brain connectivity hubs as I-nodes. However, this approach relies heavily on prior knowledge from graph theory, which may overlook the intrinsic characteristics of the brain network, especially when its architecture is not fully understood. In contrast, self-supervised deep learning can learn meaningful representations directly from the data. This approach enables the exploration of I-nodes for brain networks, which is also lacking in current studies. This paper proposes a Self-Supervised Graph Reconstruction framework based on Graph-Transformer (SSGR-GT) to identify I-nodes, which has three main characteristics. First, as a self-supervised model, SSGR-GT extracts the importance of brain nodes to the reconstruction. Second, SSGR-GT uses Graph-Transformer, which is well-suited for extracting features from brain graphs, combining both local and global characteristics. Third, multimodal analysis of I-nodes uses graph-based fusion technology, combining functional and structural brain information. The I-nodes we obtained are distributed in critical areas such as the superior frontal lobe, lateral parietal lobe, and lateral occipital lobe, with a total of 56 identified across different experiments. These I-nodes are involved in more brain networks than other regions, have longer fiber connections, and occupy more central positions in structural connectivity. They also exhibit strong connectivity and high node efficiency in both functional and structural networks. Furthermore, there is a significant overlap between the I-nodes and both the structural and functional rich-club. These findings enhance our understanding of the I-nodes within the brain network, and provide new insights for future research in further understanding the brain working mechanisms.",
+    "doi": "arXiv:2409.11174",
+    "keywords": [
+      "structural connectivity",
+      "brain network",
+      "graph theory",
+      "deep learning",
+      "multimodal",
+      "aging",
+      "attention mechanism",
+      "self-supervised"
+    ],
+    "url": "https://arxiv.org/abs/2409.11174",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2410.16874",
+    "title": "Topological and Graph Theoretical Analysis of Dynamic Functional Connectivity for Autism Spectrum Disorder",
+    "authors": [
+      "Yuzhe Chen",
+      "Dayu Qin",
+      "Ercan Engin Kuruoglu"
+    ],
+    "year": 2024,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Autism Spectrum Disorder (ASD) is a prevalent neurological disorder. However, the multi-faceted symptoms and large individual differences among ASD patients are hindering the diagnosis process, which largely relies on subject descriptions and lacks quantitative biomarkers. To remediate such problems, this paper explores the use of graph theory and topological data analysis (TDA) to study brain activity in ASD patients and normal controls. We employ the Mapper algorithm in TDA and the distance correlation graphical model (DCGM) in graph theory to create brain state networks, then innovatively adopt complex network metrics in Graph signal processing (GSP) and physical quantities to analyze brain activities over time. Our findings reveal statistical differences in network characteristics between ASD and control groups. Compared to normal subjects, brain state networks of ASD patients tend to have decreased modularity, higher von Neumann entropy, increased Betti-0 numbers, and decreased Betti-1 numbers. These findings attest to the biological traits of ASD, suggesting less organized and more variable brain dynamics. These findings offer potential biomarkers for ASD diagnosis and deepen our understanding of its neural correlations.",
+    "doi": "arXiv:2410.16874",
+    "keywords": [
+      "functional connectivity",
+      "graph theory",
+      "autism",
+      "community detection",
+      "information theory",
+      "topology",
+      "graph signal processing",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2410.16874",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2602.01551",
+    "title": "Bayesian brain mapping: a population-informed framework for personalized functional network topography and connectivity",
+    "authors": [
+      "Nohelia Da Silva Sanchez",
+      "Diego Derman",
+      "Damon D. Pham",
+      "Ellyn R. Butler",
+      "Mary Beth Nebel",
+      "Amanda F. Mejia"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "The spatial topography of functional brain organization is increasingly recognized to play an important role in cognition and disease. Accounting for individual differences in functional topography is also crucial for accurately distinguishing spatial and temporal aspects of functional brain connectivity. Yet, accurate estimation of personalized functional brain networks from functional magnetic resonance imaging (fMRI) without extensive scanning remains challenging due to high noise levels. Here, we describe Bayesian Brain Mapping (BBM), a technique for personalized functional topography and connectivity informed by population information. BBM relies on population-derived priors on both spatial topography of networks and between-network functional connectivity to guide subject-level estimation and combat noise. These priors are based on existing spatial templates, such as parcellations or continuous network maps, providing correspondence to those templates. Yet BBM is highly flexible, avoiding strong spatial or temporal constraints and allowing for overlap between networks and heterogeneous patterns of engagement. BBM is designed for single-subject analysis, making it computationally efficient and translatable to clinical settings. Here, we describe the BBM model and illustrate the use of the BayesBrainMap R package to construct population-derived priors, fit the model, and perform inference to identify engagements. A demo is provided in an accompanying Github repo. We also share priors derived from the Human Connectome Project and provide code to support the construction of priors from different data sources, lowering the barrier to adoption of BBM for studies of individual brain organization.",
+    "doi": "arXiv:2602.01551",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "Bayesian",
+      "aging"
+    ],
+    "url": "https://arxiv.org/abs/2602.01551",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2605.13312",
+    "title": "Supervised Deep Multimodal Matrix Factorization for Interpretable Brain Network Analysis",
+    "authors": [
+      "Amjad Seyedi",
+      "Lifang He",
+      "Songlin Zhao",
+      "Akwum Onwunta",
+      "Nicolas Gillis"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "We present Supervised Deep Multimodal Matrix Factorization (SD3MF), an interpretable framework for integrative brain network analysis that generalizes Symmetric Nonnegative Matrix Tri-Factorization (SNMTF) from unsupervised single-graph clustering to supervised prediction over populations of multimodal graphs. SD3MF learns deep hierarchical factorizations for each modality together with a shared latent representation that aligns subjects across views. An encoder-decoder formulation jointly optimizes graph reconstruction and supervised prediction, while adaptive weights enable data-driven multimodal fusion. By representing each subject through community-level interaction matrices, the model yields interpretable and discriminative features. Experiments on multimodal connectome datasets show that SD3MF consistently outperforms strong deep learning baselines such as CNNs and GNNs, while enabling biologically interpretable insights. Code for reproducibility is available at: https://github.com/amjadseyedi/SD3MF.",
+    "doi": "arXiv:2605.13312",
+    "keywords": [
+      "connectomics",
+      "brain network",
+      "deep learning",
+      "multimodal",
+      "matrix factorization",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2605.13312",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2603.08108",
+    "title": "Tau-BNO: Brain Neural Operator for Tau Transport Model",
+    "authors": [
+      "Nuutti Barron",
+      "Heng Rao",
+      "Urmi Saha",
+      "Yu Gu",
+      "Zhenghao Liu",
+      "Ge Yu",
+      "Defu Yang",
+      "Ashish Raj",
+      "Minghan Chen"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Mechanistic modeling provides a biophysically grounded framework for studying the spread of pathological tau protein in tauopathies like Alzheimer's disease. Existing approaches typically model tau propagation as a diffusive process on the brain's structural connectome, reproducing macroscopic patterns but neglecting microscale cellular transport and reaction mechanisms. The Network Transport Model (NTM) was introduced to fill this gap, explaining how region-level progression of tau emerges from microscale biophysical processes. However, the NTM faces a common challenge for complex models defined by large systems of partial differential equations: the inability to perform parameter inference and mechanistic discovery due to high computational burden and slow model simulations. To overcome this barrier, we propose Tau-BNO, a Brain Neural Operator surrogate framework for rapidly approximating NTM dynamics that captures both intra-regional reaction kinetics and inter-regional network transport. Tau-BNO combines a function operator that encodes kinetic parameters with a query operator that preserves initial state information, while approximating anisotropic transport through a spectral kernel that retains directionality. Empirical evaluations demonstrate high predictive accuracy ($R^2\\approx$ 0.98) across diverse biophysical regimes and an 89\\% performance improvement over state-of-the-art sequence models like Transformers and Mamba, which lack inherent structural priors. By reducing simulation time from hours to seconds, we show that the surrogate model is capable of producing new insights and generating new hypotheses. This framework is readily extensible to a broader class of connectome-based biophysical models, showcasing the transformative value of deep learning surrogates to accelerate analysis of large-scale, computationally intensive dynamical systems.",
+    "doi": "arXiv:2603.08108",
+    "keywords": [
+      "connectomics",
+      "structural connectivity",
+      "deep learning",
+      "dynamical systems",
+      "Alzheimer",
+      "spectral analysis",
+      "neural operator",
+      "attention mechanism",
+      "temporal dynamics"
+    ],
+    "url": "https://arxiv.org/abs/2603.08108",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2210.03231",
+    "title": "Functional Connectome of the Human Brain with Total Correlation",
+    "authors": [
+      "Qiang Li",
+      "Greg Ver Steeg",
+      "Shujian Yu",
+      "Jesus Malo"
+    ],
+    "year": 2022,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Recent studies proposed the use of Total Correlation to describe functional connectivity among brain regions as a multivariate alternative to conventional pair-wise measures such as correlation or mutual information. In this work we build on this idea to infer a large scale (whole brain) connectivity network based on Total Correlation and show the possibility of using this kind of networks as biomarkers of brain alterations. In particular, this work uses Correlation Explanation (CorEx) to estimate Total Correlation. First, we prove that CorEx estimates of total correlation and clustering results are trustable compared to ground truth values. Second, the inferred large scale connectivity network extracted from the more extensive open fMRI datasets is consistent with existing neuroscience studies but, interestingly, can estimate additional relations beyond pair-wise regions. And finally, we show how the connectivity graphs based on Total Correlation can also be an effective tool to aid in the discovery of brain diseases.",
+    "doi": "arXiv:2210.03231",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "fMRI",
+      "information theory",
+      "whole-brain"
+    ],
+    "url": "https://arxiv.org/abs/2210.03231",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2605.07026",
+    "title": "Learning Cross-Atlas Consistent Brain Disorder Representations via Disentangled Multi-Atlas Functional Connectivity Learning",
+    "authors": [
+      "Minheng Chen",
+      "Chao Cao",
+      "Jing Zhang",
+      "Tianming Liu",
+      "Dajiang Zhu"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Functional connectivity (FC) derived from resting-state fMRI is widely used to characterize large-scale brain network alterations in neurological and psychiatric disorders. However, FC construction critically depends on the choice of brain atlas, and different parcellations may emphasize distinct organizational features, leading to heterogeneous and sometimes inconsistent representations. Existing multi-atlas approaches partially alleviate this issue but often fuse atlas-derived features or predictions at a relatively shallow level, while single-atlas disentanglement methods do not explicitly address cross-atlas heterogeneity. We propose Multi-Atlas Disentangled Connectivity LEarning (MADCLE), a multi-branch representation learning framework that jointly encodes FC matrices derived from different brain atlases. Rather than introducing a single explicitly shared latent variable across parcellations, MADCLE learns atlas-wise disease-related representations and encourages them to be cross-atlas consistent through distributional alignment. Meanwhile, covariate-related and atlas-dependent residual factors are modeled separately using covariate similarity supervision, atlas-specific reconstruction, and decorrelation constraints, thereby reducing the leakage of non-disease and parcellation-dependent information into the disease-related embeddings. Experiments on the ADNI and ADHD-200 datasets suggest that MADCLE achieves competitive or improved performance compared with single-atlas baselines, multi-atlas GNN/Transformer models, and recent multi-atlas consistency frameworks. These results support the potential value of structured disentanglement for FC-based disorder identification under heterogeneous parcellation schemes.",
+    "doi": "arXiv:2605.07026",
+    "keywords": [
+      "functional connectivity",
+      "brain network",
+      "fMRI",
+      "resting-state",
+      "psychiatric",
+      "attention mechanism",
+      "GNN"
+    ],
+    "url": "https://arxiv.org/abs/2605.07026",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2605.05371",
+    "title": "Multilevel Regression Modeling of Covariance Matrix Outcomes",
+    "authors": [
+      "Michelle Murphy Green",
+      "Xi Luo",
+      "Brian S. Caffo",
+      "Yi Zhao"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Covariance matrix outcomes arise naturally in neuroimaging experiments to study brain functional connectivity. It is also of interest to understand how brain network organization varies with subject-level covariates. Existing covariance regression methods operate in a single-level framework and do not accommodate the hierarchically nested data structure in which subjects are grouped into clusters, such as age cohorts in lifespan studies. A Multilevel Covariate-Assisted Principal Regression (MCAP) framework is introduced, which identifies, for each cluster, a linear projection such that a generalized linear mixed effects model can be formulated with the covariates. The cluster-specific projections are modeled on the unit sphere via a von Mises-Fisher distribution, enabling principled borrowing of information across clusters. Model parameters are estimated by maximizing a hierarchical likelihood. For inference, a two-stage bootstrap procedure is proposed. Asymptotic properties of the estimators are established. Simulation studies demonstrate that MCAP substantially outperforms single-level competitors in estimating regression coefficients. Applied to the Human Connectome Project Lifespan Study spanning ages from five to ninety, MCAP identifies a dominant spectral brain network capturing age and sex effects on functional connectivity, and reveals findings including the convergence of neural reorganization patterns in late adulthood and the coordinated lifespan modulation of cross-network regions linked to language and executive function.",
+    "doi": "arXiv:2605.05371",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "spectral analysis",
+      "aging"
+    ],
+    "url": "https://arxiv.org/abs/2605.05371",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2605.14048",
+    "title": "Network-Aware Bilinear Tokenization for Brain Functional Connectivity Representation Learning",
+    "authors": [
+      "Leo Milecki",
+      "Qingyu Hu",
+      "Bahram Jafrasteh",
+      "Mert R. Sabuncu",
+      "Qingyu Zhao"
+    ],
+    "year": 2026,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Masked autoencoders (MAEs) have recently shown promise for self-supervised representation learning of resting-state brain functional connectivity (FC). However, a fundamental question remains unresolved: how should FC matrices be tokenized to align with the intrinsic modular organization of large-scale brain networks? Existing approaches typically adopt region-centric or graph-based schemes that treat FC as structurally homogeneous elements and overlook the large-scale network brain organization. We introduce NERVE (Network-Aware Representations of Brain Functional Connectivity via Bilinear Tokenization), a self-supervised learning framework that redefines FC tokenization by partitioning FC matrices into patches of intra- and inter-network connectivity blocks. Unlike image-based MAE, where fixed-size patches share a common tokenizer, FC patches defined by network pairs are heterogeneous in size and correspond to distinct functional roles. To resolve this problem, NERVE embeds FC patches through a novel structured bilinear factorization. This formulation preserves network identity and reduces parameter complexity from quadratic to linear scaling in the number of networks. We evaluate NERVE across three large-scale developmental cohorts (ABCD, PNC, and CCNP) for behavior and psychopathology prediction. Compared to structurally agnostic MAE variants and graph-based self-supervised baselines, the proposed network-aware formulation yields more stable and transferable representations, particularly in cross-cohort evaluation. Ablation studies confirm that the proposed bilinear network embedding and anatomically grounded parcellation are critical for performance. These findings highlight the importance of incorporating domain-specific structural priors into self-supervised learning for functional connectomics. Code is available at: https://github.com/leomlck/NERVE.",
+    "doi": "arXiv:2605.14048",
+    "keywords": [
+      "connectomics",
+      "functional connectivity",
+      "brain network",
+      "resting-state",
+      "generative models",
+      "self-supervised",
+      "machine learning"
+    ],
+    "url": "https://arxiv.org/abs/2605.14048",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  },
+  {
+    "id": "arxiv_2305.05860",
+    "title": "Topology and spectral interconnectivities of higher-order multilayer networks",
+    "authors": [
+      "Elkaïoum M. Moutuou",
+      "Obaï B. K. Ali",
+      "Habib Benali"
+    ],
+    "year": 2023,
+    "journal": "arXiv preprint",
+    "citations": 0,
+    "abstract": "Multilayer networks have permeated all the sciences as a powerful mathematical abstraction for interdependent heterogenous complex systems such as multimodal brain connectomes, transportation, ecological systems, and scientific collaboration. But describing such systems through a purely graph-theoretic formalism presupposes that the interactions that define the underlying infrastructures and support their functions are only pairwise-based; a strong assumption likely leading to oversimplifications. Indeed, most interdependent systems intrinsically involve higher-order intra- and inter-layer interactions. For instance, ecological systems involve interactions among groups within and in-between species, collaborations and citations link teams of coauthors to articles and vice versa, interactions might exist among groups of friends from different social networks, etc. While higher-order interactions have been studied for monolayer systems through the language of simplicial complexes and hypergraphs, a broad and systematic formalism incorporating them into the realm of multilayer systems is still lacking. Here, we introduce the concept of crossimplicial multicomplexes as a general formalism for modelling interdependent systems involving higher-order intra- and inter-layer connections. Subsequently, we introduce cross-homology and its spectral counterpart, the cross-Laplacian operators, to establish a rigorous mathematical framework for quantifying global and local intra- and inter-layer topological structures in such systems. When applied to multilayer networks, these cross-Laplacians provide powerful methods for detecting clusters in one layer that are controlled by hubs in another layer. We call such hubs spectral cross-hubs and define spectral persistence as a way to rank them according to their emergence along the cross-Laplacian spectra.",
+    "doi": "arXiv:2305.05860",
+    "keywords": [
+      "connectomics",
+      "graph theory",
+      "spectral analysis",
+      "multimodal",
+      "topology"
+    ],
+    "url": "https://arxiv.org/abs/2305.05860",
+    "source": "arxiv",
+    "sub_domain": "recent_preprints"
+  }
+]

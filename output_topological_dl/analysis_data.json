@@ -1,0 +1,240 @@
+{
+  "domain": "Topological & Geometric Deep Learning",
+  "stats": {
+    "numPapers": 25,
+    "numSchools": 3,
+    "numLinks": 23,
+    "modularityQ": 0.85,
+    "yearRange": "2022–2026"
+  },
+  "schools": [
+    {
+      "id": 0,
+      "name": "Brain network & Brain",
+      "keywords": [
+        "Brain network",
+        "Brain",
+        "Functional connectivity",
+        "Resting-state",
+        "Gnn",
+        "Network"
+      ],
+      "description": "Investigates core formulations, methodologies, and advancements centered on Brain network, Brain, Functional connectivity.",
+      "paperCount": 12,
+      "members": [
+        "arxiv_2603.29967",
+        "arxiv_2306.14080",
+        "arxiv_2511.14922",
+        "arxiv_2409.04072",
+        "arxiv_2601.17073",
+        "arxiv_2604.06469",
+        "arxiv_2510.03306",
+        "arxiv_2409.11174",
+        "arxiv_2410.16874",
+        "arxiv_2605.13312",
+        "arxiv_2605.07026",
+        "arxiv_2605.14048"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Connectomics & Brain network",
+      "keywords": [
+        "Connectomics",
+        "Brain network",
+        "Brain",
+        "Fmri",
+        "Functional",
+        "Functional connectivity"
+      ],
+      "description": "Investigates core formulations, methodologies, and advancements centered on Connectomics, Brain network, Brain.",
+      "paperCount": 10,
+      "members": [
+        "arxiv_2603.29903",
+        "arxiv_2602.16004",
+        "arxiv_2602.00561",
+        "arxiv_2604.24614",
+        "arxiv_2604.17713",
+        "arxiv_2602.01551",
+        "arxiv_2603.08108",
+        "arxiv_2210.03231",
+        "arxiv_2605.05371",
+        "arxiv_2305.05860"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Connectomics & Brain network",
+      "keywords": [
+        "Connectomics",
+        "Brain network",
+        "Deep learning",
+        "Gnn",
+        "Functional connectivity",
+        "Koopman"
+      ],
+      "description": "Investigates core formulations, methodologies, and advancements centered on Connectomics, Brain network, Deep learning.",
+      "paperCount": 3,
+      "members": [
+        "arxiv_2603.29960",
+        "arxiv_2508.16414",
+        "arxiv_2512.24901"
+      ]
+    }
+  ],
+  "crossCommunityDensity": [
+    {
+      "sourceCommunity": 0,
+      "targetCommunity": 1,
+      "sourceName": "Brain network & Brain",
+      "targetName": "Connectomics & Brain network",
+      "edgeCount": 0,
+      "density": 0
+    },
+    {
+      "sourceCommunity": 1,
+      "targetCommunity": 2,
+      "sourceName": "Connectomics & Brain network",
+      "targetName": "Connectomics & Brain network",
+      "edgeCount": 0,
+      "density": 0
+    },
+    {
+      "sourceCommunity": 0,
+      "targetCommunity": 2,
+      "sourceName": "Brain network & Brain",
+      "targetName": "Connectomics & Brain network",
+      "edgeCount": 1,
+      "density": 0.028
+    }
+  ],
+  "bridgePapers": [
+    {
+      "id": "arxiv_2603.29967",
+      "title": "Learning Structural-Functional Brain Representations through Multi-Scale Adaptive Graph Attention for Cognitive Insight",
+      "authors": "Badhan Mazumder; Sir-Lord Wiafe; Aline Kotoski; Vince D. Calhoun; Dong Hye Ye",
+      "year": 2026,
+      "school": "Brain network & Brain",
+      "betweenness": 1,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2603.29903",
+      "title": "Multimodal Higher-Order Brain Networks: A Topological Signal Processing Perspective",
+      "authors": "Breno C. Bispo; Stefania Sardellitti; Juliano B. Lima; Fernando A. N. Santos",
+      "year": 2026,
+      "school": "Connectomics & Brain network",
+      "betweenness": 0.302,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2602.16004",
+      "title": "Time-Varying Directed Interactions in Functional Brain Networks: Modeling and Validation",
+      "authors": "Nan Xu; Xiaodi Zhang; Wen-Ju Pan; Jeremy L. Smith; Eric H. Schumacher; Jason W. Allen; Vince D. Calhoun; Shella D. Keilholz",
+      "year": 2026,
+      "school": "Connectomics & Brain network",
+      "betweenness": 0.291,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2512.24901",
+      "title": "Spectral Graph Neural Networks for Cognitive Task Classification in fMRI Connectomes",
+      "authors": "Debasis Maji; Arghya Banerjee; Debaditya Barman",
+      "year": 2025,
+      "school": "Connectomics & Brain network",
+      "betweenness": 0.279,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2508.16414",
+      "title": "NeuroKoop: Neural Koopman Fusion of Structural-Functional Connectomes for Identifying Prenatal Drug Exposure in Adolescents",
+      "authors": "Badhan Mazumder; Aline Kotoski; Vince D. Calhoun; Dong Hye Ye",
+      "year": 2025,
+      "school": "Connectomics & Brain network",
+      "betweenness": 0.151,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2306.14080",
+      "title": "Leveraging Brain Modularity Prior for Interpretable Representation Learning of fMRI",
+      "authors": "Qianqian Wang; Wei Wang; Yuqi Fang; P. -T. Yap; Hongtu Zhu; Hong-Jun Li; Lishan Qiao; Mingxia Liu",
+      "year": 2023,
+      "school": "Brain network & Brain",
+      "betweenness": 0.151,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2601.17073",
+      "title": "Attention-Based Variational Framework for Joint and Individual Components Learning with Applications in Brain Network Analysis",
+      "authors": "Yifei Zhang; Meimei Liu; Zhengwu Zhang",
+      "year": 2026,
+      "school": "Brain network & Brain",
+      "betweenness": 0.151,
+      "citations": 0
+    },
+    {
+      "id": "arxiv_2602.01551",
+      "title": "Bayesian brain mapping: a population-informed framework for personalized functional network topography and connectivity",
+      "authors": "Nohelia Da Silva Sanchez; Diego Derman; Damon D. Pham; Ellyn R. Butler; Mary Beth Nebel; Amanda F. Mejia",
+      "year": 2026,
+      "school": "Connectomics & Brain network",
+      "betweenness": 0.093,
+      "citations": 0
+    }
+  ],
+  "debateTracks": [
+    {
+      "id": "methodology_paradigm",
+      "title": "Brain network & Brain vs. Empirical Implementation",
+      "description": "Disputes regarding theoretical optimality guarantees versus real-world hardware / experimental constraints.",
+      "status": "Active Debate",
+      "milestones": [
+        {
+          "year": 2022,
+          "paperTitle": "Multimodal Higher-Order Brain Networks: A Topological Signal Processing Perspective",
+          "event": "Initial formalization and baseline criteria",
+          "consensus": "Established"
+        },
+        {
+          "year": 2024,
+          "paperTitle": "Modeling Higher-Order Brain Interactions via a Multi-View Information Bottleneck Framework for fMRI-based Psychiatric Diagnosis",
+          "event": "Divergence into scalable approximations and empirical metrics",
+          "consensus": "Challenged"
+        },
+        {
+          "year": 2026,
+          "paperTitle": "Topology and spectral interconnectivities of higher-order multilayer networks",
+          "event": "Unified multi-paradigm verification standards",
+          "consensus": "Emerging Consensus"
+        }
+      ]
+    },
+    {
+      "id": "scalability_debate",
+      "title": "Scalability Overhead vs. Precision Fidelity",
+      "description": "Trade-offs between computational tractability and high-dimensional noise suppression.",
+      "status": "Emerging Consensus",
+      "milestones": [
+        {
+          "year": 2023,
+          "paperTitle": "Learning Structural-Functional Brain Representations through Multi-Scale Adaptive Graph Attention for Cognitive Insight",
+          "event": "Demonstration of fault/noise vulnerability",
+          "consensus": "Identified"
+        },
+        {
+          "year": 2026,
+          "paperTitle": "NeuroBRIDGE: Behavior-Conditioned Koopman Dynamics with Riemannian Alignment for Early Substance Use Initiation Prediction from Longitudinal Functional Connectome",
+          "event": "Asymptotic boundary bounds established across multi-system cohorts",
+          "consensus": "Active Debate"
+        }
+      ]
+    }
+  ],
+  "argumentSpine": {
+    "claim": "Current advances in Topological & Geometric Deep Learning have predominantly consolidated within isolated methodological paradigms (Brain network & Brain, Connectomics & Brain network, Connectomics & Brain network).",
+    "evidence": "Citation topology indicates dense intra-school clustering (Modularity Q = 0.85), driven by Brain network and Brain.",
+    "counter": "Cross-paradigm boundary spanners demonstrate that models ignoring inter-school constraints suffer severe generalization decay when translated to empirical systems.",
+    "gap": "Structural isolation between Brain network & Brain and Connectomics & Brain network leaves critical theoretical translation unaddressed.",
+    "whyItMatters": "Synthesizing these decoupled domains provides the necessary mathematical and empirical framework for next-generation breakthroughs in Topological & Geometric Deep Learning."
+  }
+}

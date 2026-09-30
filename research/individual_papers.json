@@ -1,0 +1,500 @@
+[
+  {
+    "id": "ind_001",
+    "title": "Functional connectome fingerprinting: identifying individuals using patterns of brain connectivity",
+    "authors": "ES Finn, X Shen, D Scheinost, MD Rosenberg…",
+    "year": 2015,
+    "journal": "nature.com",
+    "citations": 3318,
+    "abstract": "… that this individual variability is both robust and reliable, using data from the Human Connectome Project to demonstrate that functional connectivity profiles act as a 'fingerprint' that can …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.nature.com/articles/nn.4135/043supplementary-information",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_002",
+    "title": "Precision functional mapping of individual human brains",
+    "authors": "EM Gordon, TO Laumann, AW Gilmore, DJ Newbold…",
+    "year": 2017,
+    "journal": "cell.com",
+    "citations": 1543,
+    "abstract": "… of network function; 2) precise description of the brain network organization of each individual MSC … Thus, these individual differences likely reflect network assignment rather than …",
+    "doi": null,
+    "keywords": [
+      "precision functional mapping",
+      "precision mapping",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://www.cell.com/neuron/fulltext/S089662731730613X",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_003",
+    "title": "The frontoparietal network: function, electrophysiology, and importance of individual precision mapping",
+    "authors": "S Marek, NUF Dosenbach",
+    "year": 2018,
+    "journal": "Taylor & Francis",
+    "citations": 1048,
+    "abstract": "… by a single brain region or single brain network, but rather by several largely non-overlapping brain … To begin understanding individual differences in functional neuroanatomy, a single …",
+    "doi": "10.31887/DCNS.2018.20.2/smarek",
+    "keywords": [
+      "frontoparietal network",
+      "precision mapping",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://www.tandfonline.com/doi/abs/10.31887/DCNS.2018.20.2/smarek",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_004",
+    "title": "Spatial topography of individual-specific cortical networks predicts human cognition, personality, and emotion",
+    "authors": "R Kong, J Li, C Orban, MR Sabuncu, H Liu…",
+    "year": 2019,
+    "journal": "academic.oup.com",
+    "citations": 724,
+    "abstract": "… Having established that the MS-HBM generated high-quality individual-specific parcellations, we investigated whether individual differences in network topography (ie, location and …",
+    "doi": null,
+    "keywords": [
+      "cognition",
+      "personalized neuroscience",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://academic.oup.com/cercor/article-abstract/29/6/2533/5033556",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_005",
+    "title": "Functional brain network modularity captures inter-and intra-individual variation in working memory capacity",
+    "authors": "AA Stevens, SC Tappon, A Garg, DA Fair",
+    "year": 2012,
+    "journal": "journals.plos.org",
+    "citations": 289,
+    "abstract": "… Here, we tested the hypothesis that graph-theoretic measures of a functional brain network … both between and within individuals across time. We examined 34 brain regions (Table 1) …",
+    "doi": "10.1371/journal.pone.0030468",
+    "keywords": [
+      "working memory",
+      "network modularity",
+      "individual differences",
+      "memory systems",
+      "brain networks"
+    ],
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0030468",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_006",
+    "title": "Challenges in measuring individual differences in functional connectivity using fMRI: the case of healthy aging",
+    "authors": "L Geerligs, KA Tsvetanov, RN Henson",
+    "year": 2017,
+    "journal": "Wiley Online Library",
+    "citations": 215,
+    "abstract": "… Results are reported with two decimals precision throughout the article, except when … of individual differences in connectivity strength, using the ICC. This was done for each connection …",
+    "doi": "10.1002/hbm.23653",
+    "keywords": [
+      "aging",
+      "precision mapping",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.23653",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_007",
+    "title": "Test–retest reliability of functional connectivity networks during naturalistic fMRI paradigms",
+    "authors": "J Wang, Y Ren, X Hu, VT Nguyen, L Guo…",
+    "year": 2017,
+    "journal": "Wiley Online Library",
+    "citations": 202,
+    "abstract": "Functional connectivity analysis has become a powerful tool for probing the human brain function and its breakdown in neuropsychiatry disorders. So far, most studies adopted resting‐state paradigm to examine functional connectivity networks in the brain, thanks to its low demand and high tolerance that are essential for clinical studies. However, the test–retest reliability of resting‐state connectivity measures is moderate, potentially due to its low behavioral constraint. On the other hand, naturalistic neuroimaging paradigms, an emerging …",
+    "doi": "10.1002/hbm.23517",
+    "keywords": [
+      "naturalistic fMRI",
+      "test-retest reliability",
+      "aging",
+      "behavioral prediction",
+      "individual differences",
+      "functional connectivity",
+      "brain networks"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.23517",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_008",
+    "title": "Individual-specific functional connectivity of the amygdala: A substrate for precision psychiatry",
+    "authors": "CM Sylvester, Q Yu, AB Srivastava, S Marek…",
+    "year": 2020,
+    "journal": "pnas.org",
+    "citations": 163,
+    "abstract": "… connectivity properties that were shared across all three subdivisions. The whole-brain connectivity pattern of the unspecified subdivision was also the least similar across individuals (…",
+    "doi": "10.1073/pnas.1910842117",
+    "keywords": [
+      "precision mapping",
+      "amygdala connectivity",
+      "personalized neuroscience",
+      "precision psychiatry",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.pnas.org/doi/abs/10.1073/pnas.1910842117",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_009",
+    "title": "Identification of individual subjects on the basis of their brain anatomical features",
+    "authors": "SA Valizadeh, F Liem, S Mérillat, J Hänggi, L Jäncke",
+    "year": 2018,
+    "journal": "nature.com",
+    "citations": 116,
+    "abstract": "… neighbors approach (WKNN) to identify single subjects. For this, we randomly chose a data … For example, when training a neural network to identify faces, the trained network should be …",
+    "doi": null,
+    "keywords": [
+      "single-subject analysis",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://www.nature.com/articles/s41598-018-23696-6",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_010",
+    "title": "Beyond fingerprinting: Choosing predictive connectomes over reliable connectomes",
+    "authors": "ES Finn, MD Rosenberg",
+    "year": 2021,
+    "journal": "Elsevier",
+    "citations": 105,
+    "abstract": "… , with encouraging progress toward understanding the consequences of this variability for … studying variability in functional connectivity—both across individuals and within individuals …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "individual differences",
+      "aging",
+      "functional connectivity"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053811921005310",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_011",
+    "title": "Personalized brain network models for assessing structure–function relationships",
+    "authors": "K Bansal, J Nakuci, SF Muldoon",
+    "year": 2018,
+    "journal": "Elsevier",
+    "citations": 105,
+    "abstract": "… and/or functional information derived from subject data. Here, we discuss recent work using personalized brain network models to study structure–function relationships in human brains…",
+    "doi": null,
+    "keywords": [
+      "personalized neuroscience",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S0959438818300059",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_012",
+    "title": "Research Review: Brain network connectivity and the heterogeneity of depression in adolescence–a precision mental health perspective",
+    "authors": "R Chahal, IH Gotlib, AE Guyer",
+    "year": 2020,
+    "journal": "Wiley Online Library",
+    "citations": 96,
+    "abstract": "… Reflecting the recent emergence of ‘precision mental health’ – a person-centered approach … and individual differences in brain circuitry, most frequently in resting-state functional …",
+    "doi": "10.1111/jcpp.13250",
+    "keywords": [
+      "precision mapping",
+      "depression",
+      "individual differences",
+      "functional connectivity",
+      "youth cognition",
+      "brain networks"
+    ],
+    "url": "https://acamh.onlinelibrary.wiley.com/doi/abs/10.1111/jcpp.13250",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_013",
+    "title": "A precision functional atlas of personalized network topography and probabilities",
+    "authors": "RJM Hermosillo, LA Moore, E Feczko…",
+    "year": 2024,
+    "journal": "nature.com",
+    "citations": 78,
+    "abstract": "… To capture this, we implemented precision brain mapping functional … of precision functional network atlases—the Masonic Institute for the Developing Brain (MIDB) Precision Brain Atlas. …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "personalized neuroscience",
+      "brain atlas",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://www.nature.com/articles/s41593-024-01596-5",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_014",
+    "title": "Personalized functional brain network topography is associated with individual differences in youth cognition",
+    "authors": "AS Keller, AR Pines, S Shanmugan, VJ Sydnor…",
+    "year": 2023,
+    "journal": "nature.com",
+    "citations": 77,
+    "abstract": "… Our scalable precision functional mapping approach may therefore be leveraged in future studies of children and adolescents to harness individual variability and identify important, …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "personalized neuroscience",
+      "individual variability",
+      "cognition",
+      "individual differences",
+      "youth cognition",
+      "precision functional mapping",
+      "brain networks"
+    ],
+    "url": "https://www.nature.com/articles/s41467-023-44087-0",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_015",
+    "title": "Individual‐level brain morphological similarity networks: current methodologies and applications",
+    "authors": "M Cai, J Ma, Z Wang, Y Zhao, Y Zhang…",
+    "year": 2023,
+    "journal": "Wiley Online Library",
+    "citations": 73,
+    "abstract": "… brain regions for individual brains and can reflect the morphological information of single subjects… As a result, the morphological brain network demonstrated specific organization with …",
+    "doi": "10.1111/cns.14384",
+    "keywords": [
+      "morphological networks",
+      "single-subject analysis",
+      "individual differences",
+      "brain networks"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/cns.14384",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_016",
+    "title": "Whole-brain connectivity dynamics reflect both task-specific and individual-specific modulation: A multitask study",
+    "authors": "H Xie, VD Calhoun, J Gonzalez-Castillo, E Damaraju…",
+    "year": 2018,
+    "journal": "Elsevier",
+    "citations": 69,
+    "abstract": "… given subject represents a significant contribution to the group-level FC dynamics. We show that the subject-specific FC … To assess the impact of the FC individuality and task-specific FC …",
+    "doi": null,
+    "keywords": [
+      "dynamic connectivity",
+      "personalized neuroscience",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053811917304494",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_017",
+    "title": "Functional connectome fingerprinting: identifying individuals and predicting cognitive functions via autoencoder",
+    "authors": "B Cai, G Zhang, A Zhang, L Xiao, W Hu…",
+    "year": 2021,
+    "journal": "Wiley Online Library",
+    "citations": 64,
+    "abstract": "… To check the hypothesis that common neural activities may weaken the individual variability, we compare the performance of identifiability with and without the AE network processing. …",
+    "doi": "10.1002/hbm.25394",
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "individual differences",
+      "functional connectivity",
+      "brain networks"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.25394",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_018",
+    "title": "Individual variability in functional connectivity architecture of the mouse brain",
+    "authors": "E Bergmann, X Gofman, A Kavushansky…",
+    "year": 2020,
+    "journal": "nature.com",
+    "citations": 55,
+    "abstract": "… precision fMRI has emerged in human brain research, demonstrating characterization of individual differences in brain … Finally, we link individual differences in functional connectivity to …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "individual variability",
+      "individual differences",
+      "functional connectivity",
+      "mouse brain connectivity"
+    ],
+    "url": "https://www.nature.com/articles/s42003-020-01472-5",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_019",
+    "title": "Existence of functional connectome fingerprint during infancy and its stability over months",
+    "authors": "…, UNC/UMN Baby Connectome Project …",
+    "year": 2022,
+    "journal": "jneurosci.org",
+    "citations": 51,
+    "abstract": "… connectome fingerprint may exist since infancy and keeps stable over months during early brain development. Specifically, we achieve an ∼78% individual … connectome fingerprinting …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "development",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.jneurosci.org/content/42/3/377.abstract",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_020",
+    "title": "Brain connectivity fingerprinting and behavioural prediction rest on distinct functional systems of the human connectome",
+    "authors": "M Mantwill, M Gell, S Krohn, C Finke",
+    "year": 2022,
+    "journal": "nature.com",
+    "citations": 47,
+    "abstract": "… connectome. The present study thus calls into question the direct functional relevance of connectome fingerprints. … In this context, we show that variability of individual edges strongly …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.nature.com/articles/s42003-022-03185-3",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_021",
+    "title": "Spatiotemporal network markers of individual variability in the human functional connectome",
+    "authors": "C Peña-Gómez, A Avena-Koenigsberger…",
+    "year": 2018,
+    "journal": "academic.oup.com",
+    "citations": 41,
+    "abstract": "… the FC fingerprint is most clearly expressed at times when FC patterns exhibit low modularity. In summary, our study reveals distributed network markers of individual variability that are …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "network modularity",
+      "individual differences",
+      "functional connectivity",
+      "brain networks"
+    ],
+    "url": "https://academic.oup.com/cercor/article-abstract/28/8/2922/3954083",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_022",
+    "title": "Precision functional mapping of human memory systems",
+    "authors": "AW Gilmore, SM Nelson, KB McDermott",
+    "year": 2021,
+    "journal": "Elsevier",
+    "citations": 36,
+    "abstract": "… This review comes from a themed issue on Deep imaging - personalized neuroscience … This approach has come to be known as precision fMRI (or precision functional mapping). The …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "personalized neuroscience",
+      "individual differences",
+      "aging",
+      "precision functional mapping",
+      "memory systems"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S2352154621000036",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_023",
+    "title": "The promise of precision functional mapping for neuroimaging in psychiatry",
+    "authors": "DV Demeter, DJ Greene",
+    "year": 2025,
+    "journal": "nature.com",
+    "citations": 27,
+    "abstract": "… Precision Functional Mapping (PFM), has propelled our understanding of functional brain network … integration of functional brain networks may help guide personalized medicine and …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "personalized neuroscience",
+      "individual differences",
+      "aging",
+      "precision functional mapping",
+      "brain networks"
+    ],
+    "url": "https://www.nature.com/articles/s41386-024-01941-z",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_024",
+    "title": "Brain fingerprinting and cognitive behavior predicting using functional connectome of high inter-subject variability",
+    "authors": "J Lu, T Yan, L Yang, X Zhang, J Li, D Li, J Xiang…",
+    "year": 2024,
+    "journal": "Elsevier",
+    "citations": 26,
+    "abstract": "… among individuals and enhance inter-subject variability by residual. Our experimental results on Human Connectome Project (HCP) data show that the refined connectomes obtained …",
+    "doi": null,
+    "keywords": [
+      "connectome fingerprinting",
+      "individual variability",
+      "behavioral prediction",
+      "individual differences",
+      "functional connectivity"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053811924001460",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  },
+  {
+    "id": "ind_025",
+    "title": "Connectome-based fingerprinting: reproducibility, precision, and behavioral prediction",
+    "authors": "J Ramduny, C Kelly",
+    "year": 2025,
+    "journal": "nature.com",
+    "citations": 26,
+    "abstract": "… individual differences in the functional connectome have provided fundamental insights into how brain … brain network organization derived from highly sampled fMRI data [102, 103]. The …",
+    "doi": null,
+    "keywords": [
+      "precision mapping",
+      "connectome fingerprinting",
+      "behavioral prediction",
+      "individual differences",
+      "functional connectivity",
+      "brain networks"
+    ],
+    "url": "https://www.nature.com/articles/s41386-024-01962-8",
+    "source": "scholar",
+    "sub_domain": "individual_variability"
+  }
+]

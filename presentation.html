@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Living Literature Map — Product Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark: #070814;
+      --bg-card: #0E1024;
+      --bg-glass: rgba(18, 20, 46, 0.72);
+      --accent-gold: #D4A853;
+      --accent-gold-glow: rgba(212, 168, 83, 0.28);
+      --accent-blue: #3B6FC4;
+      --accent-green: #22A559;
+      --accent-red: #D94040;
+      --accent-purple: #7C5CFC;
+      --accent-cyan: #22C5C5;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B8BAD0;
+      --text-muted: #6B6D85;
+      --border: rgba(212, 168, 83, 0.16);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+
+    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* ─── SLIDE SYSTEM ─── */
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 60px 80px;
+      overflow: hidden;
+    }
+
+    .slide-inner {
+      max-width: 1320px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* ─── AMBIENT BACKGROUND ─── */
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 20% 25%, rgba(59, 111, 196, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 45% at 80% 75%, rgba(212, 168, 83, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─── SLIDE NUMBER ─── */
+    .slide-number {
+      position: absolute;
+      top: 32px;
+      right: 48px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .label::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 8px var(--accent-gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5.2vw, 76px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--text-primary);
+      margin-bottom: 22px;
+    }
+    h1 em { font-style: italic; color: var(--accent-gold); }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 3.4vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    h2 em { font-style: italic; color: var(--accent-gold); }
+
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .subtitle {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 680px;
+      font-weight: 300;
+    }
+
+    p { line-height: 1.7; color: var(--text-secondary); }
+
+    /* ─── HERO SLIDE ─── */
+    .hero-slide {
+      background:
+        radial-gradient(ellipse 65% 65% at 50% 40%, rgba(59, 111, 196, 0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 55% at 30% 85%, rgba(212, 168, 83, 0.09) 0%, transparent 70%),
+        var(--bg-dark);
+    }
+
+    .hero-content { text-align: center; }
+    .hero-content h1 { font-size: clamp(48px, 6vw, 84px); margin-bottom: 26px; }
+    .hero-content .subtitle { margin: 0 auto 36px; max-width: 760px; text-align: center; }
+
+    .hero-badges {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--glass-border);
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .hero-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── SCREENSHOT IMAGE ─── */
+    .screenshot-container {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow:
+        0 10px 36px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(59, 111, 196, 0.10);
+      margin: 0 auto;
+      background: #000;
+    }
+
+    .screenshot-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .screenshot-container:hover img {
+      transform: scale(1.015);
+    }
+
+    .screenshot-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+
+    /* ─── SPLIT LAYOUT ─── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .split-wide {
+      grid-template-columns: 0.44fr 0.56fr;
+    }
+
+    .split-reverse {
+      grid-template-columns: 0.56fr 0.44fr;
+    }
+
+    /* ─── FEATURE CARDS ─── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .feature-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px 22px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(212, 168, 83, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .feature-card p { font-size: 12.5px; line-height: 1.6; color: var(--text-muted); }
+
+    /* ─── STAT CARDS ─── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .stat-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ─── BULLET LIST WITH TICKS ─── */
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .bullet-icon {
+      color: var(--accent-gold);
+      font-weight: 800;
+      font-size: 15px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .bullet-text {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .bullet-text strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ─── PILL BADGES ─── */
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--accent-gold);
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    /* ─── COMPARISON TABLE ─── */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 22px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 13px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 13.5px;
+    }
+
+    .comparison-table th {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2) {
+      background: rgba(212, 168, 83, 0.06);
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .comparison-table td.check { color: var(--accent-green); font-weight: 800; font-size: 16px; }
+    .comparison-table td.cross { color: var(--accent-red); opacity: 0.4; font-size: 15px; }
+
+    /* ─── PRICING TIERS ─── */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .tier-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 28px 20px;
+      position: relative;
+    }
+
+    .tier-card.featured {
+      border-color: var(--accent-gold);
+      background: linear-gradient(180deg, rgba(212, 168, 83, 0.09) 0%, rgba(18, 20, 46, 0.72) 100%);
+    }
+
+    .tier-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      padding: 3px 12px;
+      border-radius: 100px;
+    }
+
+    .tier-name {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .tier-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .tier-price span { font-size: 13px; color: var(--text-muted); font-family: 'Inter'; }
+
+    .tier-features {
+      list-style: none;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tier-features li {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      padding-left: 18px;
+      position: relative;
+    }
+    .tier-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    /* ─── REVENUE CHART ─── */
+    .revenue-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 36px;
+      height: 220px;
+      margin-top: 36px;
+      padding: 0 16px;
+    }
+
+    .revenue-bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .revenue-bar {
+      width: 100%;
+      max-width: 110px;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+
+    .revenue-bar-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .revenue-bar-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    /* ─── ROADMAP ─── */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .roadmap-phase {
+      background: var(--bg-glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      border-top: 3px solid var(--accent-blue);
+    }
+    .roadmap-phase:nth-child(2) { border-top-color: var(--accent-gold); }
+    .roadmap-phase:nth-child(3) { border-top-color: var(--accent-green); }
+    .roadmap-phase:nth-child(4) { border-top-color: var(--accent-purple); }
+
+    .phase-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .roadmap-phase:nth-child(1) .phase-label { color: var(--accent-blue); }
+    .roadmap-phase:nth-child(2) .phase-label { color: var(--accent-gold); }
+    .roadmap-phase:nth-child(3) .phase-label { color: var(--accent-green); }
+    .roadmap-phase:nth-child(4) .phase-label { color: var(--accent-purple); }
+
+    .roadmap-item {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* ─── ARCHITECTURE CARDS ─── */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .arch-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      position: relative;
+    }
+    .arch-card .layer-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .arch-card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .arch-card p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ─── FLYWHEEL CARDS ─── */
+    .flywheel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .flywheel-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .flywheel-step {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      opacity: 0.8;
+      margin-bottom: 6px;
+    }
+
+    /* ─── CTA SLIDE ─── */
+    .cta-slide {
+      text-align: center;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(212, 168, 83, 0.08) 0%, transparent 70%),
+        var(--bg-dark);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 42px;
+      background: linear-gradient(135deg, var(--accent-gold), #B8860B);
+      color: var(--bg-dark);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 36px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212, 168, 83, 0.35); }
+
+    /* ─── NAV DOTS ─── */
+    .nav-dots {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      opacity: 0.28;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .nav-dot.active {
+      opacity: 1;
+      background: var(--accent-gold);
+      transform: scale(1.5);
+      box-shadow: 0 0 10px var(--accent-gold);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-inner > * {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .slide { padding: 40px; }
+      .split, .split-wide, .split-reverse { grid-template-columns: 1fr; gap: 28px; }
+      .feature-grid, .stat-row, .tier-grid, .roadmap, .arch-grid, .flywheel-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .slide { padding: 24px; }
+      .feature-grid, .stat-row, .tier-grid, .roadmap, .arch-grid, .flywheel-grid { grid-template-columns: 1fr; }
+      .revenue-bars { flex-direction: column; height: auto; }
+      .hero-badges { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1: TITLE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide hero-slide" data-slide="0">
+  <span class="slide-number">01 / 20</span>
+  <div class="slide-inner hero-content">
+    <span class="label">Product Presentation 2026</span>
+    <h1>Living<br>Literature <em>Map</em></h1>
+    <p class="subtitle">
+      The world's first interactive research intelligence platform that transforms scientific literature into an explorable 3D knowledge constellation — complete with automated gap detection, debate tracking, and publication-ready PRISMA synthesis.
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge"><span class="dot" style="background: #3B6FC4;"></span> 3D WebGL Constellation</span>
+      <span class="hero-badge"><span class="dot" style="background: #D4A853;"></span> Structural Gap Detection</span>
+      <span class="hero-badge"><span class="dot" style="background: #22A559;"></span> Live Search (250M+ Papers)</span>
+      <span class="hero-badge"><span class="dot" style="background: #7C5CFC;"></span> Bridge Paper Finder</span>
+      <span class="hero-badge"><span class="dot" style="background: #22C5C5;"></span> PRISMA 2020 Compliance</span>
+      <span class="hero-badge"><span class="dot" style="background: #D94040;"></span> Writing Desk</span>
+    </div>
+    <p class="hero-meta">React 19 · Three.js · D3.js · Louvain Community Mining · OpenAlex API</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 2: THE PROBLEM -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="1">
+  <span class="slide-number">02 / 20</span>
+  <div class="slide-inner">
+    <span class="label">The Critical Friction</span>
+    <h2>Scientific literature reviews are broken.</h2>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-value">6 mo</div>
+        <div class="stat-label">Avg. Literature Review Duration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">82%</div>
+        <div class="stat-label">PhDs Report "Information Overload"</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">3M+</div>
+        <div class="stat-label">New Papers Published Annually</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Tools That Detect Research Gaps</div>
+      </div>
+    </div>
+    <div style="margin-top: 36px; max-width: 820px;">
+      <p style="font-size: 17px; line-height: 1.8;">
+        Researchers spend <strong style="color: var(--accent-gold);">hundreds of hours</strong> manually skimming PDFs, managing bloated Zotero libraries, and hand-crafting comparison spreadsheets. Existing bibliometric tools produce static, indecipherable "hairball" network graphs. <strong style="color: #fff;">None of them identify where knowledge is missing, which cross-disciplinary bridges connect fields, or how to turn discovery into a structured manuscript.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 3: 3D KNOWLEDGE CONSTELLATION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="2">
+  <span class="slide-number">03 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Signature Breakthrough</span>
+        <h2>3D Knowledge <em>Constellation</em></h2>
+        <p style="margin-bottom: 22px;">
+          Scientific literature mapped as an immersive, force-directed cosmic network. Every star represents a peer-reviewed paper; each luminous edge represents co-citation and keyword affinity.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Real-Time 3D Physics:</strong> Three.js WebGL engine running D3-force simulation at 60fps with orbit controls and star clustering.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Louvain Community Shading:</strong> Papers color-coded into 9 distinct scientific schools of thought with citation magnitude scaling.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Deep Paper Inspector:</strong> Click any star to open an interactive drawer with authors, abstract, DOI link, citation count, and BibTeX/APA copy.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Temporal & Perspective Lenses:</strong> Toggle between School view, Chronological Year timeline, and Journal distribution instantly.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/01_hero.png" alt="3D Knowledge Constellation" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 4: CORE CAPABILITIES -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="3">
+  <span class="slide-number">04 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Comprehensive Suite</span>
+    <h2>10 Integrated Research Engines</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(59, 111, 196, 0.15);">🌌</div>
+        <h3>3D Constellation</h3>
+        <p>Real-time WebGL force-directed star map with community clustering and node drawers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(212, 168, 83, 0.15);">🏫</div>
+        <h3>Schools of Thought</h3>
+        <p>Louvain community detection identifies distinct paradigms with interactive donut charts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(217, 64, 64, 0.15);">🔍</div>
+        <h3>Gap Detection</h3>
+        <p>Structural hole analysis isolates under-connected clusters to reveal unstudied frontiers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(124, 92, 252, 0.15);">🌉</div>
+        <h3>Bridge Papers</h3>
+        <p>Betweenness centrality ranking uncovers cross-disciplinary papers connecting silos.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(34, 197, 197, 0.15);">⚔️</div>
+        <h3>Debate Tracker</h3>
+        <p>Dialectical timeline mapping core academic controversies from Thesis to Synthesis.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(34, 165, 89, 0.15);">📊</div>
+        <h3>Evidence Matrix</h3>
+        <p>Audit-ready database with methodology tagging, sample size N, and quality ratings.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(59, 111, 196, 0.15);">📈</div>
+        <h3>Cluster Evolution</h3>
+        <p>D3 Streamgraph of 30-year temporal growth and school co-citation affinity matrix.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(212, 168, 83, 0.15);">📋</div>
+        <h3>PRISMA 2020</h3>
+        <p>Automated systematic review flowchart complying with premier medical journal standards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: rgba(217, 64, 64, 0.15);">✍️</div>
+        <h3>Writing Desk</h3>
+        <p>Argument spine editor, missing citation finder, and instant Word (.docx) export.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 5: SCHOOLS OF THOUGHT -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="4">
+  <span class="slide-number">05 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 01</span>
+        <h2>Schools of <em>Thought</em></h2>
+        <p style="margin-bottom: 20px;">
+          Unsupervised Louvain community detection algorithm automatically partitions hundreds of papers into coherent intellectual traditions.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Community Modularity (Q=0.22):</strong> Statistically significant partition of the literature without manual human bias.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Interactive Donut Distribution:</strong> Hover over any school to see paper count, cumulative citations, and foundation years.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Seminal Authors & Keywords:</strong> Highlights defining intellectual figures (e.g. Sporns, Biswal, Raichle) and core terminology.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/02_schools.png" alt="Schools of Thought" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6: RESEARCH GAP DETECTION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="5">
+  <span class="slide-number">06 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 03</span>
+        <h2>Automated <em>Gap Detection</em></h2>
+        <p style="margin-bottom: 20px;">
+          Burt's structural hole theory applied to scientific knowledge networks — pinpointing unaddressed intersections where future breakthroughs lie.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Algorithmic Gap Synthesis:</strong> Detects sparse connection density between high-impact clusters to formulate exact research gap statements.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Structured Argument Spine:</strong> Auto-constructs the 5-step rhetorical chain: <em>Claim → Evidence → Counter → Gap → Why</em>.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Grant & Thesis Acceleration:</strong> Gives PhD students and faculty immediate, bulletproof justification for grant applications.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/03_gap.png" alt="Research Gap Detection" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 7: BRIDGE PAPERS [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="6">
+  <span class="slide-number">07 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 05</span>
+        <h2>Bridge Papers &amp; <em>Collaboration</em></h2>
+        <p style="margin-bottom: 20px;">
+          Groundbreaking discoveries almost always emerge at the intersection of isolated fields. Our engine identifies high-betweenness connector works.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Betweenness Centrality Ranking:</strong> Quantifies how frequently a paper serves as the informational stepping-stone between disciplines.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Cross-Community Edge Tracking:</strong> Direct count of bridges spanning disparate schools (e.g. 169 cross-school citations).</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Co-Authorship Network:</strong> Force-directed collaboration graph revealing interdisciplinary lab alliances and key PI connectors.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/05_bridge.png" alt="Bridge Papers & Collaboration" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 8: SCIENTIFIC DEBATES [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="7">
+  <span class="slide-number">08 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 02</span>
+        <h2>How the Debates <em>Evolved</em></h2>
+        <p style="margin-bottom: 20px;">
+          Science is not passive agreement; it is living dialectic. We map the longitudinal clash of ideas across decades of publications.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>4 Enduring Controversies:</strong> Tracks debates like <em>Static vs Dynamic FC</em>, <em>Group vs Individual Networks</em>, and <em>Null Model Validation</em>.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Tri-Phase Dialectic:</strong> Categorizes each controversy phase: <em>Expansion (2008–14) → Controversy (2014–18) → Precision/Synthesis (2018–26)</em>.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Contradiction Heatmap:</strong> Helps authors construct nuanced, balanced literature review sections that honor competing methodologies.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/09_debate.png" alt="How the Debates Evolved" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 9: CLUSTER EVOLUTION [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="8">
+  <span class="slide-number">09 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 04</span>
+        <h2>Cluster Evolution <em>Streamgraph</em></h2>
+        <p style="margin-bottom: 20px;">
+          How 9 research communities grew, interconnected, and transformed across a 30-year chronological expanse (1995–2026).
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>D3 Streamgraph Trajectory:</strong> Flowing stacked-area waves depict the rapid expansion and maturation of distinct paradigms.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Historical Inflection Markers:</strong> Pinpoints the 2008 "Growth Phase" and 2020+ "Active Frontier" in precision mapping.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Cross-School Affinity Heatmap:</strong> Quantitative matrix revealing which sub-disciplines cite each other and which remain isolated.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/06_cluster.png" alt="Cluster Evolution Streamgraph" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 10: EVIDENCE SYNTHESIS MATRIX [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="9">
+  <span class="slide-number">10 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Deep Dive · Analysis 08</span>
+        <h2>Evidence Synthesis <em>Matrix</em></h2>
+        <p style="margin-bottom: 20px;">
+          An audit-ready, structured evidence database providing granular methodological inspection across all 244 publications.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Multi-Modality Tagging:</strong> Instantly filter by imaging modalities (fMRI, dMRI, EEG, MEG, TMS, Computational).</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Study Rigor & Sample Size (N):</strong> Tracks cohort size from small-N exploratory studies to 10,000+ participant biobanks.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Quality Rating & Stated Limitations:</strong> Transparent quality tiers (Robust, Moderate, Limited) exposing critical caveats.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/04_evidence.png" alt="Evidence Table" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 11: PRISMA 2020 FLOW -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="10">
+  <span class="slide-number">11 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Methodological Rigor</span>
+        <h2>Automated <em>PRISMA 2020</em> Flow</h2>
+        <p style="margin-bottom: 20px;">
+          Mandatory compliance for high-impact journals (Nature, Lancet, JAMA). What normally takes researchers days in Adobe Illustrator is generated automatically.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>4-Stage Systematic Funnel:</strong> <em>Identification (244) → Screening (244) → Eligibility (244) → Included (244)</em>.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Exclusion Reason Taxonomy:</strong> Granular tracking of why records were filtered (low citation threshold, out-of-scope domain).</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>1-Click Vector Export:</strong> Export publication-grade SVG and PNG diagrams ready for direct peer-reviewed journal submission.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/07_prisma.png" alt="PRISMA 2020 Flow" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 12: WRITING DESK -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="11">
+  <span class="slide-number">12 / 20</span>
+  <div class="slide-inner">
+    <div class="split split-wide">
+      <div>
+        <span class="label">Manuscript Acceleration</span>
+        <h2>The Integrated <em>Writing Desk</em></h2>
+        <p style="margin-bottom: 20px;">
+          Closing the painful gap between exploring literature and writing the manuscript. From discovery to first draft in minutes.
+        </p>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Argument Spine Architecture:</strong> Pre-populates the five essential moves of academic writing directly from network data.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Missing Citation Finder:</strong> Highlights seminal papers you forgot to cite, preventing critical peer review rejections.</div>
+          </div>
+          <div class="bullet-item">
+            <span class="bullet-icon">✦</span>
+            <div class="bullet-text"><strong>Full Word (.docx) Compilation:</strong> Generates formatted literature reviews with citations, tables, and references in one click.</div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <img src="screenshots/08_writing.png" alt="Writing Desk" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 13: TECHNICAL ARCHITECTURE [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="12">
+  <span class="slide-number">13 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Under the Hood</span>
+    <h2>Technical Architecture &amp; <em>Engine</em></h2>
+    <p class="subtitle" style="margin-bottom: 20px;">
+      Engineered for extreme responsiveness, computational graph rigor, and academic data privacy.
+    </p>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="layer-num">Layer 01 · Ingestion</div>
+        <h3>Graph Ingestion</h3>
+        <p>Connects to OpenAlex (250M+ works), CrossRef, PubMed, or custom user BibTeX/PDFs via streaming REST/JSON.</p>
+        <div class="badge-pill">OpenAlex API</div>
+        <div class="badge-pill">PDF Extractor</div>
+      </div>
+      <div class="arch-card">
+        <div class="layer-num">Layer 02 · Math Core</div>
+        <h3>Graph Mining Core</h3>
+        <p>Louvain modularity Q-maximization, Brandes betweenness centrality, and Burt's structural hole constraints.</p>
+        <div class="badge-pill">Louvain Q</div>
+        <div class="badge-pill">Betweenness</div>
+      </div>
+      <div class="arch-card">
+        <div class="layer-num">Layer 03 · Graphics</div>
+        <h3>3D WebGL Engine</h3>
+        <p>Three.js custom canvas sprite materials, additive blending, D3-Force 3D simulation, and orbit camera damping.</p>
+        <div class="badge-pill">Three.js</div>
+        <div class="badge-pill">D3-Force-3D</div>
+      </div>
+      <div class="arch-card">
+        <div class="layer-num">Layer 04 · Security</div>
+        <h3>Zero-Leak Privacy</h3>
+        <p>100% in-browser client-side network computation. Unpublished manuscripts and custom corpora never touch external servers.</p>
+        <div class="badge-pill">Client-Side</div>
+        <div class="badge-pill">Local Storage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 14: COMPETITIVE LANDSCAPE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="13">
+  <span class="slide-number">14 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Competitive Advantage</span>
+    <h2>Why existing tools fall short</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Living Literature Map</th>
+          <th>Connected Papers</th>
+          <th>VOSviewer</th>
+          <th>Litmaps</th>
+          <th>Elicit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3D Interactive Constellation</td>
+          <td class="check">✓</td>
+          <td class="cross">✗ (2D only)</td>
+          <td class="cross">✗ (Desktop 2D)</td>
+          <td class="cross">✗ (2D timeline)</td>
+          <td class="cross">✗ (No graph)</td>
+        </tr>
+        <tr>
+          <td>Automated Gap Detection</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Bridge Paper Centrality</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Dialectical Debate Tracker</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>PRISMA 2020 Compliance</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+        </tr>
+        <tr>
+          <td>Manuscript Writing Desk</td>
+          <td class="check">✓</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="cross">✗</td>
+          <td class="check">✓ (Chat only)</td>
+        </tr>
+        <tr>
+          <td>Browser-Native (Zero Install)</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="cross">✗ (Java app)</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 15: TARGET MARKET -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="14">
+  <span class="slide-number">15 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Market Opportunity</span>
+    <h2>A $4.5B global research market</h2>
+    <div class="stat-row" style="margin-bottom: 32px;">
+      <div class="stat-card">
+        <div class="stat-value">$4.5B</div>
+        <div class="stat-label">TAM · Academic SaaS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$800M</div>
+        <div class="stat-label">SAM · Bibliometrics & Discovery</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2.2M+</div>
+        <div class="stat-label">Active PhD Students Globally</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">8.8M+</div>
+        <div class="stat-label">Publishing Researchers</div>
+      </div>
+    </div>
+    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="feature-card">
+        <h3>🎓 PhD Students & Postdocs</h3>
+        <p>Literature review is their #1 academic hurdle. Saves 4–8 weeks of grinding. High personal willingness to pay ($15/mo).</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏛️ Universities & Libraries</h3>
+        <p>Campus-wide site licensing to improve institutional research output and grant win rates. $20K–$50K/year per institution.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💊 Pharma, Biotech & Tech R&D</h3>
+        <p>Competitive literature surveillance, prior-art landscape analysis, and IP patent whitespace. $10K–$100K/year enterprise ACV.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 16: PRICING -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="15">
+  <span class="slide-number">16 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Business Model</span>
+    <h2>Freemium + Enterprise Licensing</h2>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-name">Free Explorer</div>
+        <div class="tier-price">$0</div>
+        <ul class="tier-features">
+          <li>3 topic searches / day</li>
+          <li>Up to 50 papers per map</li>
+          <li>Basic 3D constellation</li>
+          <li>Schools of thought view</li>
+          <li>Public community maps</li>
+        </ul>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-name">Pro Researcher</div>
+        <div class="tier-price">$15<span>/mo</span></div>
+        <ul class="tier-features">
+          <li>Unlimited searches</li>
+          <li>500+ papers per constellation</li>
+          <li>Full structural gap analysis</li>
+          <li>PRISMA 2020 export (.svg, .png)</li>
+          <li>Writing desk & .docx export</li>
+          <li>Missing citation auditor</li>
+          <li>Private cloud map saves</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">Lab / Team</div>
+        <div class="tier-price">$39<span>/user/mo</span></div>
+        <ul class="tier-features">
+          <li>Everything in Pro</li>
+          <li>Shared lab library & notes</li>
+          <li>Collaborative 3D graph sharing</li>
+          <li>Scopus & Web of Science sync</li>
+          <li>Grant proposal pitch generator</li>
+          <li>Priority API access</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">Institutional</div>
+        <div class="tier-price">Custom</div>
+        <ul class="tier-features">
+          <li>Campus-wide IP/SSO auth</li>
+          <li>On-premise / private cloud deploy</li>
+          <li>Unlimited department seats</li>
+          <li>Institutional research analytics</li>
+          <li>White-label university branding</li>
+          <li>Dedicated SLA & customer success</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 17: GO-TO-MARKET FLYWHEEL [NEW] -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="16">
+  <span class="slide-number">17 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Growth Strategy</span>
+    <h2>The Product-Led <em>Virality Flywheel</em></h2>
+    <p class="subtitle" style="margin-bottom: 20px;">
+      How open-science sharing naturally converts individual students into $50k institutional deals.
+    </p>
+    <div class="flywheel-grid">
+      <div class="flywheel-card">
+        <div class="flywheel-step">01</div>
+        <h3>Bottom-Up Adoption</h3>
+        <p>Researchers generate free 3D literature maps for their thesis topic, discovering gaps in minutes.</p>
+        <div class="badge-pill">Free Search</div>
+        <div class="badge-pill">Zero Friction</div>
+      </div>
+      <div class="flywheel-card">
+        <div class="flywheel-step">02</div>
+        <h3>Viral Export Loop</h3>
+        <p>Exported PRISMA diagrams and shareable interactive map URLs feature "Mapped with Living Literature Map".</p>
+        <div class="badge-pill">Shareable URLs</div>
+        <div class="badge-pill">Watermarked Export</div>
+      </div>
+      <div class="flywheel-card">
+        <div class="flywheel-step">03</div>
+        <h3>Lab-Level Expansion</h3>
+        <p>Principal Investigators (PIs) upgrade to Team ($39/user) to review lab literature and collaborate on grant proposals.</p>
+        <div class="badge-pill">Lab Workspaces</div>
+        <div class="badge-pill">Grant Writing</div>
+      </div>
+      <div class="flywheel-card">
+        <div class="flywheel-step">04</div>
+        <h3>Campus Procurement</h3>
+        <p>Multiple active labs prompt university librarians to acquire campus-wide enterprise site licenses ($20k–$50k/yr).</p>
+        <div class="badge-pill">Library Budget</div>
+        <div class="badge-pill">High Retention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 18: FINANCIAL PROJECTIONS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="17">
+  <span class="slide-number">18 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Financial Projections</span>
+    <h2>Conservative 3-Year ARR Forecast</h2>
+    <div class="revenue-bars">
+      <div class="revenue-bar-group">
+        <div class="revenue-bar-value">$110K</div>
+        <div class="revenue-bar" style="height: 55px; background: linear-gradient(180deg, var(--accent-blue), rgba(59,111,196,0.35));"></div>
+        <div class="revenue-bar-label">Year 1</div>
+      </div>
+      <div class="revenue-bar-group">
+        <div class="revenue-bar-value">$775K</div>
+        <div class="revenue-bar" style="height: 130px; background: linear-gradient(180deg, var(--accent-gold), rgba(212,168,83,0.35));"></div>
+        <div class="revenue-bar-label">Year 2</div>
+      </div>
+      <div class="revenue-bar-group">
+        <div class="revenue-bar-value">$2.75M</div>
+        <div class="revenue-bar" style="height: 200px; background: linear-gradient(180deg, var(--accent-green), rgba(34,165,89,0.35));"></div>
+        <div class="revenue-bar-label">Year 3</div>
+      </div>
+    </div>
+    <div class="stat-row" style="margin-top: 36px;">
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">18K</div>
+        <div class="stat-label">Active Users (Y1)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">3.8%</div>
+        <div class="stat-label">Pro Conversion Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">$35K</div>
+        <div class="stat-label">Avg Institutional Deal</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">88%</div>
+        <div class="stat-label">Gross Margin Profile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 19: ROADMAP -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide" data-slide="18">
+  <span class="slide-number">19 / 20</span>
+  <div class="slide-inner">
+    <span class="label">Execution Plan</span>
+    <h2>From MVP to Global Standard in 6 Months</h2>
+    <div class="roadmap">
+      <div class="roadmap-phase">
+        <div class="phase-label">Phase 1 · Foundation (8 Wks)</div>
+        <div class="roadmap-item">🔐 Auth &amp; researcher profiles</div>
+        <div class="roadmap-item">💾 Cloud map persistence</div>
+        <div class="roadmap-item">💳 Stripe subscription billing</div>
+        <div class="roadmap-item">🔗 Shareable encrypted map URLs</div>
+        <div class="roadmap-item">⚡ OpenAlex real-time caching</div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Phase 2 · Core Expansion (8 Wks)</div>
+        <div class="roadmap-item">☁️ Server-side GPU graph clustering</div>
+        <div class="roadmap-item">📄 PDF drag-and-drop parsing</div>
+        <div class="roadmap-item">🧠 Full-text semantic embeddings</div>
+        <div class="roadmap-item">🔍 Semantic citation context</div>
+        <div class="roadmap-item">📊 Custom ontology tagging</div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Phase 3 · Growth &amp; Teams (8 Wks)</div>
+        <div class="roadmap-item">👥 Real-time multi-user lab map</div>
+        <div class="roadmap-item">📚 PubMed, Scopus, ArXiv direct sync</div>
+        <div class="roadmap-item">🔌 Public REST &amp; GraphQL API</div>
+        <div class="roadmap-item">📱 iPad &amp; mobile tactile controls</div>
+        <div class="roadmap-item">📑 Overleaf / LaTeX live integration</div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Phase 4 · Enterprise Scale</div>
+        <div class="roadmap-item">🏛️ University SAML/SSO login</div>
+        <div class="roadmap-item">🏷️ Academic publisher white-label</div>
+        <div class="roadmap-item">🌐 Multi-language translation</div>
+        <div class="roadmap-item">🏢 Pharma R&amp;D security sandbox</div>
+        <div class="roadmap-item">🛡️ SOC2 &amp; HIPAA compliance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 20: CTA -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="slide cta-slide" data-slide="19">
+  <span class="slide-number">20 / 20</span>
+  <div class="slide-inner hero-content">
+    <span class="label">The Opportunity</span>
+    <h1>The future of research is <em>visual</em>.</h1>
+    <p class="subtitle">
+      Living Literature Map transforms how the world discovers, synthesizes, and builds upon human knowledge. The technology is built, the market is primed, and the timing is right.
+    </p>
+    <div class="stat-row" style="max-width: 860px; margin: 36px auto 0;">
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">8 wks</div>
+        <div class="stat-label">To Commercial Launch</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">$800M</div>
+        <div class="stat-label">Immediate SAM</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">Zero</div>
+        <div class="stat-label">Direct 3D Competitors</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="font-size: 26px;">10M+</div>
+        <div class="stat-label">Target Researchers</div>
+      </div>
+    </div>
+    <button class="cta-button" onclick="window.open('http://localhost:3000', '_blank')">
+      Launch Live Demo App →
+    </button>
+  </div>
+</section>
+
+<script>
+  // Build nav dots dynamically based on slide count
+  const slides = document.querySelectorAll('.slide');
+  const navDots = document.getElementById('navDots');
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    dot.onclick = () => slides[i].scrollIntoView({ behavior: 'smooth' });
+    navDots.appendChild(dot);
+  });
+
+  // Update active dot on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = parseInt(entry.target.dataset.slide);
+        document.querySelectorAll('.nav-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Keyboard navigation: Arrow keys, Spacebar, Page Up/Down
+  document.addEventListener('keydown', (e) => {
+    const active = [...slides].findIndex(s => {
+      const rect = s.getBoundingClientRect();
+      return rect.top >= -150 && rect.top <= 200;
+    });
+
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      const next = Math.min(active + 1, slides.length - 1);
+      slides[next].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      const prev = Math.max(active - 1, 0);
+      slides[prev].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+
+</body>
+</html>

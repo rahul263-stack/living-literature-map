@@ -1,0 +1,566 @@
+[
+  {
+    "id": "found_001",
+    "title": "Complex brain networks: graph theoretical analysis of structural and functional systems",
+    "authors": [
+      "E Bullmore",
+      "O Sporns"
+    ],
+    "year": 2009,
+    "journal": "Nature reviews neuroscience",
+    "citations": 14842,
+    "abstract": "… Recent developments in the quantitative analysis of complex networks, based largely on graph theory, have been rapidly translated to studies of brain network organization. The brain's …",
+    "doi": "",
+    "keywords": [
+      "graph-theory",
+      "brain-networks",
+      "complex-networks",
+      "graph-analysis"
+    ],
+    "url": "https://www.nature.com/articles/nrn2575",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_002",
+    "title": "Complex network measures of brain connectivity: uses and interpretations",
+    "authors": [
+      "M Rubinov",
+      "O Sporns"
+    ],
+    "year": 2010,
+    "journal": "Neuroimage",
+    "citations": 13834,
+    "abstract": "… network connectivity, as well as comparison of networks across subjects. Finally, we describe a Matlab toolbox (http://www.brain-… a collection of complex network measures and large-…",
+    "doi": "",
+    "keywords": [
+      "complex-networks",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S105381190901074X",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_003",
+    "title": "The WU-Minn human connectome project: an overview",
+    "authors": [
+      "DC Van Essen",
+      "SM Smith",
+      "DM Barch",
+      "TEJ Behrens…"
+    ],
+    "year": 2013,
+    "journal": "Neuroimage",
+    "citations": 7142,
+    "abstract": "… The Human Connectome Project consortium led by Washington University, University of … undertaking a systematic effort to map macroscopic human brain circuits and their relationship …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "human-connectome-project",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053811913005351",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_004",
+    "title": "The economy of brain network organization",
+    "authors": [
+      "E Bullmore",
+      "O Sporns"
+    ],
+    "year": 2012,
+    "journal": "Nature reviews neuroscience",
+    "citations": 4184,
+    "abstract": "… Social and natural systems are generally organized as complex networks of interconnected elements 1 that, when represented as graphs, have topological properties that are neither …",
+    "doi": "",
+    "keywords": [
+      "brain-networks",
+      "complex-networks",
+      "graph-analysis"
+    ],
+    "url": "https://www.nature.com/articles/nrn3214",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_005",
+    "title": "Small-world brain networks",
+    "authors": [
+      "DS Bassett",
+      "ED Bullmore"
+    ],
+    "year": 2006,
+    "journal": "The neuroscientist",
+    "citations": 3393,
+    "abstract": "… The brain is a complex network on multiple spatial and time … were first explicitly studied by Sporns and others in 2000. … of undirected graphs depicting brain functional networks specific to …",
+    "doi": "10.1177/1073858406293182",
+    "keywords": [
+      "brain-networks",
+      "complex-networks",
+      "small-world-networks",
+      "graph-analysis"
+    ],
+    "url": "https://journals.sagepub.com/doi/abs/10.1177/1073858406293182",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_006",
+    "title": "Networks of the Brain",
+    "authors": [
+      "O Sporns"
+    ],
+    "year": 2016,
+    "journal": "2016",
+    "citations": 3256,
+    "abstract": "… with Giulio Tononi have been invaluable for developing key ideas about complexity and networks. … Chapter 10 outlines our knowledge of brain network disruptions in neurological and …",
+    "doi": "",
+    "keywords": [
+      "brain-networks",
+      "neural-complexity",
+      "complex-networks"
+    ],
+    "url": "https://books.google.com/books?hl=en&lr=&id=9LlNEAAAQBAJ&oi=fnd&pg=PR9&dq=Sporns+Tononi+brain+network+complexity&ots=oCqpbGw8bn&sig=fSPoHZdyJkMmxrWX-rXqd85Syok",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_007",
+    "title": "The Human Connectome Project: a data acquisition perspective",
+    "authors": [
+      "DC Van Essen",
+      "K Ugurbil",
+      "E Auerbach",
+      "D Barch…"
+    ],
+    "year": 2012,
+    "journal": "Neuroimage",
+    "citations": 3198,
+    "abstract": "The Human Connectome Project (HCP) is an ambitious 5-year effort to characterize brain connectivity and function and their variability in healthy adults. This review summarizes the …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "human-connectome-project",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053811912001954",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_008",
+    "title": "A measure for brain complexity: relating functional segregation and integration in the nervous system.",
+    "authors": [
+      "G Tononi",
+      "O Sporns",
+      "GM Edelman"
+    ],
+    "year": 1994,
+    "journal": "… of the National Academy of Sciences",
+    "citations": 2235,
+    "abstract": "… We apply this complexity measure in computer simulations of cortical areas to examine how … constrain brain dynamics. We show that the connectivity patterns of the cerebral cortex, such …",
+    "doi": "10.1073/pnas.91.11.5033",
+    "keywords": [
+      "brain-dynamics",
+      "neural-complexity",
+      "neural-integration",
+      "neural-segregation",
+      "brain-networks"
+    ],
+    "url": "https://www.pnas.org/doi/abs/10.1073/pnas.91.11.5033",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_009",
+    "title": "The human connectome: a complex network",
+    "authors": [
+      "O Sporns"
+    ],
+    "year": 2011,
+    "journal": "Annals of the new York Academy of Sciences",
+    "citations": 1775,
+    "abstract": "… systems, and it seems likely that connectomics will continue to benefit from efforts to map and model other complex biological systems… structure of a neural system defines its internal …",
+    "doi": "10.1111/j.1749-6632.2010.05888.x",
+    "keywords": [
+      "connectome",
+      "connectomics",
+      "complex-networks",
+      "neuroscience"
+    ],
+    "url": "https://nyaspubs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1749-6632.2010.05888.x",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_010",
+    "title": "Brain graphs: graphical models of the human brain connectome",
+    "authors": [
+      "ET Bullmore",
+      "DS Bassett"
+    ],
+    "year": 2011,
+    "journal": "Annual review of clinical psychology",
+    "citations": 1496,
+    "abstract": "… 2008a) and drug treatment (Achard & Bullmore 2007, Schwarz et al. 2009). Complex network theory is particularly appealing when applied to the study of clinical neuroscience, where …",
+    "doi": "10.1146/annurev-clinpsy-040510-143934",
+    "keywords": [
+      "connectome",
+      "complex-networks",
+      "graph-analysis",
+      "brain-networks"
+    ],
+    "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-clinpsy-040510-143934",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_011",
+    "title": "Fundamentals of brain network analysis",
+    "authors": [
+      "A Fornito",
+      "A Zalesky",
+      "E Bullmore"
+    ],
+    "year": 2016,
+    "journal": "2016",
+    "citations": 1475,
+    "abstract": "… This book is about how we can apply the science of complex networks to understand brain connectivity. In particular, we focus on the use of graph theory to model, estimate and …",
+    "doi": "",
+    "keywords": [
+      "graph-theory",
+      "brain-networks",
+      "complex-networks",
+      "network-analysis",
+      "graph-analysis"
+    ],
+    "url": "https://books.google.com/books?hl=en&lr=&id=Hc-cBAAAQBAJ&oi=fnd&pg=PP1&dq=Bullmore+Sporns+brain+graphs+complex+network&ots=AODJFh-2-d&sig=ANyngsmVQvYRro30_EWf7iv7EqA",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_012",
+    "title": "Structure and function of complex brain networks",
+    "authors": [
+      "O Sporns"
+    ],
+    "year": 2013,
+    "journal": "Dialogues in clinical neuroscience",
+    "citations": 1291,
+    "abstract": "… Within the formal framework of graph theory, a graph or network comprises a set of nodes (neural … with new analysis and modeling methods for the study of complex networks will almost …",
+    "doi": "10.31887/DCNS.2013.15.3/osporns",
+    "keywords": [
+      "graph-theory",
+      "brain-networks",
+      "complex-networks",
+      "graph-analysis",
+      "neuroscience"
+    ],
+    "url": "https://www.tandfonline.com/doi/abs/10.31887/DCNS.2013.15.3/osporns",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_013",
+    "title": "The human connectome project's neuroimaging approach",
+    "authors": [
+      "MF Glasser",
+      "SM Smith",
+      "DS Marcus…"
+    ],
+    "year": 2016,
+    "journal": "Nature …",
+    "citations": 1262,
+    "abstract": "… below the diagonal and the partial correlation connectome above the diagonal (white line is the displayed partial correlation brain map). The figure matches the Connectome …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "human-connectome-project",
+      "neuroimaging",
+      "brain-networks"
+    ],
+    "url": "https://www.nature.com/articles/nn.4361",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_014",
+    "title": "Advances in diffusion MRI acquisition and processing in the Human Connectome Project",
+    "authors": [
+      "SN Sotiropoulos",
+      "S Jbabdi",
+      "J Xu",
+      "JL Andersson…"
+    ],
+    "year": 2013,
+    "journal": "Neuroimage",
+    "citations": 1169,
+    "abstract": "The Human Connectome Project (HCP) is a collaborative 5-year effort to map human brain connections and their variability in healthy adults. A consortium of HCP investigators will …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "human-connectome-project",
+      "diffusion-mri",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S105381191300551X",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_015",
+    "title": "Theoretical neuroanatomy: relating anatomical and functional connectivity in graphs and cortical connection matrices",
+    "authors": [
+      "O Sporns",
+      "G Tononi",
+      "GM Edelman"
+    ],
+    "year": 2000,
+    "journal": "Cerebral cortex",
+    "citations": 987,
+    "abstract": "… of complexity, which characterizes the interplay of functional segregation and functional integration, a central organizing principle of the cerebral … the complexity of an organism's neural …",
+    "doi": "",
+    "keywords": [
+      "functional-connectivity",
+      "neural-complexity",
+      "neural-integration",
+      "neural-segregation",
+      "graph-analysis",
+      "neuroscience"
+    ],
+    "url": "https://academic.oup.com/cercor/article-abstract/10/2/127/318777",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_016",
+    "title": "Complexity and coherency: integrating information in the brain",
+    "authors": [
+      "G Tononi",
+      "GM Edelman",
+      "O Sporns"
+    ],
+    "year": 1998,
+    "journal": "Trends in cognitive sciences",
+    "citations": 954,
+    "abstract": "… connectivity of the network (as it does in this example), complexity will increase. … network's complexity when the stimulus is present (red area) and the network's intrinsic complexity …",
+    "doi": "",
+    "keywords": [
+      "neural-complexity",
+      "brain-networks",
+      "complex-networks"
+    ],
+    "url": "https://www.cell.com/trends/cognitive-sciences/abstract/S1364-6613(98)01259-5",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_017",
+    "title": "Application of graph theory for identifying connectivity patterns in human brain networks: a systematic review",
+    "authors": [
+      "FV Farahani",
+      "W Karwowski",
+      "NR Lighthall"
+    ],
+    "year": 2019,
+    "journal": "frontiers in Neuroscience",
+    "citations": 912,
+    "abstract": "… that graph theory and its implications in cognitive neuroscience … since 2009 (as the Human Connectome Project launched), because … from the brain network with the help of graph theory. …",
+    "doi": "10.3389/fnins.2019.00585/full",
+    "keywords": [
+      "connectome",
+      "graph-theory",
+      "brain-networks",
+      "human-connectome-project",
+      "graph-analysis",
+      "complex-networks"
+    ],
+    "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2019.00585/full",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_018",
+    "title": "Graph theory methods: applications in brain networks",
+    "authors": [
+      "O Sporns"
+    ],
+    "year": 2018,
+    "journal": "Dialogues in clinical neuroscience",
+    "citations": 872,
+    "abstract": "… brain network data, such as those provided by graph theory. This brief review surveys some of the most commonly used and neurobiologically insightful graph … human connectome data …",
+    "doi": "10.31887/DCNS.2018.20.2/osporns",
+    "keywords": [
+      "connectome",
+      "graph-theory",
+      "brain-networks",
+      "graph-analysis",
+      "complex-networks"
+    ],
+    "url": "https://www.tandfonline.com/doi/abs/10.31887/DCNS.2018.20.2/osporns",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_019",
+    "title": "Informatics and data mining tools and strategies for the human connectome project",
+    "authors": [
+      "DS Marcus",
+      "J Harwell",
+      "T Olsen",
+      "M Hodge…"
+    ],
+    "year": 2011,
+    "journal": "Frontiers in …",
+    "citations": 817,
+    "abstract": "… The NIH recently funded two consortia under the Human Connectome Project (HCP) 1 . … -Minn HCP consortium’s plan to map human brain circuitry in 1,200 healthy young adults using …",
+    "doi": "10.3389/fninf.2011.00004/full",
+    "keywords": [
+      "connectome",
+      "human-connectome-project",
+      "brain-networks"
+    ],
+    "url": "https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2011.00004/full",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_020",
+    "title": "Connectivity and complexity: the relationship between neuroanatomy and brain dynamics",
+    "authors": [
+      "O Sporns",
+      "G Tononi",
+      "GM Edelman"
+    ],
+    "year": 2000,
+    "journal": "Neural networks",
+    "citations": 694,
+    "abstract": "… by defining a measure of neural complexity. Complexity measures the extent to which a pattern of functional connectivity produced by units or areas within a neural system combines the …",
+    "doi": "",
+    "keywords": [
+      "functional-connectivity",
+      "brain-dynamics",
+      "neural-complexity",
+      "neuroscience",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S0893608000000538",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_021",
+    "title": "Network analysis, complexity, and brain function",
+    "authors": [
+      "O Sporns"
+    ],
+    "year": 2002,
+    "journal": "Complexity",
+    "citations": 369,
+    "abstract": "… brain function naturally emerge from this network perspective. This essay highlights several unique characteristics of brain … 4]) may impact on our understanding of human brain function. …",
+    "doi": "10.1002/cplx.10047",
+    "keywords": [
+      "network-analysis",
+      "neural-complexity",
+      "brain-networks",
+      "complex-networks"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/cplx.10047",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_022",
+    "title": "Human connectomics",
+    "authors": [
+      "TEJ Behrens",
+      "O Sporns"
+    ],
+    "year": 2012,
+    "journal": "Current opinion in neurobiology",
+    "citations": 351,
+    "abstract": "… brain, thus opening up a new field of research: Human connectomics. Different imaging modalities allow the mapping of structural connections (axonal fibre tracts) as well as functional …",
+    "doi": "",
+    "keywords": [
+      "connectomics",
+      "brain-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S0959438811001449",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_023",
+    "title": "A complexity measure for selective matching of signals by the brain.",
+    "authors": [
+      "G Tononi",
+      "O Sporns",
+      "GM Edelman"
+    ],
+    "year": 1996,
+    "journal": "… of the National Academy of Sciences",
+    "citations": 300,
+    "abstract": "… of neural complexity (CN) in an attempt to characterize functional connectivity in the brain. CN measures the amount and heterogeneity of statistical correlations within a neural system …",
+    "doi": "10.1073/pnas.93.8.3422",
+    "keywords": [
+      "functional-connectivity",
+      "neural-complexity",
+      "neuroscience",
+      "brain-networks"
+    ],
+    "url": "https://www.pnas.org/doi/abs/10.1073/pnas.93.8.3422",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_024",
+    "title": "Connectome: Graph theory application in functional brain network architecture",
+    "authors": [
+      "F Vecchio",
+      "F Miraglia",
+      "PM Rossini"
+    ],
+    "year": 2017,
+    "journal": "Clinical neurophysiology practice",
+    "citations": 248,
+    "abstract": "… Network science and graph theory … neuronal network structure, thus providing a conceptual frame that can help in reducing the analytical brain complexity and underlining how network …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "graph-theory",
+      "brain-networks",
+      "neural-complexity",
+      "graph-analysis",
+      "complex-networks"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S2467981X17300276",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  },
+  {
+    "id": "found_025",
+    "title": "Mapping the human connectome",
+    "authors": [
+      "AW Toga",
+      "KA Clark",
+      "PM Thompson",
+      "DW Shattuck…"
+    ],
+    "year": 2012,
+    "journal": "…",
+    "citations": 245,
+    "abstract": "… and function of neural systems, we do not currently have a comprehensive map of the … Human connectomics explores the structural and functional organization and properties of …",
+    "doi": "",
+    "keywords": [
+      "connectome",
+      "connectomics",
+      "neuroscience"
+    ],
+    "url": "https://journals.lww.com/neurosurgery/fulltext/2012/07000/Mapping_the_Human_Connectome.1.aspx",
+    "source": "scholar",
+    "sub_domain": "foundations"
+  }
+]

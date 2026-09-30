@@ -1,0 +1,11 @@
+{
+  "name": "literature-map",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix app",
+    "build": "npm run build --prefix app",
+    "lint": "npm run lint --prefix app",
+    "preview": "npm run preview --prefix app"
+  }
+}

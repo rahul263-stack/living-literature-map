@@ -1,0 +1,429 @@
+[
+  {
+    "id": "net_001",
+    "title": "Collective dynamics of 'small-world'networks",
+    "authors": "DJ Watts, SH Strogatz",
+    "year": 1998,
+    "journal": "nature",
+    "citations": 59956,
+    "abstract": "small-world’ networks, by analogy with the small-world phenomenon 13 , 14 (popularly known as six degrees of separation 15 ). The neural network … that network structure influences the …",
+    "doi": "10.1038/30918",
+    "keywords": [
+      "small-world"
+    ],
+    "url": "https://www.nature.com/articles/30918/figu-",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_002",
+    "title": "Complex network measures of brain connectivity: uses and interpretations",
+    "authors": "M Rubinov, O Sporns",
+    "year": 2010,
+    "journal": "Neuroimage",
+    "citations": 13834,
+    "abstract": "brain networks from connectivity data and describe the most commonly used network measures … and functional network connectivity, as well as comparison of networks across subjects. …",
+    "doi": "",
+    "keywords": [
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S105381190901074X",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_003",
+    "title": "Scaling and percolation in the small-world network model",
+    "authors": "MEJ Newman, DJ Watts",
+    "year": 1999,
+    "journal": "Physical review E",
+    "citations": 1760,
+    "abstract": "In this paper we study the small-world network model of Watts and Strogatz, which mimics some aspects of the structure of networks of social interactions. We argue that there is one …",
+    "doi": "10.1103/PhysRevE.60.7332",
+    "keywords": [
+      "small-world"
+    ],
+    "url": "https://journals.aps.org/pre/abstract/10.1103/PhysRevE.60.7332",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_004",
+    "title": "Modular brain networks",
+    "authors": "O Sporns, RF Betzel",
+    "year": 2016,
+    "journal": "Annual review of psychology",
+    "citations": 1674,
+    "abstract": "discussed a number of popular community detection methods, … of the empirical evidence for modularity in brain networks. … of methods for detecting modules in brain network data as well …",
+    "doi": "10.1146/annurev-psych-122414-033634",
+    "keywords": [
+      "modularity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-122414-033634",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_005",
+    "title": "Comparing brain networks of different size and connectivity density using graph theory",
+    "authors": "BCM Van Wijk, CJ Stam, A Daffertshofer",
+    "year": 2010,
+    "journal": "PloS one",
+    "citations": 1369,
+    "abstract": "into the study of complex neural network organizations. In the … The significance of efficient brain network topology is … of nodes in the network; and, the average clustering coefficient (C) …",
+    "doi": "10.1371/journal.pone.0013701",
+    "keywords": [
+      "graph_theory",
+      "efficiency",
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0013701",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_006",
+    "title": "Graph theoretical analysis of complex networks in the brain",
+    "authors": "CJ Stam, JC Reijneveld",
+    "year": 2007,
+    "journal": "Nonlinear biomedical physics",
+    "citations": 1346,
+    "abstract": "Apart from the Local efficiency, two other definitions of the clustering coefficient have been proposed for weighted networks. In one definition only the weights of the edges connecting …",
+    "doi": "10.1186/1753-4631-1-3",
+    "keywords": [
+      "graph_theory",
+      "efficiency"
+    ],
+    "url": "https://link.springer.com/article/10.1186/1753-4631-1-3",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_007",
+    "title": "Small-world brain networks revisited",
+    "authors": "DS Bassett, ET Bullmore",
+    "year": 2017,
+    "journal": "The Neuroscientist",
+    "citations": 1109,
+    "abstract": "topological analysis of binary or unweighted graphs, which have provided a popular but simple approach to brain network analysis in the past, and the topology … a Watts–Strogatz model …",
+    "doi": "10.1177/1073858416667720",
+    "keywords": [
+      "small-world",
+      "network_neuroscience"
+    ],
+    "url": "https://journals.sagepub.com/doi/abs/10.1177/1073858416667720",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_008",
+    "title": "Weight-conserving characterization of complex functional brain networks",
+    "authors": "M Rubinov, O Sporns",
+    "year": 2011,
+    "journal": "Neuroimage",
+    "citations": 1079,
+    "abstract": "Complex functional brain networks are large networks of brain regions and functional … networks aim to quantify global and local properties of brain activity with a small number of network …",
+    "doi": "",
+    "keywords": [
+      "network_neuroscience"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S105381191100348X",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_009",
+    "title": "Application of graph theory for identifying connectivity patterns in human brain networks: a systematic review",
+    "authors": "FV Farahani, W Karwowski, NR Lighthall",
+    "year": 2019,
+    "journal": "frontiers in Neuroscience",
+    "citations": 912,
+    "abstract": "main measures that can be extracted from the brain network with the help of graph theory. … module increase the local clustering and, consequently, enhance the efficiency of information …",
+    "doi": "10.3389/fnins.2019.00585/full",
+    "keywords": [
+      "graph_theory",
+      "efficiency",
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2019.00585/full",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_010",
+    "title": "Graph theory methods: applications in brain networks",
+    "authors": "O Sporns",
+    "year": 2018,
+    "journal": "Dialogues in clinical neuroscience",
+    "citations": 872,
+    "abstract": "brain network data, such as those provided by graph theory. … and efficiency are most naturally applied to brain graphs that … of brain networks is to perform consensus clustering across …",
+    "doi": "10.31887/DCNS.2018.20.2/osporns",
+    "keywords": [
+      "graph_theory",
+      "efficiency",
+      "network_neuroscience"
+    ],
+    "url": "https://www.tandfonline.com/doi/abs/10.31887/DCNS.2018.20.2/osporns",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_011",
+    "title": "The ubiquity of small-world networks",
+    "authors": "QK Telesford, KE Joyce, S Hayasaka…",
+    "year": 2011,
+    "journal": "Brain …",
+    "citations": 674,
+    "abstract": "small-world properties is useful for group studies, such as brain networks, where understanding the network topology … where a network falls in the Watts and Strogatz small-world model. …",
+    "doi": "10.1089/brain.2011.0038",
+    "keywords": [
+      "small-world",
+      "network_neuroscience"
+    ],
+    "url": "https://journals.sagepub.com/doi/abs/10.1089/brain.2011.0038",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_012",
+    "title": "The application of graph theoretical analysis to complex networks in the brain",
+    "authors": "JC Reijneveld, SC Ponten, HW Berendse…",
+    "year": 2007,
+    "journal": "Clinical neurophysiology",
+    "citations": 672,
+    "abstract": "The small world structure of neural networks is hypothesized … and diffuse brain disease on neural network characteristics, and … with (changes in) functional network architectural features. …",
+    "doi": "",
+    "keywords": [
+      "small-world",
+      "graph_theory",
+      "connectivity"
+    ],
+    "url": "https://www.sciencedirect.com/science/article/pii/S1388245707004257",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_013",
+    "title": "Small‐world properties of nonlinear brain activity in schizophrenia",
+    "authors": "M Rubinov, SA Knock, CJ Stam…",
+    "year": 2009,
+    "journal": "Human brain …",
+    "citations": 536,
+    "abstract": "In this article, nonlinear measures of cortical interactions and graph-theoretical metrics of network topography are combined to investigate this schizophrenia “disconnection hypothesis.” …",
+    "doi": "10.1002/hbm.20517",
+    "keywords": [
+      "network_theory"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.20517",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_014",
+    "title": "Functional brain network efficiency predicts intelligence",
+    "authors": "N Langer, A Pedroni, LRR Gianotti…",
+    "year": 2012,
+    "journal": "Human brain …",
+    "citations": 363,
+    "abstract": "We found that the clustering coefficient and path length … theories in neuroscience. Our findings revealed robust evidence of an efficiently organized resting state functional brain network …",
+    "doi": "10.1002/hbm.21297",
+    "keywords": [
+      "efficiency",
+      "network_neuroscience"
+    ],
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.21297",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_015",
+    "title": "Neurobiologically realistic determinants of self-organized criticality in networks of spiking neurons",
+    "authors": "M Rubinov, O Sporns, JP Thivierge…",
+    "year": 2011,
+    "journal": "PLoS computational …",
+    "citations": 348,
+    "abstract": "To this end, we extend a recent model of nonperiodic synchronization in networks of leaky … of our network model is a densely connected 100-neuron module [37]. All networks comprised …",
+    "doi": "10.1371/journal.pcbi.1002038",
+    "keywords": [
+      "network_theory"
+    ],
+    "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002038",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_016",
+    "title": "Modularity based community detection with deep learning.",
+    "authors": "L Yang, X Cao, D He, C Wang, X Wang, W Zhang",
+    "year": 2016,
+    "journal": "IJCAI",
+    "citations": 325,
+    "abstract": "to community detection. Taking advantage of the nonlinear representation power of deep neural … reconstruction (DNR) algorithm for community detection using deep neural networks. …",
+    "doi": "",
+    "keywords": [
+      "modularity"
+    ],
+    "url": "https://www.ijcai.org/Proceedings/16/Papers/321.pdf",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_017",
+    "title": "The non-random brain: efficiency, economy, and complex dynamics",
+    "authors": "O Sporns",
+    "year": 2011,
+    "journal": "Frontiers in computational neuroscience",
+    "citations": 303,
+    "abstract": "-random structure of neural connectivity, primarily at the large scale of regions and pathways in the mammalian cerebral … those of brain networks, as they provide “null models” against …",
+    "doi": "10.3389/fncom.2011.00005/full",
+    "keywords": [
+      "efficiency",
+      "null_model",
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2011.00005/full",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_018",
+    "title": "Wiring cost and topological participation of the mouse brain connectome",
+    "authors": "M Rubinov, RJF Ypma, C Watson…",
+    "year": 2015,
+    "journal": "Proceedings of the …",
+    "citations": 261,
+    "abstract": "have all been previously reported in graph theoretical analyses of macroscale MRI-based brain networks of humans, and the microscale neuronal network of C. elegans (29–31). The …",
+    "doi": "10.1073/pnas.1420315112",
+    "keywords": [
+      "graph_theory",
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.pnas.org/doi/abs/10.1073/pnas.1420315112",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_019",
+    "title": "Null models in network neuroscience",
+    "authors": "F Váša, B Mišić",
+    "year": 2022,
+    "journal": "Nature Reviews Neuroscience",
+    "citations": 261,
+    "abstract": "How do we demonstrate that a brain network feature is more prominent than would be expected … networks with randomized topology but preserved density, we would conclude that the …",
+    "doi": "10.1038/s41583",
+    "keywords": [
+      "null_model",
+      "network_neuroscience"
+    ],
+    "url": "https://www.nature.com/articles/s41583-022-00601-9",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_020",
+    "title": "Symbiotic relationship between brain structure and dynamics",
+    "authors": "M Rubinov, O Sporns, C van Leeuwen…",
+    "year": 2009,
+    "journal": "BMC neuroscience",
+    "citations": 218,
+    "abstract": "In this study, we utilize nonlinear dynamical and network analyses to shed light on such … Formally, we represent structural connectivity with a directed binary graph G = ⟨N, L⟩, …",
+    "doi": "10.1186/1471-2202-10-55",
+    "keywords": [
+      "connectivity"
+    ],
+    "url": "https://link.springer.com/article/10.1186/1471-2202-10-55",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_021",
+    "title": "Brain network connectivity assessed using graph theory in frontotemporal dementia",
+    "authors": "F Agosta, S Sala, P Valsasina, A Meani, E Canu…",
+    "year": 2013,
+    "journal": "Neurology",
+    "citations": 209,
+    "abstract": "of the functional brain network in bvFTD was significantly disrupted as indicated by reduced mean network degree, clustering coefficient, and global efficiency and increased …",
+    "doi": "10.1212/WNL.0b013e31829a33f8",
+    "keywords": [
+      "graph_theory",
+      "efficiency",
+      "connectivity",
+      "network_neuroscience"
+    ],
+    "url": "https://www.neurology.org/doi/abs/10.1212/WNL.0b013e31829a33f8",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_022",
+    "title": "Small worlds: how and why",
+    "authors": "N Mathias, V Gopal",
+    "year": 2001,
+    "journal": "Physical Review E",
+    "citations": 194,
+    "abstract": "network exists, we study whether the small-world topology … However, unlike the model of Watts and Strogatz Nature 393, … any efficient transportation network will be a small world, and …",
+    "doi": "10.1103/PhysRevE.63.021117",
+    "keywords": [
+      "small-world"
+    ],
+    "url": "https://journals.aps.org/pre/abstract/10.1103/PhysRevE.63.021117",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_023",
+    "title": "Applications of community detection techniques to brain graphs: Algorithmic considerations and implications for neural function",
+    "authors": "JO Garcia, A Ashourvan, S Muldoon…",
+    "year": 2018,
+    "journal": "Proceedings of the …",
+    "citations": 187,
+    "abstract": "of community detection approaches commonly applied to such graphs, and we place a particular emphasis on the method of modularity … principles of brain network architecture. …",
+    "doi": "",
+    "keywords": [
+      "modularity",
+      "network_neuroscience"
+    ],
+    "url": "https://ieeexplore.ieee.org/abstract/document/8278173/",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_024",
+    "title": "Is the brain really a small-world network?",
+    "authors": "CC Hilgetag, A Goulas",
+    "year": 2016,
+    "journal": "Brain Structure and Function",
+    "citations": 177,
+    "abstract": "small-world network, for many researchers, the term has become associated with the specific Watts and Strogatz … what is the neural network density and topology of the brain at the finest…",
+    "doi": "10.1007/s00429-015-1035-6",
+    "keywords": [
+      "small-world"
+    ],
+    "url": "https://link.springer.com/article/10.1007/s00429-015-1035-6",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  },
+  {
+    "id": "net_025",
+    "title": "Exponential random graph modeling for complex brain networks",
+    "authors": "SL Simpson, S Hayasaka, PJ Laurienti",
+    "year": 2011,
+    "journal": "PloS one",
+    "citations": 170,
+    "abstract": "local brain network features gives rise to the global structure. … for modeling, analyzing, and simulating complex whole-brain … network architecture and is more prevalent than in the null …",
+    "doi": "10.1371/journal.pone.0020039",
+    "keywords": [
+      "null_model",
+      "network_neuroscience"
+    ],
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0020039",
+    "source": "scholar",
+    "sub_domain": "network_theory"
+  }
+]

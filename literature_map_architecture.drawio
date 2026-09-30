@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-09-26T10:15:45.427Z" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="living-literature-map-pro-architecture" name="Living Literature Map — Master End-to-End Architecture">
+    <mxGraphModel dx="2800" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1300" background="#FAF9F6" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+  <mxCell id="canvas_title" value="&lt;div style=&quot;font-size: 26px; font-weight: 700; color: #1E1B4B;&quot;&gt;Living Literature Map — Full End-to-End System Architecture&lt;/div&gt;&lt;div style=&quot;font-size: 13px; color: #64748B; margin-top: 6px;&quot;&gt;Comprehensive Technical Flow &amp;bull; Data Pipeline, Science Engine, React Client Architecture &amp;amp; Export Artifacts&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+    <mxGeometry x="80" y="30" width="1400" height="60" as="geometry" />
+  </mxCell>
+
+
+  <mxCell id="legend_banner" value="&lt;div style=&quot;font-size: 11px; color: #475569; display: flex; align-items: center; gap: 18px;&quot;&gt;&lt;b&gt;Flow Legend:&lt;/b&gt; &lt;span style=&quot;color:#0284C7;&quot;&gt;━ Ingestion Flow&lt;/span&gt; &amp;nbsp;|&amp;nbsp; &lt;span style=&quot;color:#7C3AED;&quot;&gt;━ Graph Science &amp;amp; Metrics&lt;/span&gt; &amp;nbsp;|&amp;nbsp; &lt;span style=&quot;color:#059669;&quot;&gt;━ State &amp;amp; In-Browser Engine&lt;/span&gt; &amp;nbsp;|&amp;nbsp; &lt;span style=&quot;color:#D97706;&quot;&gt;━ UI Render &amp;amp; Visualization&lt;/span&gt; &amp;nbsp;|&amp;nbsp; &lt;span style=&quot;color:#E11D48;&quot;&gt;━ User Actions &amp;amp; Export&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E2E8F0;strokeWidth=1;fontFamily=Segoe UI,Helvetica,Arial;align=right;spacingRight=16;" vertex="1" parent="1">
+    <mxGeometry x="1780" y="35" width="740" height="40" as="geometry" />
+  </mxCell>
+
+
+    <mxCell id="col0_bg" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#BAE6FD;strokeWidth=2;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="80" y="110" width="440" height="1120" as="geometry" />
+    </mxCell>
+    <mxCell id="col0_bg_hdr" value="&lt;b style=&quot;font-size: 13px; color: #FFFFFF;&quot;&gt;TIER 1 &amp;bull; Data Sources &amp;amp; Ingestion Swarm&lt;/b&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#0284C7;strokeColor=none;align=left;spacingLeft=16;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+      <mxGeometry x="80" y="110" width="440" height="42" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="col1_bg" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#DDD6FE;strokeWidth=2;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="580" y="110" width="440" height="1120" as="geometry" />
+    </mxCell>
+    <mxCell id="col1_bg_hdr" value="&lt;b style=&quot;font-size: 13px; color: #FFFFFF;&quot;&gt;TIER 2 &amp;bull; Network Science &amp;amp; Graph Analytics&lt;/b&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#7C3AED;strokeColor=none;align=left;spacingLeft=16;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+      <mxGeometry x="580" y="110" width="440" height="42" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="col2_bg" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#A7F3D0;strokeWidth=2;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1080" y="110" width="440" height="1120" as="geometry" />
+    </mxCell>
+    <mxCell id="col2_bg_hdr" value="&lt;b style=&quot;font-size: 13px; color: #FFFFFF;&quot;&gt;TIER 3 &amp;bull; React State &amp;amp; Dynamic Client Engine&lt;/b&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#059669;strokeColor=none;align=left;spacingLeft=16;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+      <mxGeometry x="1080" y="110" width="440" height="42" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="col3_bg" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#FDE68A;strokeWidth=2;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1580" y="110" width="440" height="1120" as="geometry" />
+    </mxCell>
+    <mxCell id="col3_bg_hdr" value="&lt;b style=&quot;font-size: 13px; color: #FFFFFF;&quot;&gt;TIER 4 &amp;bull; Presentation Canvas &amp;amp; WebGL Visualizations&lt;/b&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#D97706;strokeColor=none;align=left;spacingLeft=16;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+      <mxGeometry x="1580" y="110" width="440" height="42" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="col4_bg" value="" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#FECDD3;strokeWidth=2;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2080" y="110" width="440" height="1120" as="geometry" />
+    </mxCell>
+    <mxCell id="col4_bg_hdr" value="&lt;b style=&quot;font-size: 13px; color: #FFFFFF;&quot;&gt;TIER 5 &amp;bull; Interaction, Synthesis &amp;amp; Output Artifacts&lt;/b&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#E11D48;strokeColor=none;align=left;spacingLeft=16;fontFamily=Segoe UI,Helvetica,Arial;" vertex="1" parent="1">
+      <mxGeometry x="2080" y="110" width="440" height="42" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_sources" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #0369A1;&quot;&gt;Scholarly Repositories &amp; APIs&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #E0F2FE; color: #0369A1; padding: 2px 7px; border-radius: 4px;&quot;&gt;Inputs&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Google Scholar search scraper &amp; citation crawler&lt;br/&gt;&bull; arXiv API (e-prints &amp; recent advances)&lt;br/&gt;&bull; OpenAlex Works API (v2 REST metadata)&lt;br/&gt;&bull; Local uploads (CSV, BibTeX, PDFs)&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="175" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_crawler" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #0369A1;&quot;&gt;Deep Research Harvester&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #E0F2FE; color: #0369A1; padding: 2px 7px; border-radius: 4px;&quot;&gt;Agent Swarm&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Metadata extraction: Title, Authors, Year, DOI&lt;br/&gt;&bull; Abstract retrieval &amp; semantic deduplication&lt;br/&gt;&bull; Citation graph &amp; reference list resolution&lt;br/&gt;&bull; Corpus size: ~200-250 verified high-impact papers&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="310" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_nlp" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #0369A1;&quot;&gt;NLP &amp; Semantic Tokenizer&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #E0F2FE; color: #0369A1; padding: 2px 7px; border-radius: 4px;&quot;&gt;Processing&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Stopwords filtering: general &amp; academic fillers&lt;br/&gt;&bull; Unigram &amp; bigram domain keyword extraction&lt;br/&gt;&bull; Term frequency &amp; inverted index generation&lt;br/&gt;&bull; Field-specific ontology normalization&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="445" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_raw_artifacts" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #B45309;&quot;&gt;Raw Corpus Repository&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #B45309; padding: 2px 7px; border-radius: 4px;&quot;&gt;Raw Data Store&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; raw_papers.json (full text &amp; bibliometrics)&lt;br/&gt;&bull; edges.json (citation &amp; co-occurrence pairs)&lt;br/&gt;&bull; bibliography.bib (standard BibTeX archive)&lt;br/&gt;&bull; bibliography.csv (tabular spreadsheet export)&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="580" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_cli" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #6D28D9;&quot;&gt;CLI Literature Generator&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #EDE9FE; color: #6D28D9; padding: 2px 7px; border-radius: 4px;&quot;&gt;scripts/generate_lit...&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Executable Node.js batch pipeline generator&lt;br/&gt;&bull; Generates end-to-end bundles for any domain&lt;br/&gt;&bull; Automated graph layout &amp; metric computation&lt;br/&gt;&bull; Exports standardized artifacts for webapp ingestion&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DDD6FE;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="725" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c1_summary" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #334155;&quot;&gt;Corpus Baseline Metrics&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #F1F5F9; color: #334155; padding: 2px 7px; border-radius: 4px;&quot;&gt;Connectomics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; 244 Real Papers (1994–2026)&lt;br/&gt;&bull; 21,285 Network Edges (Keyword &amp; Citation)&lt;br/&gt;&bull; 300,000+ Cross-Citations Aggregated&lt;br/&gt;&bull; 9 Thematic Schools of Thought Identified&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="105" y="875" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_vosviewer" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #6D28D9;&quot;&gt;VOSviewer Association Strength&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #EDE9FE; color: #6D28D9; padding: 2px 7px; border-radius: 4px;&quot;&gt;Graph Weighting&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Normalized co-occurrence similarity: S_ij = C_ij / (w_i * w_j)&lt;br/&gt;&bull; Corrects for highly-cited generalist paper bias&lt;br/&gt;&bull; Dynamic sparsification threshold (keeps top N edges)&lt;br/&gt;&bull; Produces dense, topologically robust adjacency matrix&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="175" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_louvain" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #6D28D9;&quot;&gt;Louvain Modularity Clustering&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #EDE9FE; color: #6D28D9; padding: 2px 7px; border-radius: 4px;&quot;&gt;Communities&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Maximizes Newman-Girvan Modularity Q&lt;br/&gt;&bull; Iterative local modularity optimization &amp; grouping&lt;br/&gt;&bull; Identifies 9 cohesive Schools of Thought&lt;br/&gt;&bull; Calculates Modularity Q = 0.08 (interdisciplinary baseline)&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="315" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_centrality" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #6D28D9;&quot;&gt;Betweenness Centrality Engine&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #EDE9FE; color: #6D28D9; padding: 2px 7px; border-radius: 4px;&quot;&gt;Bridge Metrics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Brandes algorithm for all-pairs shortest paths&lt;br/&gt;&bull; Identifies top boundary spanners (betweenness scores)&lt;br/&gt;&bull; Counts cross-community bridge edges per paper&lt;br/&gt;&bull; Ranks pivotal papers linking disparate paradigms&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="455" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_burt" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #6D28D9;&quot;&gt;Structural Holes &amp; Gaps&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #EDE9FE; color: #6D28D9; padding: 2px 7px; border-radius: 4px;&quot;&gt;Burt Topology&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Detects sparse cross-cluster connections&lt;br/&gt;&bull; Identifies verified research frontiers (e.g. Precision SC)&lt;br/&gt;&bull; Synthesizes epistemic debate timelines (1995–present)&lt;br/&gt;&bull; Constructs logical research argument spine&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C4B5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="590" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_bundles" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #B45309;&quot;&gt;Production JSON Bundles&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #B45309; padding: 2px 7px; border-radius: 4px;&quot;&gt;Static Contracts&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; corpus.json &amp; corpus_full.json (paper records)&lt;br/&gt;&bull; analysis.json (Louvain communities, bridges, gaps)&lt;br/&gt;&bull; network_data.json (nodes, 3D coordinates, links)&lt;br/&gt;&bull; analysis_data.json (precomputed streamgraph &amp; stats)&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FCD34D;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="735" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c2_methodology" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #334155;&quot;&gt;Methodological Integrity&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #F1F5F9; color: #334155; padding: 2px 7px; border-radius: 4px;&quot;&gt;Audit &amp; Rigor&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Deterministic seed for reproducible graph layouts&lt;br/&gt;&bull; Double-checked citation links across DOIs&lt;br/&gt;&bull; Automated PRISMA 2020 record tracking&lt;br/&gt;&bull; Guarantees zero synthetic / hallucinated papers&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="605" y="885" width="390" height="105" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_context" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #047857;&quot;&gt;LiteratureMapContext.tsx&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #D1FAE5; color: #047857; padding: 2px 7px; border-radius: 4px;&quot;&gt;State Hub&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Central React Context &amp; Custom Hook (useLiteratureMap)&lt;br/&gt;&bull; Exposes: networkData, analysisData, activePresetId&lt;br/&gt;&bull; Selected node &amp; active community highlight state&lt;br/&gt;&bull; Broadcasts instant reactive updates across all 12 views&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6EE7B7;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="175" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_openalex_service" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #047857;&quot;&gt;openAlexService.ts (Live Engine)&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #D1FAE5; color: #047857; padding: 2px 7px; border-radius: 4px;&quot;&gt;In-Browser Math&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Real-time client-side literature mapping for ANY query&lt;br/&gt;&bull; In-browser TF-IDF &amp; Association Strength calculation&lt;br/&gt;&bull; Client-side Louvain clustering &amp; betweenness graph&lt;br/&gt;&bull; Zero backend dependency — 100% static client execution&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6EE7B7;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="320" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_presets" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #047857;&quot;&gt;Preset Engine (mapConfig.ts)&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #D1FAE5; color: #047857; padding: 2px 7px; border-radius: 4px;&quot;&gt;Multi-Domain&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Preset 1: Network Neuroscience (244 papers)&lt;br/&gt;&bull; Preset 2: Quantum Computing / QEC (200 papers)&lt;br/&gt;&bull; Preset 3: Topological Deep Learning (200 papers)&lt;br/&gt;&bull; Dynamic theme tokens, color scales &amp; stat overrides&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6EE7B7;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="465" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_persistence" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #047857;&quot;&gt;Client Storage &amp; Caching&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #D1FAE5; color: #047857; padding: 2px 7px; border-radius: 4px;&quot;&gt;Persistence&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; localStorage Topic Search History&lt;br/&gt;&bull; Live query result caching (prevents repeat API hits)&lt;br/&gt;&bull; Saved user annotations, reading lists &amp; bookmarks&lt;br/&gt;&bull; URL hash state for shareable filtered views&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6EE7B7;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="605" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_error_boundary" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #B91C1C;&quot;&gt;Resilient Error Boundary Grid&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEE2E2; color: #B91C1C; padding: 2px 7px; border-radius: 4px;&quot;&gt;Stability&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Per-section class ErrorBoundary components in App.tsx&lt;br/&gt;&bull; Prevents individual chart errors from crashing page&lt;br/&gt;&bull; Isolated fallback notice cards with debug details&lt;br/&gt;&bull; Ensures 99.9% uptime during malformed user uploads&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FCA5A5;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="740" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c3_performance" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #334155;&quot;&gt;Performance &amp; Animation Stack&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #F1F5F9; color: #334155; padding: 2px 7px; border-radius: 4px;&quot;&gt;Core Libs&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Tailwind CSS (warm academic theme &amp; deep space dark)&lt;br/&gt;&bull; useScrollAnimation hook for smooth reveal triggers&lt;br/&gt;&bull; Source Serif Pro (body) + JetBrains Mono (data)&lt;br/&gt;&bull; Lucide React icon system &amp; clsx/twMerge utilities&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1105" y="880" width="390" height="110" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_hero" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #92400E;&quot;&gt;HeroSection (3D Star Map)&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #92400E; padding: 2px 7px; border-radius: 4px;&quot;&gt;WebGL / 3D&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; react-force-graph-3d with Three.js engine&lt;br/&gt;&bull; UnrealBloomPass post-processing (jewel nodes &amp; filaments)&lt;br/&gt;&bull; THREE.Points star-dust background particles&lt;br/&gt;&bull; Gold pill color mode toggle: School / Year / Journal&lt;br/&gt;&bull; Camera Fly-To on node select with inspect drawer&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="175" width="390" height="140" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_thematic" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #92400E;&quot;&gt;Thematic &amp; Structural Sections&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #92400E; padding: 2px 7px; border-radius: 4px;&quot;&gt;Epistemics&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; SchoolsSection: Louvain cards with Modularity Q meter&lt;br/&gt;&bull; DebateSection: Interactive controversy timeline (1995–now)&lt;br/&gt;&bull; GapSection: Structural hole visualization &amp; argument spine&lt;br/&gt;&bull; BridgeSection: Betweenness leaderboard &amp; boundary spanners&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="335" width="390" height="125" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_d3_charts" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #0369A1;&quot;&gt;ClusterSection (D3 Dynamics)&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #E0F2FE; color: #0369A1; padding: 2px 7px; border-radius: 4px;&quot;&gt;D3.js Charts&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Stacked Area Streamgraph: School publication trends over time&lt;br/&gt;&bull; Dynamic X/Y linear scales with responsive SVG resize&lt;br/&gt;&bull; Co-Citation Heatmap: Top 30 Bridge Papers similarity matrix&lt;br/&gt;&bull; Hover tooltips, dynamic domain clamps, PNG/SVG/CSV export&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="485" width="390" height="130" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_evidence" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #92400E;&quot;&gt;Methodology &amp; Evidence Tables&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #92400E; padding: 2px 7px; border-radius: 4px;&quot;&gt;PRISMA &amp; Data&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; PrismaSection: PRISMA 2020 Systematic Flowchart&lt;br/&gt;&bull; EvidenceSection: Filterable table (Modality, N, Findings, Limits)&lt;br/&gt;&bull; JournalSection: Top publishing venues &amp; decade histograms&lt;br/&gt;&bull; Multi-column search, sorting, and pagination&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="640" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_synthesis" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #92400E;&quot;&gt;Authoring &amp; Ingestion Hubs&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FEF3C7; color: #92400E; padding: 2px 7px; border-radius: 4px;&quot;&gt;Interactive Hub&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; WritingSection: AI literature review assistant &amp; gap outline&lt;br/&gt;&bull; UploadSection: Drag &amp; drop BibTeX, CSV &amp; PDF parser&lt;br/&gt;&bull; DownloadSection: 1-click comprehensive corpus bundle center&lt;br/&gt;&bull; TopicSearchBar: Live OpenAlex querying interface in Navbar&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="785" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c4_footer" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #334155;&quot;&gt;Navigation &amp; Layout Shell&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #F1F5F9; color: #334155; padding: 2px 7px; border-radius: 4px;&quot;&gt;Layout.tsx&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Sticky Navbar with smooth anchor scrolling&lt;br/&gt;&bull; Progress indicator &amp; topic badge&lt;br/&gt;&bull; Footer with project metadata, version &amp; attribution&lt;br/&gt;&bull; Full responsive design (Mobile, Tablet, 4K Desktop)&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="1605" y="930" width="390" height="95" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_user_actions" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #9F1239;&quot;&gt;User Interactive Actions&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FFE4E6; color: #9F1239; padding: 2px 7px; border-radius: 4px;&quot;&gt;User Events&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Explore: Pan, rotate 3D graph, click papers for details&lt;br/&gt;&bull; Search: Type any scholarly topic for live map generation&lt;br/&gt;&bull; Filter: Toggle school communities, year range sliders&lt;br/&gt;&bull; Annotate: Add notes, comments &amp; export citations&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FECDD3;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="175" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_webapp" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #9F1239;&quot;&gt;Static Web App Deployment&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FFE4E6; color: #9F1239; padding: 2px 7px; border-radius: 4px;&quot;&gt;Hosted Target&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Hosted on Cloudflare Pages / Vercel / Static CDN&lt;br/&gt;&bull; Zero backend maintenance &bull; 100% static CDN delivery&lt;br/&gt;&bull; Instant initial page load (&lt;1s cold start)&lt;br/&gt;&bull; Client-side routing with URL deep-linking&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FECDD3;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="320" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_docx" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #9F1239;&quot;&gt;Publication-Ready Manuscript&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FFE4E6; color: #9F1239; padding: 2px 7px; border-radius: 4px;&quot;&gt;Synthesis Doc&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; literature_review.docx (Formatted Microsoft Word document)&lt;br/&gt;&bull; literature_review.md (Markdown source version)&lt;br/&gt;&bull; APA 7th Edition formatted bibliographies &amp; citations&lt;br/&gt;&bull; Comprehensive synthesis of schools, debates &amp; frontiers&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FECDD3;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="460" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_corpus_zip" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #9F1239;&quot;&gt;Complete Corpus Archive&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FFE4E6; color: #9F1239; padding: 2px 7px; border-radius: 4px;&quot;&gt;Data Deliverable&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; corpus.zip containing full JSON bibliometrics&lt;br/&gt;&bull; All 244 papers metadata + direct DOI resolver links&lt;br/&gt;&bull; Standardized bibliography.bib &amp; bibliography.csv&lt;br/&gt;&bull; Ready for ingestion in Zotero, Mendeley, or Python pandas&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FECDD3;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="605" width="390" height="120" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_graphics" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #9F1239;&quot;&gt;High-Resolution Visual Assets&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #FFE4E6; color: #9F1239; padding: 2px 7px; border-radius: 4px;&quot;&gt;300 DPI Figures&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Publication-grade 300 DPI PNG exports for papers&lt;br/&gt;&bull; Lossless Scalable Vector Graphics (SVG) exports&lt;br/&gt;&bull; Raw tabular CSV data downloads per chart&lt;br/&gt;&bull; Ready for LaTeX inclusion or slide presentations&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FECDD3;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="750" width="390" height="115" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="c5_extensibility" value="
+    &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;&quot;&gt;
+      &lt;span style=&quot;font-size: 13px; font-weight: 700; color: #334155;&quot;&gt;Ecosystem Extensibility&lt;/span&gt;
+      &lt;span style=&quot;font-size: 10px; font-weight: 600; background: #F1F5F9; color: #334155; padding: 2px 7px; border-radius: 4px;&quot;&gt;Future Scale&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;font-size: 11px; color: #475569; line-height: 1.45;&quot;&gt;&bull; Custom domain plugins via mapConfig.ts&lt;br/&gt;&bull; Batch automation via generate_literature_map.js&lt;br/&gt;&bull; LLM writing copilot integration hooks&lt;br/&gt;&bull; Multi-tenant export &amp; publication engine&lt;/div&gt;
+  " style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CBD5E1;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;align=left;spacingLeft=14;spacingRight=14;shadow=0;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="890" width="390" height="105" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c1_sources_c1_crawler" value="Harvests" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0284C7;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#0284C7;" edge="1" parent="1" source="c1_sources" target="c1_crawler">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c1_crawler_c1_nlp" value="Tokens" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0284C7;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#0284C7;" edge="1" parent="1" source="c1_crawler" target="c1_nlp">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c1_nlp_c1_raw_artifacts" value="Saves" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0284C7;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#0284C7;" edge="1" parent="1" source="c1_nlp" target="c1_raw_artifacts">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c1_raw_artifacts_c1_cli" value="Batch Input" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0284C7;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#0284C7;" edge="1" parent="1" source="c1_raw_artifacts" target="c1_cli">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c1_cli_c2_vosviewer" value="Co-occurrence" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#7C3AED;" edge="1" parent="1" source="c1_cli" target="c2_vosviewer">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c2_vosviewer_c2_louvain" value="Adjacency" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#7C3AED;" edge="1" parent="1" source="c2_vosviewer" target="c2_louvain">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c2_louvain_c2_centrality" value="Partitions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#7C3AED;" edge="1" parent="1" source="c2_louvain" target="c2_centrality">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c2_centrality_c2_burt" value="Bridge Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#7C3AED;" edge="1" parent="1" source="c2_centrality" target="c2_burt">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c2_burt_c2_bundles" value="Synthesizes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#7C3AED;strokeWidth=2.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#7C3AED;" edge="1" parent="1" source="c2_burt" target="c2_bundles">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c2_bundles_c3_context" value="Static Ingest" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=2.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#059669;" edge="1" parent="1" source="c2_bundles" target="c3_context">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_presets_c3_context" value="Presets" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#059669;" edge="1" parent="1" source="c3_presets" target="c3_context">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_openalex_service_c3_context" value="Live Updates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#059669;" edge="1" parent="1" source="c3_openalex_service" target="c3_context">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c3_persistence" value="Caches" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=1.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#059669;" edge="1" parent="1" source="c3_context" target="c3_persistence">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_error_boundary_c3_context" value="Guards" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#EF4444;strokeWidth=1.5;dashed=1;;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#EF4444;" edge="1" parent="1" source="c3_error_boundary" target="c3_context">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c4_hero" value="3D Nodes/Links" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#D97706;" edge="1" parent="1" source="c3_context" target="c4_hero">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c4_thematic" value="Communities &amp; Debates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#D97706;" edge="1" parent="1" source="c3_context" target="c4_thematic">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c4_d3_charts" value="Yearly Evolution" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#D97706;" edge="1" parent="1" source="c3_context" target="c4_d3_charts">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c4_evidence" value="Paper Matrices" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#D97706;" edge="1" parent="1" source="c3_context" target="c4_evidence">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c3_context_c4_synthesis" value="Gaps &amp; Arguments" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#D97706;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#D97706;" edge="1" parent="1" source="c3_context" target="c4_synthesis">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+  <mxCell id="edge_user_query_loop" value="Live In-Browser Query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=2;dashed=1;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#059669;" edge="1" parent="1" source="c4_synthesis" target="c3_openalex_service">
+    <mxGeometry relative="1" as="geometry" />
+  </mxCell>
+
+
+    <mxCell id="edge_c4_hero_c5_webapp" value="Renders 3D View" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E11D48;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#E11D48;" edge="1" parent="1" source="c4_hero" target="c5_webapp">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c4_synthesis_c5_docx" value="Exports Review" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E11D48;strokeWidth=2.5;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#E11D48;" edge="1" parent="1" source="c4_synthesis" target="c5_docx">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c4_synthesis_c5_corpus_zip" value="Bundles All" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E11D48;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#E11D48;" edge="1" parent="1" source="c4_synthesis" target="c5_corpus_zip">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c4_d3_charts_c5_graphics" value="PNG / SVG" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E11D48;strokeWidth=2;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#E11D48;" edge="1" parent="1" source="c4_d3_charts" target="c5_graphics">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+
+    <mxCell id="edge_c5_user_actions_c4_hero" value="Interacts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#E11D48;strokeWidth=1.5;dashed=1;;fontFamily=Segoe UI,Helvetica,Arial;fontSize=10;fontColor=#E11D48;" edge="1" parent="1" source="c5_user_actions" target="c4_hero">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

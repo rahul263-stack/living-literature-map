@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "generatedAt": "2026-09-19T06:26:01.377Z",
+    "domain": "Core-Periphery Network Dynamics",
+    "totalNodes": 10,
+    "totalLinks": 30,
+    "modularityQ": 0.49
+  },
+  "nodes": [
+    {
+      "id": "Qo3gQPnKSygJ",
+      "title": "Task-based core-periphery organization of human brain dynamics",
+      "authors": "DS Bassett, NF Wymbs, MP Rombach…",
+      "year": 2013,
+      "citations": 448,
+      "journal": "DS Bassett, NF Wymbs, MP Rombach… - PLoS computational …, 2013 - journals.plos.org",
+      "doi": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003171",
+      "abstract": "… To ensure independence of these two variables, we extracted brain network structure during the 4 scanning sessions, and we extracted behavioral estimates of learning in home …",
+      "keywords": "brain, extracted, task-based, core-periphery, organization, human, dynamics, ensure, independence, variables",
+      "community": 1,
+      "community_name": "Core-periphery & Brain",
+      "betweenness": 0.098,
+      "val": 9
+    },
+    {
+      "id": "E6o_ihcL3bIJ",
+      "title": "Structure and dynamics of core/periphery networks",
+      "authors": "P Csermely, A London, LY Wu…",
+      "year": 2013,
+      "citations": 579,
+      "journal": "P Csermely, A London, LY Wu… - Journal of Complex …, 2013 - academic.oup.com",
+      "doi": "https://academic.oup.com/comnet/article-abstract/1/2/93/2392115",
+      "abstract": "… of core/periphery network models, rich-clubs, nested network structures, the bow-tie organization of … Thus, the core/periphery organization of the human brain (both in its structure and …",
+      "keywords": "core, periphery, structure, network, organization, dynamics, networks, rich-clubs, nested, structures",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 1,
+      "val": 18
+    },
+    {
+      "id": "VeAkLlOEKlYJ",
+      "title": "Multiplex core–periphery organization of the human connectome",
+      "authors": "F Battiston, J Guillon, M Chavez…",
+      "year": 2018,
+      "citations": 77,
+      "journal": "F Battiston, J Guillon, M Chavez… - Journal of the …, 2018 - royalsocietypublishing.org",
+      "doi": "https://royalsocietypublishing.org/rsif/article/15/146/20180514/35939",
+      "abstract": "… k-core decomposition [36,37]. To address this gap, we introduce a criterion to define and detect core–periphery organization in … We have therefore constructed a multiplex brain network …",
+      "keywords": "multiplex, core, periphery, organization, human, connectome, k-core, decomposition, address, gap",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 0.283,
+      "val": 6
+    },
+    {
+      "id": "WJJDtlZTDNEJ",
+      "title": "Overlapping communities explain core–periphery organization of networks",
+      "authors": "J Yang, J Leskovec",
+      "year": 2014,
+      "citations": 218,
+      "journal": "J Yang, J Leskovec - Proceedings of the IEEE, 2014 - ieeexplore.ieee.org",
+      "doi": "https://ieeexplore.ieee.org/abstract/document/6953058/",
+      "abstract": "… The network core was traditionally viewed as a single giant com… core lacks internal communities [24]–[27]. We unify those two organizing principles and show that dense network cores …",
+      "keywords": "core, communities, network, overlapping, explain, periphery, organization, networks, traditionally, viewed",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 0.072,
+      "val": 6
+    },
+    {
+      "id": "izKtlFKb0g0J",
+      "title": "Unifying the notions of modularity and core–periphery structure in functional brain networks during youth",
+      "authors": "S Gu, CH Xia, R Ciric, TM Moore, RC Gur…",
+      "year": 2020,
+      "citations": 36,
+      "journal": "S Gu, CH Xia, R Ciric, TM Moore, RC Gur… - Cerebral …, 2020 - academic.oup.com",
+      "doi": "https://academic.oup.com/cercor/article-abstract/30/3/1087/5550906",
+      "abstract": "… We demonstrate that functional brain networks display rich mesoscale organization beyond … considered a group-averaged functional brain network constructed by taking the mean over …",
+      "keywords": "functional, brain, networks, unifying, notions, modularity, core, periphery, structure, youth",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 0.456,
+      "val": 6
+    },
+    {
+      "id": "_R6q5YEI21kJ",
+      "title": "Core and periphery in networks",
+      "authors": "DA Hojman, A Szeidl",
+      "year": 2008,
+      "citations": 307,
+      "journal": "DA Hojman, A Szeidl - Journal of Economic Theory, 2008 - Elsevier",
+      "doi": "https://www.sciencedirect.com/science/article/pii/S0022053107001147",
+      "abstract": "… We study a model of network formation where the benefits from connections exhibit … decay with network distance. We show that the unique equilibrium network is a periphery-sponsored …",
+      "keywords": "network, core, periphery, networks, formation, benefits, connections, exhibit, decay, distance",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 0.072,
+      "val": 8
+    },
+    {
+      "id": "rTBHAywnCpYJ",
+      "title": "Core-periphery structure in networks (revisited)",
+      "authors": "P Rombach, MA Porter, JH Fowler, PJ Mucha",
+      "year": 2017,
+      "citations": 202,
+      "journal": "P Rombach, MA Porter, JH Fowler, PJ Mucha - SIAM review, 2017 - SIAM",
+      "doi": "https://epubs.siam.org/doi/abs/10.1137/17M1130046",
+      "abstract": "… is organized … networks that have a planted core-periphery structure, and we use CP(N, d, p, k) to denote this ensemble of networks. (We will consider networks with both core-periphery …",
+      "keywords": "networks, core-periphery, structure, revisited, organized, planted, use, denote, ensemble, will",
+      "community": 1,
+      "community_name": "Core-periphery & Brain",
+      "betweenness": 0,
+      "val": 6
+    },
+    {
+      "id": "cdxxFqb-hl0J",
+      "title": "Disrupted core-periphery structure of multimodal brain networks in Alzheimer's disease",
+      "authors": "J Guillon, M Chavez, F Battiston, Y Attal…",
+      "year": 2019,
+      "citations": 40,
+      "journal": "J Guillon, M Chavez, F Battiston, Y Attal… - Network …, 2019 - direct.mit.edu",
+      "doi": "https://direct.mit.edu/netn/article-abstract/3/2/635/2224",
+      "abstract": "… would affect the core-periphery structure of the brain network at both anatomical and … of the core-periphery organization by integrating information from multimodal brain networks would …",
+      "keywords": "core-periphery, brain, structure, multimodal, networks, disrupted, alzheimer, disease, affect, network",
+      "community": 1,
+      "community_name": "Core-periphery & Brain",
+      "betweenness": 0.805,
+      "val": 9
+    },
+    {
+      "id": "IkH7aEtvwssJ",
+      "title": "Emergence of visual center-periphery spatial organization in deep convolutional neural networks",
+      "authors": "Y Mohsenzadeh, C Mullin, B Lahner, A Oliva",
+      "year": 2020,
+      "citations": 41,
+      "journal": "Y Mohsenzadeh, C Mullin, B Lahner, A Oliva - Scientific reports, 2020 - nature.com",
+      "doi": "https://www.nature.com/articles/s41598-020-61409-0",
+      "abstract": "… Here, we asked whether an artificial neural network (with … with human brain regions showing central/peripheral biases. … In this study, we used a deep neural network by Zhou et al. (…",
+      "keywords": "neural, deep, network, emergence, visual, center-periphery, spatial, organization, convolutional, networks",
+      "community": 0,
+      "community_name": "Core & Periphery",
+      "betweenness": 0.033,
+      "val": 4
+    },
+    {
+      "id": "IJvGIjFON3QJ",
+      "title": "Dynamic core-periphery structure of information sharing networks in entorhinal cortex and hippocampus",
+      "authors": "N Pedreschi, C Bernard, W Clawson…",
+      "year": 2020,
+      "citations": 25,
+      "journal": "N Pedreschi, C Bernard, W Clawson… - Network …, 2020 - direct.mit.edu",
+      "doi": "https://direct.mit.edu/netn/article-abstract/4/3/946/95848",
+      "abstract": "… tens of single units in different brain regions and layers. We focus on … alternation between two global brain oscillatory states, … of the core-periphery organization of the network, where we …",
+      "keywords": "core-periphery, brain, dynamic, structure, information, sharing, networks, entorhinal, cortex, hippocampus",
+      "community": 1,
+      "community_name": "Core-periphery & Brain",
+      "betweenness": 0.114,
+      "val": 4
+    }
+  ],
+  "links": [
+    {
+      "source": "Qo3gQPnKSygJ",
+      "target": "E6o_ihcL3bIJ",
+      "value": 0.12
+    },
+    {
+      "source": "Qo3gQPnKSygJ",
+      "target": "VeAkLlOEKlYJ",
+      "value": 0.15
+    },
+    {
+      "source": "Qo3gQPnKSygJ",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.12
+    },
+    {
+      "source": "Qo3gQPnKSygJ",
+      "target": "IJvGIjFON3QJ",
+      "value": 0.13
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "VeAkLlOEKlYJ",
+      "value": 0.15
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "WJJDtlZTDNEJ",
+      "value": 0.22
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "izKtlFKb0g0J",
+      "value": 0.15
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "_R6q5YEI21kJ",
+      "value": 0.17
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "rTBHAywnCpYJ",
+      "value": 0.09
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.11
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "IkH7aEtvwssJ",
+      "value": 0.14
+    },
+    {
+      "source": "E6o_ihcL3bIJ",
+      "target": "IJvGIjFON3QJ",
+      "value": 0.08
+    },
+    {
+      "source": "VeAkLlOEKlYJ",
+      "target": "WJJDtlZTDNEJ",
+      "value": 0.16
+    },
+    {
+      "source": "VeAkLlOEKlYJ",
+      "target": "izKtlFKb0g0J",
+      "value": 0.13
+    },
+    {
+      "source": "VeAkLlOEKlYJ",
+      "target": "_R6q5YEI21kJ",
+      "value": 0.12
+    },
+    {
+      "source": "VeAkLlOEKlYJ",
+      "target": "IkH7aEtvwssJ",
+      "value": 0.08
+    },
+    {
+      "source": "WJJDtlZTDNEJ",
+      "target": "izKtlFKb0g0J",
+      "value": 0.12
+    },
+    {
+      "source": "WJJDtlZTDNEJ",
+      "target": "_R6q5YEI21kJ",
+      "value": 0.19
+    },
+    {
+      "source": "WJJDtlZTDNEJ",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.08
+    },
+    {
+      "source": "WJJDtlZTDNEJ",
+      "target": "IkH7aEtvwssJ",
+      "value": 0.15
+    },
+    {
+      "source": "izKtlFKb0g0J",
+      "target": "_R6q5YEI21kJ",
+      "value": 0.14
+    },
+    {
+      "source": "izKtlFKb0g0J",
+      "target": "rTBHAywnCpYJ",
+      "value": 0.12
+    },
+    {
+      "source": "izKtlFKb0g0J",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.15
+    },
+    {
+      "source": "izKtlFKb0g0J",
+      "target": "IJvGIjFON3QJ",
+      "value": 0.17
+    },
+    {
+      "source": "_R6q5YEI21kJ",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.09
+    },
+    {
+      "source": "_R6q5YEI21kJ",
+      "target": "IkH7aEtvwssJ",
+      "value": 0.11
+    },
+    {
+      "source": "rTBHAywnCpYJ",
+      "target": "cdxxFqb-hl0J",
+      "value": 0.19
+    },
+    {
+      "source": "rTBHAywnCpYJ",
+      "target": "IJvGIjFON3QJ",
+      "value": 0.21
+    },
+    {
+      "source": "cdxxFqb-hl0J",
+      "target": "IkH7aEtvwssJ",
+      "value": 0.12
+    },
+    {
+      "source": "cdxxFqb-hl0J",
+      "target": "IJvGIjFON3QJ",
+      "value": 0.23
+    }
+  ]
+}
