@@ -38,3 +38,12 @@ schools_section_v3.png
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Ppt
+.html
+plan.md
+
+# Pipeline Data & Outputs
+research/
+corpus/
+output_*/
