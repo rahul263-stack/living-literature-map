@@ -1,5 +1,5 @@
 import { Component, lazy, Suspense, type ReactNode, type ErrorInfo } from 'react'
-import { LiteratureMapProvider } from './context/LiteratureMapContext'
+import { LiteratureMapProvider, useLiteratureMap } from './context/LiteratureMapContext'
 import Layout from './components/Layout'
 import HeroSection from './sections/HeroSection'
 import SchoolsSection from './sections/SchoolsSection'
@@ -64,102 +64,124 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 }
 
+function AppContent() {
+  const { isLoadingBundle } = useLiteratureMap();
+
+  if (isLoadingBundle) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF9F6] text-text-secondary font-mono tracking-wide">
+        <div className="flex flex-col items-center gap-6">
+          <div className="w-10 h-10 border-2 border-accent-gold/20 border-t-accent-gold rounded-full animate-spin" />
+          <div className="flex items-center gap-2">
+             <span className="w-2 h-2 bg-accent-gold rounded-full animate-pulse" />
+             Synthesizing Literature Map...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <Layout>
+      <ErrorBoundary title="Hero Constellation">
+        <HeroSection />
+      </ErrorBoundary>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Schools of Thought">
+          <SchoolsSection />
+        </ErrorBoundary>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Debate Evolution">
+          <Suspense fallback={<SectionSkeleton height="550px" />}>
+            <DebateSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Research Gap">
+          <Suspense fallback={<SectionSkeleton height="500px" />}>
+            <GapSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+
+      <div id="analysis">
+        <div className="content-auto">
+          <ErrorBoundary title="Cluster Evolution">
+            <Suspense fallback={<SectionSkeleton height="450px" />}>
+              <ClusterSection />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+
+        <div className="content-auto">
+          <ErrorBoundary title="Bridge Papers">
+            <Suspense fallback={<SectionSkeleton height="450px" />}>
+              <BridgeSection />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+
+        <div className="content-auto">
+          <ErrorBoundary title="Journal Distribution">
+            <Suspense fallback={<SectionSkeleton height="400px" />}>
+              <JournalSection />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+
+        <div className="content-auto">
+          <ErrorBoundary title="PRISMA Flow">
+            <Suspense fallback={<SectionSkeleton height="500px" />}>
+              <PrismaSection />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Evidence Table">
+          <Suspense fallback={<SectionSkeleton height="600px" />}>
+            <EvidenceSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Writing Assistant">
+          <Suspense fallback={<SectionSkeleton height="500px" />}>
+            <WritingSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Upload Section">
+          <Suspense fallback={<SectionSkeleton height="400px" />}>
+            <UploadSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+
+      <div className="content-auto">
+        <ErrorBoundary title="Download Center">
+          <Suspense fallback={<SectionSkeleton height="350px" />}>
+            <DownloadSection />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
+    </Layout>
+  );
+}
+
 export default function App() {
   return (
     <LiteratureMapProvider>
-      <Layout>
-        <ErrorBoundary title="Hero Constellation">
-          <HeroSection />
-        </ErrorBoundary>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Schools of Thought">
-            <SchoolsSection />
-          </ErrorBoundary>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Debate Evolution">
-            <Suspense fallback={<SectionSkeleton height="550px" />}>
-              <DebateSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Research Gap">
-            <Suspense fallback={<SectionSkeleton height="500px" />}>
-              <GapSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-
-        <div id="analysis">
-          <div className="content-auto">
-            <ErrorBoundary title="Cluster Evolution">
-              <Suspense fallback={<SectionSkeleton height="450px" />}>
-                <ClusterSection />
-              </Suspense>
-            </ErrorBoundary>
-          </div>
-
-          <div className="content-auto">
-            <ErrorBoundary title="Bridge Papers">
-              <Suspense fallback={<SectionSkeleton height="450px" />}>
-                <BridgeSection />
-              </Suspense>
-            </ErrorBoundary>
-          </div>
-
-          <div className="content-auto">
-            <ErrorBoundary title="Journal Distribution">
-              <Suspense fallback={<SectionSkeleton height="400px" />}>
-                <JournalSection />
-              </Suspense>
-            </ErrorBoundary>
-          </div>
-
-          <div className="content-auto">
-            <ErrorBoundary title="PRISMA Flow">
-              <Suspense fallback={<SectionSkeleton height="500px" />}>
-                <PrismaSection />
-              </Suspense>
-            </ErrorBoundary>
-          </div>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Evidence Table">
-            <Suspense fallback={<SectionSkeleton height="600px" />}>
-              <EvidenceSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Writing Assistant">
-            <Suspense fallback={<SectionSkeleton height="500px" />}>
-              <WritingSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Upload Section">
-            <Suspense fallback={<SectionSkeleton height="400px" />}>
-              <UploadSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-
-        <div className="content-auto">
-          <ErrorBoundary title="Download Center">
-            <Suspense fallback={<SectionSkeleton height="350px" />}>
-              <DownloadSection />
-            </Suspense>
-          </ErrorBoundary>
-        </div>
-      </Layout>
+      <AppContent />
     </LiteratureMapProvider>
   )
 }

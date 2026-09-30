@@ -1,14 +1,10 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import defaultNetworkData from '@/data/network_data.json';
-import defaultAnalysisData from '@/data/analysis_data.json';
 import {
   type LiteratureMapConfig,
   NETWORK_NEUROSCIENCE_CONFIG,
   QUANTUM_COMPUTING_CONFIG,
   FEATURED_PRESETS,
 } from '@/config/mapConfig';
-import topologicalDlBundle from '@/data/presets/topological_dl_bundle.json';
-import corePeripheryBundle from '@/data/presets/core_periphery_bundle.json';
 import { generateLiteratureMapForTopic } from '@/services/openAlexService';
 
 export interface NetworkNode {
@@ -113,6 +109,7 @@ interface LiteratureMapContextType {
   generationProgress: string | null;
   generationError: string | null;
   generateLiveTopicMap: (query: string, limit?: number) => Promise<void>;
+  isLoadingBundle: boolean;
   topicHistory: TopicHistoryItem[];
 }
 
@@ -273,11 +270,9 @@ const HISTORY_STORAGE_KEY = 'litmap_topic_history';
 export function LiteratureMapProvider({ children }: { children: ReactNode }) {
   const [activePresetId, setActivePresetId] = useState('connectomics');
   const [config, setConfig] = useState<LiteratureMapConfig>(NETWORK_NEUROSCIENCE_CONFIG);
-  const [networkData, setNetworkData] = useState<NetworkData>(() => ({
-    nodes: normalizeNodes((defaultNetworkData as any).nodes),
-    links: (defaultNetworkData as any).links,
-  }));
-  const [analysisData, setAnalysisData] = useState<AnalysisData>(defaultAnalysisData as any);
+  const [networkData, setNetworkData] = useState<NetworkData>({ nodes: [], links: [] });
+  const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
+  const [isLoadingBundle, setIsLoadingBundle] = useState(true);
 
   // Live Topic Generation State
   const [isGeneratingTopic, setIsGeneratingTopic] = useState(false);
@@ -338,7 +333,7 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const switchPreset = (presetId: string, skipUrlSync = false) => {
+  const switchPreset = async (presetId: string, skipUrlSync = false) => {
     setActivePresetId(presetId);
     setGenerationError(null);
     if (!skipUrlSync) {
@@ -347,11 +342,22 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
 
     if (presetId === 'connectomics') {
       setConfig(NETWORK_NEUROSCIENCE_CONFIG);
-      setNetworkData({
-        nodes: normalizeNodes((defaultNetworkData as any).nodes),
-        links: (defaultNetworkData as any).links,
-      });
-      setAnalysisData(defaultAnalysisData as any);
+      setIsLoadingBundle(true);
+      try {
+        const [netRes, anRes] = await Promise.all([
+          import('@/data/network_data.json'),
+          import('@/data/analysis_data.json')
+        ]);
+        setNetworkData({
+          nodes: normalizeNodes(netRes.default.nodes),
+          links: netRes.default.links,
+        });
+        setAnalysisData(anRes.default as any);
+      } catch (e) {
+        console.error("Failed to load connectomics preset", e);
+      } finally {
+        setIsLoadingBundle(false);
+      }
       return;
     }
 
@@ -364,18 +370,30 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
     }
 
     if (presetId === 'topological-dl') {
-      const normalized = normalizeBundle(topologicalDlBundle);
-      setConfig(normalized.config);
-      setNetworkData(normalized.networkData);
-      setAnalysisData(normalized.analysisData);
+      setIsLoadingBundle(true);
+      try {
+        const topoBundle = await import('@/data/presets/topological_dl_bundle.json');
+        const normalized = normalizeBundle(topoBundle.default);
+        setConfig(normalized.config);
+        setNetworkData(normalized.networkData);
+        setAnalysisData(normalized.analysisData);
+      } finally {
+        setIsLoadingBundle(false);
+      }
       return;
     }
 
     if (presetId === 'core-periphery') {
-      const normalized = normalizeBundle(corePeripheryBundle);
-      setConfig(normalized.config);
-      setNetworkData(normalized.networkData);
-      setAnalysisData(normalized.analysisData);
+      setIsLoadingBundle(true);
+      try {
+        const cpBundle = await import('@/data/presets/core_periphery_bundle.json');
+        const normalized = normalizeBundle(cpBundle.default);
+        setConfig(normalized.config);
+        setNetworkData(normalized.networkData);
+        setAnalysisData(normalized.analysisData);
+      } finally {
+        setIsLoadingBundle(false);
+      }
       return;
     }
 
@@ -404,14 +422,15 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
       const queryParam = params.get('q') || params.get('topic');
 
       if (presetParam && ['connectomics', 'quantum-computing', 'topological-dl', 'core-periphery'].includes(presetParam)) {
-        if (presetParam !== 'connectomics') {
-          switchPreset(presetParam, true);
-        }
+        switchPreset(presetParam, true);
       } else if (queryParam) {
         generateLiveTopicMap(queryParam);
+      } else {
+        switchPreset('connectomics', true);
       }
     } catch (e) {
       console.warn('Initial URL deep-link parse failed:', e);
+      switchPreset('connectomics', true);
     }
   }, []);
 
@@ -526,6 +545,7 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
         importBundleJSON,
         loadCustomDataset,
         resetToDefault,
+        isLoadingBundle,
         isGeneratingTopic,
         generationProgress,
         generationError,
