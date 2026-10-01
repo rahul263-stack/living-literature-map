@@ -10,14 +10,12 @@ import SavedPapersModal from './SavedPapersModal';
 import AiCopilotModal from './AiCopilotModal';
 
 const NAV_LINKS = [
-  { label: 'Network', href: '#network' },
+  { label: 'Atlas', href: '#network' },
   { label: 'Schools', href: '#schools' },
   { label: 'Debates', href: '#debates' },
-  { label: 'Gap', href: '#gap' },
-  { label: 'Analysis', href: '#analysis' },
+  { label: 'Gaps', href: '#gap' },
   { label: 'Evidence', href: '#evidence' },
-  { label: 'Upload', href: '#upload' },
-  { label: 'Download', href: '#download' },
+  { label: 'Ingest', href: '#upload' },
 ];
 
 export default function Navbar() {
@@ -140,7 +138,7 @@ export default function Navbar() {
       )}
     >
       {/* Left: Brand & Map Selector */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2.5 shrink-0">
         <a
           href="#"
           onClick={(e) => {
@@ -148,32 +146,31 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           className={cn(
-            'font-mono text-[14px] font-semibold tracking-wide shrink-0 transition-colors flex items-center gap-2',
-            isLight ? 'text-[#1A1B3A]' : 'text-star-gold'
+            'font-serif text-[16px] font-bold tracking-tight shrink-0 transition-colors flex items-center gap-2',
+            isLight ? 'text-[#1A1B3A]' : 'text-white'
           )}
         >
           <span className="w-2 h-2 rounded-full bg-star-gold animate-pulse" />
-          <span className="hidden sm:inline">{config.title}</span>
-          <span className="sm:hidden">LitMap</span>
+          <span>LitMap</span>
         </a>
 
         {/* Preset Selector Dropdown */}
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative shrink-0" ref={dropdownRef}>
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className={cn(
-              'flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono rounded border transition-all duration-200',
+              'flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono rounded-full border transition-all duration-200 cursor-pointer',
               isLight
                 ? 'bg-white/80 border-[#D8D4CC] text-[#2D2E4E] hover:bg-[#F0ECE4]'
                 : 'bg-white/5 border-white/10 text-[rgba(255,255,255,0.8)] hover:bg-white/10 hover:text-white'
             )}
             title="Switch literature map preset or active corpus"
           >
-            <Layers size={12} className="opacity-70" />
-            <span className="max-w-[130px] md:max-w-[180px] truncate font-medium">
+            <Layers size={11} className="text-[#D4A853]" />
+            <span className="max-w-[110px] sm:max-w-[150px] truncate font-medium">
               {featuredPresets?.find((p) => p.id === activePresetId)?.shortName ||
                 availablePresets.find((p) => p.id === activePresetId)?.name ||
-                config.title}
+                'Atlas'}
             </span>
             <svg
               className={cn(
@@ -270,7 +267,7 @@ export default function Navbar() {
                     setIsDropdownOpen(false);
                     setIsSearchModalOpen(true);
                   }}
-                  className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded font-mono text-[11px] font-medium bg-amber-500/15 border border-amber-500/30 text-amber-400 hover:bg-amber-500/25 transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded font-mono text-[11px] font-medium bg-amber-500/15 border border-amber-500/30 text-amber-400 hover:bg-amber-500/25 transition-colors cursor-pointer"
                 >
                   <Sparkles size={11} />
                   <span>Search Topic</span>
@@ -278,7 +275,7 @@ export default function Navbar() {
 
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded font-mono text-[11px] font-medium bg-white/10 border border-white/15 text-white/90 hover:bg-white/15 transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded font-mono text-[11px] font-medium bg-white/10 border border-white/15 text-white/90 hover:bg-white/15 transition-colors cursor-pointer"
                   title="Import a custom literature_map_bundle.json or network_data.json"
                 >
                   <FileUp size={11} />
@@ -305,35 +302,20 @@ export default function Navbar() {
             {importNotice}
           </span>
         )}
-
-        {/* Quick Search Topic Trigger */}
-        <button
-          onClick={() => setIsSearchModalOpen(true)}
-          className={cn(
-            'flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono rounded border transition-all duration-200 cursor-pointer',
-            isLight
-              ? 'bg-amber-500/10 border-amber-500/30 text-[#8C5B20] hover:bg-amber-500/20'
-              : 'bg-star-gold/15 border-star-gold/40 text-star-gold hover:bg-star-gold/25'
-          )}
-          title="Search OpenAlex (250M+ scholarly works) for any research field"
-        >
-          <Sparkles size={12} className="animate-spin" style={{ animationDuration: '6s' }} />
-          <span className="hidden sm:inline">Search Topic</span>
-        </button>
       </div>
 
-      {/* Nav Links - Desktop */}
-      <div className="hidden lg:flex items-center gap-1">
+      {/* Nav Links - Desktop (xl+) */}
+      <div className="hidden xl:flex items-center gap-1">
         {NAV_LINKS.map((link) => (
           <a
             key={link.href}
             href={link.href}
             onClick={(e) => handleNavClick(e, link.href)}
             className={cn(
-              'px-2.5 py-1.5 rounded-md font-mono text-[12px] uppercase tracking-[0.06em] transition-colors duration-200',
+              'px-2.5 py-1 rounded-md font-mono text-[11px] uppercase tracking-wider transition-colors duration-200',
               isLight
                 ? 'text-[#2D2E4E] font-medium hover:text-[#1A1B3A] hover:bg-[#EAE6DE]'
-                : 'text-[rgba(255,255,255,0.7)] hover:text-white hover:bg-[rgba(255,255,255,0.08)]'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
             )}
           >
             {link.label}
@@ -342,20 +324,7 @@ export default function Navbar() {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex items-center gap-1.5 sm:gap-2">
-        {/* Methodology Explainer */}
-        <button
-          onClick={() => setIsMethodologyModalOpen(true)}
-          className={cn(
-            'hidden xl:inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2.5 py-1.5 rounded-md transition-colors duration-200 cursor-pointer',
-            isLight ? 'text-[#2D2E4E] hover:bg-[#EAE6DE]' : 'text-white/70 hover:text-white hover:bg-white/10'
-          )}
-          title="Scientific methodology & framework"
-        >
-          <BookOpen size={13} />
-          <span>Methodology</span>
-        </button>
-
+      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
         {/* AI Copilot Button */}
         <button
           onClick={() => setIsAiModalOpen(true)}
@@ -368,7 +337,7 @@ export default function Navbar() {
           title="Ask AI Copilot grounded in topological literature"
         >
           <Bot size={13} />
-          <span className="hidden sm:inline">Ask AI</span>
+          <span>Ask AI</span>
         </button>
 
         {/* Saved Reading List Button */}
@@ -383,7 +352,7 @@ export default function Navbar() {
           title="View Saved Lab Reading List"
         >
           <Bookmark size={13} className={savedCount > 0 ? 'text-amber-400 fill-amber-400' : ''} />
-          <span className="hidden md:inline">Saved</span>
+          <span className="hidden sm:inline">Saved</span>
           {savedCount > 0 && (
             <span className="px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold">
               {savedCount}
@@ -416,25 +385,11 @@ export default function Navbar() {
           <span>Pro</span>
         </button>
 
-        {/* Download Button */}
-        <a
-          href="#download"
-          onClick={(e) => handleNavClick(e, '#download')}
-          className={cn(
-            'hidden sm:inline-flex items-center font-mono text-[11px] font-semibold rounded-md px-3 py-1.5 border transition-all duration-200 shrink-0',
-            isLight
-              ? 'border-[#1A1B3A] bg-[#1A1B3A] text-white hover:bg-[#2D2E4E]'
-              : 'border-white/20 text-white/90 hover:border-star-gold hover:text-star-gold'
-          )}
-        >
-          Corpus
-        </a>
-
-        {/* Mobile Hamburger Menu Toggle */}
+        {/* Mobile/Tablet Menu Toggle (< xl) */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className={cn(
-            'lg:hidden inline-flex items-center justify-center w-8 h-8 rounded-md border transition-colors cursor-pointer shrink-0',
+            'xl:hidden inline-flex items-center justify-center w-8 h-8 rounded-md border transition-colors cursor-pointer shrink-0',
             isLight
               ? 'border-[#D0CCC4] text-[#1A1B3A] hover:bg-[#EAE6DE]'
               : 'border-white/20 text-white/90 hover:bg-white/10'
@@ -449,7 +404,7 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div
           className={cn(
-            'fixed top-[52px] left-0 right-0 z-40 border-b shadow-2xl p-4 backdrop-blur-xl lg:hidden animate-in slide-in-from-top-2 duration-200',
+            'fixed top-[52px] left-0 right-0 z-40 border-b shadow-2xl p-4 backdrop-blur-xl xl:hidden animate-in slide-in-from-top-2 duration-200',
             isLight
               ? 'bg-[#FAF9F6]/98 border-[#E5E2DC] text-[#1A1B3A]'
               : 'bg-[#0E101A]/98 border-white/15 text-white'

@@ -624,17 +624,13 @@ export default function HeroSection() {
       {/* Subtle Vignette */}
       <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.4) 100%)' }} />
 
-      {/* Supertitle */}
-      <div className={`absolute top-[68px] left-[32px] z-20 pointer-events-none transition-all duration-500 ease-out hidden xl:block ${vis(1)}`}>
-        <div className="font-mono text-[11px] tracking-[0.06em] uppercase" style={{ color: '#D4A853' }}>
-          Living Literature Map · {config.domain}
-        </div>
-      </div>
-
-      {/* Top Center Content (Title + Topic Search + Curated Presets) */}
+      {/* Top Center Content (Eyebrow + Title + Subtitle + Topic Search + Curated Presets) */}
       <div className="absolute z-20 w-full max-w-2xl px-4 flex flex-col items-center pointer-events-none" style={{ top: '68px', left: '50%', transform: 'translateX(-50%)' }}>
         {/* Title & Subtitle */}
         <div className={`flex flex-col items-center pointer-events-none text-center transition-all duration-500 ease-out ${vis(2)}`}>
+          <div className="font-mono text-[10px] md:text-[11px] tracking-[0.08em] uppercase text-[#D4A853] opacity-80 mb-1">
+            Living Literature Map · {config.domain}
+          </div>
           <h1 className="font-serif italic text-2xl md:text-3xl" style={{ color: 'rgba(255,255,255,0.95)', textShadow: '0 2px 14px rgba(0,0,0,0.6)' }}>
             {config.title}
           </h1>
