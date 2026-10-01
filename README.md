@@ -35,7 +35,7 @@
 | 📤 **Upload Section** | Client-side DOI, BibTeX, and PDF parsing with live layout recomputation |
 | 📥 **Download Corpus** | One-click download of the full corpus (BibTeX + CSV + JSON) as ZIP |
 | 🔎 **Topic Search** | Search across the entire corpus by keyword, author, or DOI |
-| 🤖 **AI Copilot Modal** | Gap synthesis and question-answering interface |
+| 🤖 **AI Copilot with Local Ollama (`qwen2.5:3b`)** | Grounded literature synthesis powered by local offline Ollama (`qwen2.5:3b`), optional Gemini Cloud, or deterministic topological graph synthesis |
 | 🔗 **Shareable Views** | URL-encoded filtered views for sharing specific analyses |
 | 💾 **Local Persistence** | Comments and version history stored in localStorage |
 
@@ -76,6 +76,7 @@
 
 - [Node.js](https://nodejs.org) ≥ 18
 - npm ≥ 9
+- [Ollama](https://ollama.com) (Optional, for 100% private offline on-device AI synthesis)
 
 ### Installation
 
@@ -108,6 +109,41 @@ Or from the project root:
 npm run build     # Delegates to app/
 npm run preview
 ```
+
+---
+
+## 🦙 Local AI Copilot Integration (Ollama + `qwen2.5:3b`)
+
+The application features a grounded **AI Literature Copilot** directly integrated into the top navigation bar (**`Ask AI`**). It conducts topological, citation-backed literature synthesis referencing the detected Louvain modularity clusters, interdisciplinary bridge nodes, and structural holes.
+
+### 🌟 Key Capabilities
+- **🔒 100% Private & Offline**: Ingests your active research corpus and generates answers on-device using Ollama. Zero research data leaves your local machine.
+- **⚡ Three Multi-Engine Providers**:
+  1. **🦙 Ollama Local (Default)**: Connects to your local daemon at `http://localhost:11434` running `qwen2.5:3b` (or any custom local model).
+  2. **✨ Gemini Cloud**: Live cloud reasoning via Google Gemini 1.5 Flash using an optional client-side API key.
+  3. **📊 Graph Synthesis**: Instant deterministic synthesis computed directly from graph metrics (Louvain modularity $Q$, betweenness centrality, degree distributions).
+- **🔄 Live Auto-Detection & Model Dropdown**: Automatically checks `http://localhost:11434/api/tags` on modal open, shows pulsating status indicators (**Connected**, **Downloading**, or **Offline**), and lets you switch between installed models.
+- **⚙️ Custom Host Configurator**: Connect to local or remote Ollama servers by adjusting the API host URL directly in the UI.
+- **🎯 Grounded Scientific Inquiries**: Pre-configured prompts for:
+  - *Paradigm Clashes & Debates*: Foundational theoretical disagreements between clusters.
+  - *Grant Proposal Gap Pitch*: Publication-grade research justification targeting structural holes.
+  - *Bridge Papers Reading Path*: Top betweenness-centrality papers for interdisciplinary onboarding.
+  - *Methodology Evolution*: Longitudinal shifts in experimental frameworks across publication years.
+
+### 🚀 Quick Start with Ollama
+
+```bash
+# 1. Pull the optimized Qwen 2.5 3B model (~1.9 GB)
+ollama pull qwen2.5:3b
+
+# 2. Run / test via terminal
+ollama run qwen2.5:3b
+
+# 3. Ensure the daemon is running (default port 11434)
+ollama serve
+```
+
+When you open the web app at [http://localhost:3000](http://localhost:3000) and click **`Ask AI`**, the modal will automatically detect your local `qwen2.5:3b` model and allow instant, offline synthesis.
 
 ---
 
