@@ -183,16 +183,10 @@
     scrollbar-width: none;
   }
 
-  /* Scroll Entrance */
+  /* Scroll Entrance - GSAP sets inline opacity/y dynamically when active */
   .scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .scroll-animate.visible {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
+    transform: none;
   }
 
   /* Performance & Smooth Scrolling Optimizations */

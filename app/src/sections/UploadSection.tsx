@@ -1023,8 +1023,8 @@ export default function UploadSection() {
            TAB 0: LIVE TOPIC SEARCH (OPENALEX)
            ──────────────────────────────────────────────── */}
         {activeTab === 'search' && (
-          <div className="space-y-space-8">
-            <div className="scroll-animate bg-surface-white border border-border-medium rounded-xl p-space-8 shadow-sm">
+          <div className="space-y-space-8 animate-in fade-in duration-300">
+            <div className="bg-surface-white border border-border-medium rounded-xl p-space-8 shadow-sm">
               <div className="max-w-3xl mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-accent-gold animate-pulse" />
@@ -1083,9 +1083,9 @@ export default function UploadSection() {
            TAB 1: INGEST ENTIRE CORPUS
            ──────────────────────────────────────────────── */}
         {activeTab === 'corpus' && (
-          <div className="space-y-space-8">
+          <div className="space-y-space-8 animate-in fade-in duration-300">
             {/* Active Map Status Card */}
-            <div className="scroll-animate bg-surface-white border border-border-medium rounded-xl p-space-6 shadow-sm">
+            <div className="bg-surface-white border border-border-medium rounded-xl p-space-6 shadow-sm">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -1127,7 +1127,7 @@ export default function UploadSection() {
             </div>
 
             {/* Drop Zone */}
-            <div className="scroll-animate">
+            <div>
               <div
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -1179,7 +1179,7 @@ export default function UploadSection() {
 
             {/* Corpus Feedback */}
             {corpusStatus && (
-              <div className="scroll-animate flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-xl max-w-[800px] mx-auto text-emerald-900 shadow-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-xl max-w-[800px] mx-auto text-emerald-900 shadow-sm animate-in fade-in duration-200">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
                   <span className="font-mono text-xs font-semibold">{corpusStatus}</span>
@@ -1187,7 +1187,7 @@ export default function UploadSection() {
                 <button
                   type="button"
                   onClick={() => {
-                    const heroEl = document.getElementById('hero') || document.getElementById('constellation');
+                    const heroEl = document.getElementById('network') || document.getElementById('hero') || document.getElementById('constellation');
                     if (heroEl) {
                       heroEl.scrollIntoView({ behavior: 'smooth' });
                     } else {
@@ -1203,14 +1203,14 @@ export default function UploadSection() {
             )}
 
             {corpusError && (
-              <div className="scroll-animate flex items-center justify-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg max-w-[800px] mx-auto text-red-800">
+              <div className="flex items-center justify-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg max-w-[800px] mx-auto text-red-800 animate-in fade-in duration-200">
                 <AlertTriangle size={18} className="text-red-600" />
                 <span className="mono-sm font-medium">{corpusError}</span>
               </div>
             )}
 
             {/* CLI Companion Banner */}
-            <div className="scroll-animate max-w-[800px] mx-auto bg-surface-elevated border border-border-light rounded-xl p-space-6">
+            <div className="max-w-[800px] mx-auto bg-surface-elevated border border-border-light rounded-xl p-space-6 shadow-xs">
               <h4 className="heading-4 font-serif text-accent-indigo mb-2 flex items-center gap-2">
                 <BookOpen size={18} className="text-accent-gold" />
                 Automate with Standalone CLI Ingestion
@@ -1233,9 +1233,9 @@ export default function UploadSection() {
            TAB 2: ADD INDIVIDUAL PAPERS (INCREMENTAL)
            ──────────────────────────────────────────────── */}
         {activeTab === 'incremental' && (
-          <div className="space-y-space-8">
+          <div className="space-y-space-8 animate-in fade-in duration-300">
             {/* Drop Zone */}
-            <div className="scroll-animate">
+            <div>
               <div
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -1290,21 +1290,21 @@ export default function UploadSection() {
 
             {/* Parsing Status */}
             {isParsing && (
-              <div className="scroll-animate flex items-center justify-center gap-2 mb-space-6">
+              <div className="flex items-center justify-center gap-2 mb-space-6">
                 <Sparkles size={16} className="text-accent-gold animate-spin" />
                 <span className="mono text-text-secondary">{parseStatus}</span>
               </div>
             )}
 
             {!isParsing && parseStatus && (
-              <div className="scroll-animate flex items-center justify-center gap-2 mb-space-6">
+              <div className="flex items-center justify-center gap-2 mb-space-6">
                 <Sparkles size={16} className="text-success" />
                 <span className="mono text-text-secondary">{parseStatus}</span>
               </div>
             )}
 
             {/* Manual Entry Form */}
-            <div className="scroll-animate">
+            <div>
               <div className="mx-auto max-w-[700px]">
                 <h3 className="heading-4 font-serif text-accent-indigo mb-space-4 flex items-center gap-2">
                   <BookOpen size={18} className="text-accent-gold" />
@@ -1387,7 +1387,7 @@ export default function UploadSection() {
                     onClick={handleManualAdd}
                     disabled={!manualForm.title.trim() || !manualForm.year}
                     className={cn(
-                      'inline-flex items-center gap-2 font-mono text-[13px] font-medium rounded-md px-4 py-2.5 transition-all duration-200',
+                      'inline-flex items-center gap-2 font-mono text-[13px] font-medium rounded-md px-4 py-2.5 transition-all duration-200 cursor-pointer',
                       manualForm.title.trim() && manualForm.year
                         ? 'bg-accent-gold text-accent-indigo hover:bg-star-gold'
                         : 'bg-border-light text-text-tertiary cursor-not-allowed'
@@ -1402,7 +1402,7 @@ export default function UploadSection() {
 
             {/* Uploaded Papers Table */}
             {newPapers.length > 0 && (
-              <div className="scroll-animate">
+              <div>
                 <div className="mx-auto max-w-[900px]">
                   <div className="flex flex-wrap items-center justify-between gap-3 mb-space-4">
                     <h3 className="heading-4 font-serif text-accent-indigo">
@@ -1465,7 +1465,7 @@ export default function UploadSection() {
                               <td className="px-4 py-3 text-center">
                                 <button
                                   onClick={() => handleDelete(paper.id)}
-                                  className="inline-flex items-center text-text-tertiary hover:text-danger transition-colors"
+                                  className="inline-flex items-center text-text-tertiary hover:text-danger transition-colors cursor-pointer"
                                   title="Remove paper"
                                 >
                                   <X size={16} />
@@ -1483,7 +1483,7 @@ export default function UploadSection() {
 
             {/* Graph Preview */}
             {showPreview && graphData.nodes.length > 0 && (
-              <div className="scroll-animate">
+              <div>
                 <div className="mx-auto max-w-[900px]">
                   <div className="flex items-center justify-between mb-space-4">
                     <h3 className="heading-4 font-serif text-accent-indigo flex items-center gap-2">
@@ -1520,7 +1520,7 @@ export default function UploadSection() {
         )}
 
         {/* Footer Persistence Notice */}
-        <div className="scroll-animate mt-space-8">
+        <div className="mt-space-8">
           <div className="mx-auto max-w-[700px] text-center">
             <p className="body-sm text-text-tertiary flex items-center justify-center gap-2">
               <FileText size={14} />
