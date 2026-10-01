@@ -186,8 +186,8 @@ function parseBibTeX(content: string): Array<{
       .filter(Boolean)
       .join(', ');
 
-    const year = parseInt(yearStr, 10);
-    if (title && !isNaN(year)) {
+    const year = parseInt(yearStr, 10) || new Date().getFullYear();
+    if (title) {
       entries.push({ title, authors, year, journal, doi, abstract, keywords });
     }
   }
@@ -485,8 +485,13 @@ export default function UploadSection() {
               ? rawKeywords.split(/[,;]/).map((k) => k.trim()).filter(Boolean)
               : [domainName.toLowerCase(), 'empirical'];
 
-            // Group into 4 topical buckets based on title hash if not present
-            const comm = r.community !== undefined ? parseInt(r.community, 10) : (title.length % 4);
+            // Group into 4 topical buckets based on title hash if not present or invalid
+            let comm = 0;
+            if (r.community !== undefined && r.community !== '' && !isNaN(parseInt(r.community, 10))) {
+              comm = Math.abs(parseInt(r.community, 10));
+            } else {
+              comm = Math.abs(title.length % 4);
+            }
 
             return {
               id: r.id || r.doi || r.result_id || `csv_${i + 1}`,
@@ -772,6 +777,81 @@ export default function UploadSection() {
       setGraphData({ nodes: [], links: [] });
     }
   }, []);
+
+  // Integrate incremental papers directly into the active literature map
+  const handleIntegrateIncrementalPapers = useCallback(() => {
+    if (newPapers.length === 0) return;
+
+    const addedNodes = newPapers.map((p) => ({
+      id: p.id,
+      title: p.title,
+      authors: p.authors || 'Unknown Author',
+      year: p.year || new Date().getFullYear(),
+      journal: p.journal || 'Uploaded Manuscript',
+      citations: p.citations || 0,
+      community: p.community,
+      community_name: p.community_name,
+      abstract: p.abstract || '',
+      doi: p.doi || '',
+      keywords: typeof p.keywords === 'string'
+        ? p.keywords.split(/[,;|]/).map((k) => k.trim()).filter(Boolean)
+        : Array.isArray(p.keywords) ? p.keywords : [],
+      val: 5,
+    }));
+
+    const newLinks: any[] = [];
+    for (const newNode of addedNodes) {
+      for (const existingNode of (networkData.nodes || [])) {
+        const kwA = new Set(newNode.keywords.map((k) => k.toLowerCase()));
+        const kwB = new Set(
+          (Array.isArray(existingNode.keywords)
+            ? existingNode.keywords
+            : String(existingNode.keywords || '').split(/[,;|]/)
+          ).map((k: any) => String(k).toLowerCase().trim())
+        );
+        const intersection = [...kwA].filter((k) => kwB.has(k)).length;
+        if (intersection > 0 || newNode.community === existingNode.community) {
+          newLinks.push({
+            source: newNode.id,
+            target: existingNode.id,
+            value: Math.min(1, 0.2 + intersection * 0.25),
+          });
+        }
+      }
+    }
+
+    const updatedNetwork: NetworkData = {
+      ...networkData,
+      nodes: [...(networkData.nodes || []), ...addedNodes],
+      links: [...(networkData.links || []), ...newLinks],
+      metadata: {
+        ...networkData.metadata,
+        totalNodes: (networkData.nodes?.length || 0) + addedNodes.length,
+        totalLinks: (networkData.links?.length || 0) + newLinks.length,
+      },
+    };
+
+    const updatedConfig: LiteratureMapConfig = {
+      ...config,
+      stats: {
+        numPapers: updatedNetwork.nodes.length,
+        numLinks: updatedNetwork.links.length,
+        numSchools: config.stats?.numSchools ?? (config.schools?.length || 4),
+        modularityQ: config.stats?.modularityQ ?? 0.65,
+        yearRange: config.stats?.yearRange || '2010–2026',
+      },
+    };
+
+    loadCustomDataset(updatedNetwork, analysisData, updatedConfig);
+    setCorpusStatus(`Successfully integrated ${addedNodes.length} new paper(s) into "${config.domain}"!`);
+
+    const heroEl = document.getElementById('hero') || document.getElementById('constellation');
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [newPapers, networkData, config, analysisData, loadCustomDataset]);
 
   // Export current active map bundle as JSON
   const handleExportCurrentBundle = useCallback(() => {
@@ -1099,9 +1179,26 @@ export default function UploadSection() {
 
             {/* Corpus Feedback */}
             {corpusStatus && (
-              <div className="scroll-animate flex items-center justify-center gap-2 p-3 bg-emerald-50 border border-emerald-200 rounded-lg max-w-[800px] mx-auto text-emerald-800">
-                <CheckCircle2 size={18} className="text-emerald-600" />
-                <span className="mono-sm font-medium">{corpusStatus}</span>
+              <div className="scroll-animate flex flex-col sm:flex-row items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-xl max-w-[800px] mx-auto text-emerald-900 shadow-sm">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
+                  <span className="font-mono text-xs font-semibold">{corpusStatus}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const heroEl = document.getElementById('hero') || document.getElementById('constellation');
+                    if (heroEl) {
+                      heroEl.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className="shrink-0 px-4 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-mono text-xs font-medium transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                >
+                  <span>Explore Ingested Atlas</span>
+                  <span>&uarr;</span>
+                </button>
               </div>
             )}
 
@@ -1307,18 +1404,24 @@ export default function UploadSection() {
             {newPapers.length > 0 && (
               <div className="scroll-animate">
                 <div className="mx-auto max-w-[900px]">
-                  <div className="flex items-center justify-between mb-space-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-space-4">
                     <h3 className="heading-4 font-serif text-accent-indigo">
                       Incremental Papers ({newPapers.length})
                     </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="sm:hidden font-mono text-[10px] text-text-tertiary">Scroll &rarr;</span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        onClick={handleIntegrateIncrementalPapers}
+                        className="inline-flex items-center gap-1.5 font-mono text-[12px] bg-accent-gold text-accent-indigo font-bold rounded-md px-3.5 py-1.5 hover:bg-star-gold transition-all duration-200 shadow-sm cursor-pointer"
+                      >
+                        <Sparkles size={14} />
+                        <span>Integrate {newPapers.length} Paper{newPapers.length !== 1 ? 's' : ''} into Live Atlas</span>
+                      </button>
                       <button
                         onClick={handleClearAll}
-                        className="inline-flex items-center gap-1.5 font-mono text-[12px] text-danger border border-danger rounded-md px-3 py-1.5 hover:bg-danger hover:text-white transition-all duration-200"
+                        className="inline-flex items-center gap-1.5 font-mono text-[12px] text-danger border border-danger/40 hover:border-danger rounded-md px-3 py-1.5 hover:bg-danger hover:text-white transition-all duration-200 cursor-pointer"
                       >
                         <Trash2 size={14} />
-                        Clear all
+                        Clear
                       </button>
                     </div>
                   </div>

@@ -331,12 +331,19 @@ function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
         short: comm.name.length > 16 ? comm.name.slice(0, 15) + '...' : comm.name,
       }));
     }
+    if (config?.schools && config.schools.length > 0) {
+      return config.schools.map((s, idx) => ({
+        id: s.id ?? idx,
+        name: s.name,
+        short: s.name.length > 16 ? s.name.slice(0, 15) + '...' : s.name,
+      }));
+    }
     return Object.entries(SCHOOL_NAMES).map(([id, name]) => ({
       id: Number(id),
       name,
       short: SCHOOL_ABBR[Number(id)] || name,
     }));
-  }, [analysisData]);
+  }, [analysisData, config.schools]);
 
   const schoolNameMap = useMemo(() => {
     const m: Record<number, string> = {};

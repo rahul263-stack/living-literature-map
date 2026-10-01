@@ -240,8 +240,22 @@ function normalizeBundle(bundle: any): {
         year_range: [2020, 2026],
       };
     });
-  } else if (rawAnalysis.communities) {
+  } else if (rawAnalysis.communities && Object.keys(rawAnalysis.communities).length > 0) {
     Object.assign(communitiesMap, rawAnalysis.communities);
+  } else if (Array.isArray(schools) && schools.length > 0) {
+    schools.forEach((s: any, idx: number) => {
+      const memberCount = s.paperCount || s.papers_count || 0;
+      communitiesMap[String(s.id ?? idx)] = {
+        id: s.id ?? idx,
+        name: s.name,
+        size: memberCount,
+        total_citations: 0,
+        mean_citations: 0,
+        top_keywords: (s.core_concepts || s.keywords || []).map((k: string) => [k, 10]),
+        top_authors: (s.key_authors || []).map((a: string) => [a, 1]),
+        year_range: [2015, 2026],
+      };
+    });
   }
 
   const bridgePapers = (rawAnalysis.bridgePapers || rawAnalysis.bridge_papers || []).map((b: any) => ({

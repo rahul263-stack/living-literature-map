@@ -144,9 +144,9 @@ export default function TopicSearchBar({
       )}
 
       {/* Quick Topic Suggestions */}
-      {isHero && showPopular && !isGeneratingTopic && (
-        <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5">
-          <span className="font-mono text-[11px] text-white/40 uppercase tracking-wider mr-1 flex items-center gap-1">
+      {(isHero || variant === 'upload') && showPopular && !isGeneratingTopic && (
+        <div className={cn('mt-3.5 flex flex-wrap items-center gap-1.5', isHero ? 'justify-center' : 'justify-start')}>
+          <span className={cn('font-mono text-[11px] uppercase tracking-wider mr-1 flex items-center gap-1', isHero ? 'text-white/40' : 'text-[#8B8DA3]')}>
             <BookOpen className="w-3 h-3" /> Popular:
           </span>
           {POPULAR_TOPICS.map((topic) => (
@@ -157,7 +157,12 @@ export default function TopicSearchBar({
                 setQuery(topic.query);
                 handleSubmit(undefined, topic.query);
               }}
-              className="px-2.5 py-1 rounded-full font-mono text-[11px] bg-white/[0.04] hover:bg-white/[0.12] border border-white/[0.08] hover:border-star-gold/40 text-white/70 hover:text-white transition-all duration-150 flex items-center gap-1 cursor-pointer"
+              className={cn(
+                'px-2.5 py-1 rounded-full font-mono text-[11px] transition-all duration-150 flex items-center gap-1 cursor-pointer border',
+                isHero
+                  ? 'bg-white/[0.04] hover:bg-white/[0.12] border-white/[0.08] hover:border-star-gold/40 text-white/70 hover:text-white'
+                  : 'bg-white hover:bg-[#F4F1EA] border-[#DCD7CE] hover:border-[#B89A4A] text-[#1A1B3A] shadow-xs'
+              )}
             >
               <span>{topic.icon}</span>
               <span>{topic.label}</span>
