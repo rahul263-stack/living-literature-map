@@ -168,6 +168,18 @@ export default function HeroSection() {
   const [showDistTip, setShowDistTip] = useState(false);
   const [mobileMetricsOpen, setMobileMetricsOpen] = useState(false);
   const [mobileClustersOpen, setMobileClustersOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
+  const [mobileInteractive, setMobileInteractive] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (!mobile) setMobileInteractive(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
   const fgRef = useRef<any>(null);
@@ -230,13 +242,28 @@ export default function HeroSection() {
     return { nodes, links: networkData.links || [] };
   }, [networkData]);
 
-  // Top 500 links for optimal rendering performance (fixes any graph overload)
+  // Adaptive Level of Detail (LOD) based on viewport:
+  // Desktop: all nodes + top 500 links
+  // Mobile (<1024px): top 65 nodes sorted by citation + top 150 links for locked 60 FPS
   const renderData = useMemo(() => {
     if (!data) return { nodes: [], links: [] };
+    if (isMobile && data.nodes.length > 70) {
+      const sortedNodes = [...data.nodes].sort((a, b) => (b.citations || 0) - (a.citations || 0));
+      const mobileNodes = sortedNodes.slice(0, 65);
+      const nodeIds = new Set(mobileNodes.map((n) => n.id));
+      const sortedLinks = [...data.links]
+        .filter((l) => {
+          const s = typeof l.source === 'object' ? (l.source as any).id : l.source;
+          const t = typeof l.target === 'object' ? (l.target as any).id : l.target;
+          return nodeIds.has(s) && nodeIds.has(t);
+        })
+        .sort((a, b) => (b.value || b.weight || 0) - (a.value || a.weight || 0));
+      return { nodes: mobileNodes, links: sortedLinks.slice(0, 150) };
+    }
     const sortedLinks = [...data.links].sort((a, b) => (b.value || b.weight || 0) - (a.value || a.weight || 0));
     const TOP_LINKS = sortedLinks.slice(0, 500);
     return { nodes: data.nodes, links: TOP_LINKS };
-  }, [data]);
+  }, [data, isMobile]);
 
   // Graph network analysis lookups (O(1))
   const { neighborsByNodeId, linksByNodeId, minA, maxA } = useMemo(() => {
@@ -512,7 +539,7 @@ export default function HeroSection() {
 
   if (!data) {
     return (
-      <section className="w-full h-[100dvh]" style={{ background: '#05060B' }}>
+      <section className="w-full h-[88dvh] lg:h-[100dvh]" style={{ background: '#05060B' }}>
         <div className="flex items-center justify-center h-full">
           <div className="font-mono text-[12px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Loading constellation...</div>
         </div>
@@ -521,9 +548,19 @@ export default function HeroSection() {
   }
 
   return (
-    <section ref={sectionRef} id="network" className="relative w-full h-[100dvh] overflow-hidden" style={{ background: '#05060B' }}>
+    <section ref={sectionRef} id="network" className="relative w-full h-[88dvh] lg:h-[100dvh] overflow-hidden" style={{ background: '#05060B' }}>
       {/* 3D Force Graph Container */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 2 }}>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 2,
+          pointerEvents: isMobile && !mobileInteractive ? 'none' : 'auto',
+        }}
+      >
         <Suspense fallback={null}>
           <ForceGraph3D
             ref={fgRef}
@@ -734,6 +771,39 @@ export default function HeroSection() {
         <span className="font-mono text-[9px] tracking-[0.06em]" style={{ color: 'rgba(255,255,255,0.25)' }}>Data mode: keyword co-occurrence (not citation)</span>
       </div>
 
+      {/* Mobile Tap-to-Interact 3D Floating Pill */}
+      {isMobile && !mobileInteractive && (
+        <div className="absolute bottom-[58px] left-1/2 -translate-x-1/2 z-20 lg:hidden">
+          <button
+            onClick={() => setMobileInteractive(true)}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0a0a14]/90 backdrop-blur-md border border-[#D4A853]/70 text-[#D4A853] font-mono text-[10px] shadow-[0_0_16px_rgba(212,168,83,0.35)] cursor-pointer hover:bg-[#D4A853]/15 transition-all"
+          >
+            <span>👆 Tap to Orbit 3D Constellation</span>
+          </button>
+        </div>
+      )}
+
+      {/* Mobile Exit-3D (Resume Page Scroll) Button */}
+      {isMobile && mobileInteractive && (
+        <div className="absolute top-[68px] right-3 z-30 lg:hidden">
+          <button
+            onClick={() => setMobileInteractive(false)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-[#D4A853] text-[#D4A853] font-mono text-[10px] shadow-lg cursor-pointer hover:bg-white/10 transition-all"
+          >
+            <X size={12} className="text-[#D4A853]" />
+            <span>Exit 3D (Scroll)</span>
+          </button>
+        </div>
+      )}
+
+      {/* Mobile Scroll Indicator Cue */}
+      {isMobile && !mobileInteractive && (
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 pointer-events-none lg:hidden flex flex-col items-center gap-0.5 opacity-60">
+          <span className="font-mono text-[9px] uppercase tracking-widest text-[#D4A853]">Scroll down</span>
+          <span className="text-white/50 text-[10px] animate-bounce">↓</span>
+        </div>
+      )}
+
       {/* Mobile Floating HUD Bar (< lg) */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 lg:hidden flex items-center gap-1.5 p-1 rounded-full bg-[#0a0a14]/90 backdrop-blur-xl border border-white/15 shadow-[0_4px_24px_rgba(0,0,0,0.8)] max-w-[96vw]">
         {/* Metrics Button */}
@@ -921,19 +991,21 @@ export default function HeroSection() {
         </div>
       )}
 
-      {/* Node Detail Slide-in Panel */}
+      {/* Node Detail Slide-in Panel / Mobile Bottom Sheet */}
       {selectedNode && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm"
+        <div className="fixed inset-0 z-50 flex items-end sm:items-stretch justify-end bg-black/60 backdrop-blur-sm"
              onClick={(e) => { if (e.target === e.currentTarget) setSelectedNode(null); }}>
-          <div className="h-full overflow-y-auto border-l border-white/15 w-full sm:w-[420px] max-w-full bg-[#080910]/95 backdrop-blur-xl relative"
+          <div className="h-auto max-h-[85vh] sm:max-h-full sm:h-full overflow-y-auto border-t sm:border-t-0 sm:border-l border-white/15 w-full sm:w-[420px] max-w-full rounded-t-2xl sm:rounded-none bg-[#080910]/95 backdrop-blur-xl relative"
                style={{ animation: 'slideIn 0.3s ease forwards' }}
                onClick={(e) => e.stopPropagation()}>
+            {/* Mobile drag handle */}
+            <div className="sm:hidden w-12 h-1 bg-white/20 rounded-full mx-auto mt-3 mb-1" />
             <button onClick={() => setSelectedNode(null)}
-                    className="absolute top-4 right-4 text-white/60 hover:text-white p-2 rounded-full hover:bg-white/10 z-10 transition-colors cursor-pointer"
+                    className="absolute top-3 sm:top-4 right-4 text-white/60 hover:text-white p-2 rounded-full hover:bg-white/10 z-10 transition-colors cursor-pointer"
                     aria-label="Close details">
               <X size={20} />
             </button>
-            <div className="p-4 sm:p-6 pt-12">
+            <div className="p-4 sm:p-6 pt-5 sm:pt-12">
               {/* Badges row */}
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span
@@ -1069,8 +1141,8 @@ export default function HeroSection() {
         </div>
       )}
 
-      {/* Distance = relatedness chip */}
-      <div className="absolute z-20" style={{ bottom: '60px', left: '50%', transform: 'translateX(-50%)' }}
+      {/* Distance = relatedness chip (Desktop only to prevent mobile HUD overlap) */}
+      <div className="absolute z-20 hidden md:block" style={{ bottom: '60px', left: '50%', transform: 'translateX(-50%)' }}
            onMouseEnter={() => setShowDistTip(true)} onMouseLeave={() => setShowDistTip(false)}>
         <div className="font-mono text-[10px] px-3 py-1.5 rounded-full cursor-default flex items-center gap-1.5"
              style={{ background: 'rgba(10,10,20,0.5)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.55)' }}>

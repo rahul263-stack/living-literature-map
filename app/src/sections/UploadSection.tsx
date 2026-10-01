@@ -980,11 +980,11 @@ export default function UploadSection() {
         </p>
 
         {/* Tab Switcher */}
-        <div className="scroll-animate flex flex-wrap items-center gap-3 mb-space-10">
+        <div className="scroll-animate flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 mb-space-10">
           <button
             onClick={() => setActiveTab('search')}
             className={cn(
-              'flex items-center gap-2 px-5 py-2.5 rounded-lg font-mono text-[13px] font-medium transition-all duration-200 border cursor-pointer',
+              'flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg font-mono text-[12px] sm:text-[13px] font-medium transition-all duration-200 border cursor-pointer',
               activeTab === 'search'
                 ? 'bg-accent-indigo text-white border-accent-indigo shadow-sm'
                 : 'bg-surface-white text-text-secondary border-border-medium hover:border-accent-indigo'
@@ -996,7 +996,7 @@ export default function UploadSection() {
           <button
             onClick={() => setActiveTab('corpus')}
             className={cn(
-              'flex items-center gap-2 px-5 py-2.5 rounded-lg font-mono text-[13px] font-medium transition-all duration-200 border cursor-pointer',
+              'flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg font-mono text-[12px] sm:text-[13px] font-medium transition-all duration-200 border cursor-pointer',
               activeTab === 'corpus'
                 ? 'bg-accent-indigo text-white border-accent-indigo shadow-sm'
                 : 'bg-surface-white text-text-secondary border-border-medium hover:border-accent-indigo'
@@ -1008,7 +1008,7 @@ export default function UploadSection() {
           <button
             onClick={() => setActiveTab('incremental')}
             className={cn(
-              'flex items-center gap-2 px-5 py-2.5 rounded-lg font-mono text-[13px] font-medium transition-all duration-200 border cursor-pointer',
+              'flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg font-mono text-[12px] sm:text-[13px] font-medium transition-all duration-200 border cursor-pointer',
               activeTab === 'incremental'
                 ? 'bg-accent-indigo text-white border-accent-indigo shadow-sm'
                 : 'bg-surface-white text-text-secondary border-border-medium hover:border-accent-indigo'

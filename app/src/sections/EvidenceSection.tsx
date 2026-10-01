@@ -633,12 +633,108 @@ function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
           </div>
         </div>
 
-        {/* ---- Table ---- */}
+        {/* ---- Table & Mobile Card Stack ---- */}
         <div className="scroll-animate bg-[#FAF9F6] border border-[#E7E3DB] rounded-[4px] overflow-hidden">
-          <div className="sm:hidden font-mono text-[10px] text-text-tertiary px-3 py-1.5 bg-surface-elevated border-b border-border-light flex items-center gap-1">
-            <span>↔</span> Swipe horizontally to view all columns &amp; quality indicators
+          {/* Mobile Card Stack View (< md) */}
+          <div className="block md:hidden divide-y divide-border-light bg-surface-white">
+            {paginated.map((paper, idx) => {
+              const globalIdx = (currentPage - 1) * ITEMS_PER_PAGE + idx + 1;
+              const authorStr = Array.isArray(paper.authors) ? paper.authors.join(', ') : paper.authors;
+              return (
+                <div key={paper.id} className="p-4 space-y-3 hover:bg-[#FAFAF7] transition-colors">
+                  {/* Row 1: Index, School badge, Year, Citations */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] text-text-tertiary font-bold">#{globalIdx}</span>
+                      <span
+                        className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-mono text-[10px] border font-medium"
+                        style={{
+                          borderColor: `${getCommunityColor(paper.community)}40`,
+                          backgroundColor: `${getCommunityColor(paper.community)}15`,
+                          color: getCommunityColor(paper.community),
+                        }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full inline-block"
+                          style={{ backgroundColor: getCommunityColor(paper.community) }}
+                        />
+                        {schoolNameMap[paper.community] || `School ${paper.community}`}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 font-mono text-[11px]">
+                      <span className="text-text-secondary">{paper.year}</span>
+                      <span className="text-text-tertiary">·</span>
+                      <span className="text-accent-gold font-bold">{paper.citations.toLocaleString()} cites</span>
+                    </div>
+                  </div>
+
+                  {/* Row 2: Title */}
+                  <h4 className="font-serif text-[15px] font-bold text-accent-indigo leading-snug">
+                    {paper.title}
+                  </h4>
+
+                  {/* Row 3: Authors & Journal */}
+                  <p className="font-mono text-[11px] text-text-secondary line-clamp-2">
+                    {authorStr}
+                  </p>
+                  {paper.journal && (
+                    <p className="font-mono text-[10px] text-text-tertiary italic">
+                      {paper.journal}
+                    </p>
+                  )}
+
+                  {/* Row 4: Modality, Sample Size, Quality */}
+                  <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                    <ModalityPill modality={paper.modality} />
+                    <SampleSizeBadge paper={paper} />
+                    <QualityFlagPill quality={paper.quality} label={paper.qualityLabel} />
+                  </div>
+
+                  {/* Row 5: Key Findings & Limitations */}
+                  {paper.keyFindings && (
+                    <div className="p-2.5 rounded bg-surface-elevated border border-border-light text-[11px] space-y-1.5">
+                      <div>
+                        <span className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary font-bold block mb-0.5">Key Findings:</span>
+                        <p className="text-text-primary leading-relaxed">{paper.keyFindings}</p>
+                      </div>
+                      {paper.limitations && (
+                        <div className="pt-1.5 border-t border-border-light/60">
+                          <span className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary font-bold block mb-0.5">Limitations:</span>
+                          <p className="text-text-secondary italic leading-relaxed">{paper.limitations}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Row 6: Outlink */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <a
+                      href={
+                        paper.doi
+                          ? `https://doi.org/${paper.doi}`
+                          : `https://scholar.google.com/scholar?q=${encodeURIComponent(paper.title)}`
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-mono text-[10px] text-accent-indigo hover:text-accent-gold underline cursor-pointer"
+                    >
+                      <span>{paper.doi ? 'View Paper (DOI)' : 'Google Scholar'}</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+            {paginated.length === 0 && (
+              <div className="text-center py-10 font-mono text-xs text-text-tertiary">
+                No papers match the current filters.
+              </div>
+            )}
           </div>
-          <div className="overflow-x-auto max-h-[800px]">
+
+          {/* Desktop & Tablet Table View (md+) */}
+          <div className="hidden md:block overflow-x-auto max-h-[800px]">
             <table className="w-full min-w-[900px]">
               <thead className="sticky top-0 z-10">
                 <tr className="bg-surface-elevated border-b-2 border-border-medium">
@@ -730,11 +826,11 @@ function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
           </div>
 
           {/* ---- Pagination ---- */}
-          <div className="flex items-center justify-between px-4 py-3 border-t border-border-light bg-surface-elevated">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-border-light bg-surface-elevated">
             <span className="font-mono text-[11px] text-text-tertiary">
               Page {currentPage} of {totalPages} ({filtered.length} papers)
             </span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 flex-wrap justify-center">
               <button
                 onClick={() => setPage(1)}
                 disabled={currentPage === 1}
