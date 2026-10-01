@@ -43,6 +43,14 @@ export default function AiCopilotModal({ isOpen, onClose }: AiCopilotModalProps)
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
 
+  // Ollama local AI state
+  const [aiProvider, setAiProvider] = useState<'ollama' | 'gemini' | 'topological'>('ollama');
+  const [ollamaStatus, setOllamaStatus] = useState<'checking' | 'connected' | 'model_missing' | 'offline'>('checking');
+  const [availableModels, setAvailableModels] = useState<string[]>([]);
+  const [selectedModel, setSelectedModel] = useState('qwen2.5:3b');
+  const [ollamaHost, setOllamaHost] = useState('http://localhost:11434');
+  const [showHostInput, setShowHostInput] = useState(false);
+
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -51,6 +59,58 @@ export default function AiCopilotModal({ isOpen, onClose }: AiCopilotModalProps)
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
+
+  // Ping Ollama on mount / open to check if running and if qwen2.5:3b is ready
+  useEffect(() => {
+    if (!isOpen) return;
+    let isCancelled = false;
+
+    const checkOllama = async () => {
+      setOllamaStatus('checking');
+      try {
+        const res = await fetch(`${ollamaHost}/api/tags`, {
+          method: 'GET',
+          signal: AbortSignal.timeout(2500),
+        });
+        if (isCancelled) return;
+
+        if (res.ok) {
+          const data = await res.json();
+          const models: string[] = (data.models || []).map((m: any) => m.name || m.model || '');
+          setAvailableModels(models);
+
+          const hasQwen = models.some(
+            (m) => m.toLowerCase().includes('qwen2.5:3b') || m.toLowerCase().includes('qwen2.5')
+          );
+
+          if (hasQwen) {
+            setOllamaStatus('connected');
+            setAiProvider('ollama');
+            const foundQwen = models.find((m) => m.toLowerCase().includes('qwen2.5'));
+            if (foundQwen) setSelectedModel(foundQwen);
+          } else if (models.length > 0) {
+            setOllamaStatus('model_missing');
+            setSelectedModel(models[0]);
+          } else {
+            setOllamaStatus('model_missing');
+          }
+        } else {
+          setOllamaStatus('offline');
+          setAiProvider((prev) => (prev === 'ollama' ? 'topological' : prev));
+        }
+      } catch {
+        if (!isCancelled) {
+          setOllamaStatus('offline');
+          setAiProvider((prev) => (prev === 'ollama' ? 'topological' : prev));
+        }
+      }
+    };
+
+    checkOllama();
+    return () => {
+      isCancelled = true;
+    };
+  }, [isOpen, ollamaHost]);
 
   if (!isOpen) return null;
 
@@ -131,11 +191,41 @@ Provide a rigorous, academically grounded synthesis referencing specific papers 
     setIsGenerating(true);
     setActiveAnalysis(null);
 
-    // If user has a Gemini / OpenAI API key configured:
-    if (apiKey.trim()) {
+    // 1. Local Ollama (qwen2.5:3b)
+    if (aiProvider === 'ollama') {
+      try {
+        const sysPrompt = constructSystemPrompt(queryText);
+        const res = await fetch(`${ollamaHost}/api/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: selectedModel || 'qwen2.5:3b',
+            messages: [
+              { role: 'system', content: sysPrompt },
+              { role: 'user', content: queryText },
+            ],
+            stream: false,
+          }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const reply = data.message?.content || data.response;
+          if (reply) {
+            setActiveAnalysis(reply);
+            setIsGenerating(false);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('Ollama request failed, trying fallback:', err);
+      }
+    }
+
+    // 2. Google Gemini API (if configured)
+    if (aiProvider === 'gemini' && apiKey.trim()) {
       try {
         const prompt = constructSystemPrompt(queryText);
-        // Call Gemini 1.5 Flash endpoint
         const response = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey.trim()}`,
           {
@@ -157,11 +247,11 @@ Provide a rigorous, academically grounded synthesis referencing specific papers 
           }
         }
       } catch (e) {
-        console.warn('Live API request failed, falling back to instant topological synthesis', e);
+        console.warn('Live API request failed, falling back to topological synthesis', e);
       }
     }
 
-    // Default: Instant Deterministic Topological Synthesis
+    // 3. Fallback: Instant Deterministic Topological Synthesis
     setTimeout(() => {
       const topSchools = Object.values(analysisData?.communities || {});
       const bridgeTop = analysisData?.bridge_papers?.[0];
@@ -240,6 +330,168 @@ To achieve high-impact publication or grant funding in this space, investigators
             </button>
           </div>
         </div>
+
+        {/* Provider Switcher Bar */}
+        <div className="px-4 sm:px-6 py-2.5 bg-white/[0.02] border-b border-white/10 flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-white/40 mr-1 hidden sm:inline">Engine:</span>
+            
+            {/* Ollama Local Tab */}
+            <button
+              type="button"
+              onClick={() => setAiProvider('ollama')}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-mono text-[11px] transition-all cursor-pointer ${
+                aiProvider === 'ollama'
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
+                  : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-transparent'
+              }`}
+            >
+              <span>🦙 Ollama Local</span>
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  ollamaStatus === 'connected'
+                    ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse'
+                    : ollamaStatus === 'checking'
+                    ? 'bg-amber-400 animate-ping'
+                    : ollamaStatus === 'model_missing'
+                    ? 'bg-amber-400'
+                    : 'bg-red-400/60'
+                }`}
+                title={`Ollama: ${ollamaStatus}`}
+              />
+            </button>
+
+            {/* Gemini Cloud Tab */}
+            <button
+              type="button"
+              onClick={() => setAiProvider('gemini')}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-mono text-[11px] transition-all cursor-pointer ${
+                aiProvider === 'gemini'
+                  ? 'bg-star-gold/20 text-star-gold border border-star-gold/40 shadow-sm'
+                  : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-transparent'
+              }`}
+            >
+              <Sparkles size={11} />
+              <span>Gemini Cloud</span>
+            </button>
+
+            {/* Deterministic Topological Tab */}
+            <button
+              type="button"
+              onClick={() => setAiProvider('topological')}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-mono text-[11px] transition-all cursor-pointer ${
+                aiProvider === 'topological'
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
+                  : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-transparent'
+              }`}
+            >
+              <span>📊 Graph Synthesis</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {aiProvider === 'ollama' && (
+              <>
+                {availableModels.length > 0 ? (
+                  <select
+                    value={selectedModel}
+                    onChange={(e) => setSelectedModel(e.target.value)}
+                    className="bg-black/60 border border-emerald-500/30 rounded px-2 py-0.5 font-mono text-[10px] text-emerald-300 focus:outline-none cursor-pointer"
+                    title="Select active local Ollama model"
+                  >
+                    {availableModels.map((m) => (
+                      <option key={m} value={m} className="bg-[#0B0D17] text-white">
+                        {m}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <span className="font-mono text-[10px] text-white/50 hidden md:inline">
+                    {ollamaStatus === 'connected'
+                      ? `Model: ${selectedModel} (Active)`
+                      : ollamaStatus === 'checking'
+                      ? 'Connecting to localhost:11434...'
+                      : ollamaStatus === 'model_missing'
+                      ? 'Model qwen2.5:3b downloading'
+                      : 'Ollama offline (localhost:11434)'}
+                  </span>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => setShowHostInput(!showHostInput)}
+                  className="font-mono text-[9px] uppercase tracking-wider text-white/40 hover:text-white px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/10 cursor-pointer"
+                  title="Configure Ollama Host URL"
+                >
+                  ⚙ Host
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOllamaStatus('checking');
+                    fetch(`${ollamaHost}/api/tags`, { method: 'GET', signal: AbortSignal.timeout(2000) })
+                      .then((r) => r.json())
+                      .then((data) => {
+                        const models = (data.models || []).map((m: any) => m.name || m.model || '');
+                        setAvailableModels(models);
+                        if (models.some((m: string) => m.toLowerCase().includes('qwen2.5'))) {
+                          setOllamaStatus('connected');
+                        } else if (models.length > 0) {
+                          setOllamaStatus('connected');
+                          setSelectedModel(models[0]);
+                        } else {
+                          setOllamaStatus('model_missing');
+                        }
+                      })
+                      .catch(() => setOllamaStatus('offline'));
+                  }}
+                  className="font-mono text-[9px] uppercase tracking-wider text-white/40 hover:text-white px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/10 cursor-pointer"
+                  title="Refresh Ollama connection"
+                >
+                  Ping
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Ollama Host Configuration Input */}
+        {aiProvider === 'ollama' && showHostInput && (
+          <div className="px-4 sm:px-6 py-2 bg-white/[0.03] border-b border-white/10 flex items-center gap-2">
+            <span className="font-mono text-[10px] text-white/60">Ollama API Host:</span>
+            <input
+              type="text"
+              value={ollamaHost}
+              onChange={(e) => setOllamaHost(e.target.value)}
+              placeholder="http://localhost:11434"
+              className="flex-1 bg-black/60 border border-white/15 rounded px-2 py-0.5 font-mono text-xs text-white focus:outline-none focus:border-emerald-400"
+            />
+          </div>
+        )}
+
+        {/* Ollama Status Alert Banner */}
+        {aiProvider === 'ollama' && ollamaStatus !== 'connected' && (
+          <div className="px-4 sm:px-6 py-2.5 bg-amber-500/10 border-b border-amber-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2 text-amber-200 font-mono text-[11px]">
+              <span className="text-amber-400 font-bold">ℹ</span>
+              {ollamaStatus === 'offline' && (
+                <span>Ollama daemon is offline. Start it in terminal or switch to Graph Synthesis.</span>
+              )}
+              {ollamaStatus === 'model_missing' && (
+                <span>Ollama connected! Model <code className="text-star-gold bg-black/40 px-1 py-0.5 rounded">qwen2.5:3b</code> is downloading or pending.</span>
+              )}
+              {ollamaStatus === 'checking' && (
+                <span>Checking local Ollama service at {ollamaHost}...</span>
+              )}
+            </div>
+            <div className="flex items-center gap-1.5">
+              <code className="text-[10px] font-mono bg-black/60 text-emerald-400 px-2 py-0.5 rounded border border-white/10 select-all">
+                ollama pull qwen2.5:3b
+              </code>
+            </div>
+          </div>
+        )}
 
         {/* Optional API Key banner */}
         {showKeyInput && (
