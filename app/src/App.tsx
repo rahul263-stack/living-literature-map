@@ -1,6 +1,7 @@
 import { Component, lazy, Suspense, type ReactNode, type ErrorInfo } from 'react'
 import { LiteratureMapProvider, useLiteratureMap } from './context/LiteratureMapContext'
 import Layout from './components/Layout'
+import PageLoader from './components/PageLoader'
 import HeroSection from './sections/HeroSection'
 import SchoolsSection from './sections/SchoolsSection'
 
@@ -67,22 +68,10 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 function AppContent() {
   const { isLoadingBundle } = useLiteratureMap();
 
-  if (isLoadingBundle) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAF9F6] text-text-secondary font-mono tracking-wide">
-        <div className="flex flex-col items-center gap-6">
-          <div className="w-10 h-10 border-2 border-accent-gold/20 border-t-accent-gold rounded-full animate-spin" />
-          <div className="flex items-center gap-2">
-             <span className="w-2 h-2 bg-accent-gold rounded-full animate-pulse" />
-             Synthesizing Literature Map...
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <Layout>
+    <>
+      <PageLoader isLoading={isLoadingBundle} />
+      <Layout>
       <ErrorBoundary title="Hero Constellation">
         <HeroSection />
       </ErrorBoundary>
@@ -175,6 +164,7 @@ function AppContent() {
         </ErrorBoundary>
       </div>
     </Layout>
+    </>
   );
 }
 
