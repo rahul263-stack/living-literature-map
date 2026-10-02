@@ -526,6 +526,102 @@ export const CORE_PERIPHERY_CONFIG: LiteratureMapConfig = {
   },
 };
 
+export const NUCLEAR_RISK_REDUCTION_CONFIG: LiteratureMapConfig = {
+  id: 'nuclear-risk-reduction',
+  title: 'Nuclear Risk Reduction & Arms Control',
+  subtitle: '45 seminal papers · 5 strategic schools · US-Russia Strategic Dynamics',
+  supertitle: 'Living Literature Map · International Security',
+  domain: 'Nuclear Risk Reduction & US-Russia Strategic Stability',
+  domainName: 'Nuclear Risk Reduction',
+  yearRange: [1990, 2026],
+  primaryFacetName: 'Strategic Schools',
+  facets: [
+    'Cold War Crisis Management & Hotlines',
+    'Formal Strategic Arms Treaties (START/INF)',
+    'Entanglement & Inadvertent Escalation',
+    'Post-Cold War Deterrence & NATO-Russia',
+    'Norms, Taboo & Unilateral Risk Reduction',
+  ],
+  theme: {
+    accentGold: '#D4A853',
+    accentIndigo: '#1A1B3A',
+    darkBg: '#05060B',
+  },
+  debates: [
+    {
+      id: 1,
+      name: 'Formal Treaties vs. Informal Risk Reduction',
+      color: '#3B6FC4',
+      startYear: 2002,
+      endYear: 2026,
+      peakPeriod: '2019–2024',
+      consensus: 'ONGOING',
+      consensusPercent: 48,
+      description:
+        'Can non-binding risk reduction mechanisms (military hotlines, INCSEA, notifications) prevent escalation when formal treaties (ABM, INF, New START) collapse, or does arms racing inevitably overwhelm informal guardrails?',
+      keyPapers: [
+        { year: 2018, author: 'Acton', title: 'Escalation through Entanglement', citations: 174 },
+        { year: 1999, author: 'Tannenwald', title: 'The Nuclear Taboo', citations: 781 },
+        { year: 2020, author: 'Arbatov', title: 'The End of Arms Control?', citations: 17 },
+      ],
+      intensity: [
+        { year: 2002, count: 2 },
+        { year: 2010, count: 5 },
+        { year: 2019, count: 18 },
+        { year: 2023, count: 32 },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Cross-Domain Entanglement vs. Separate Thresholds',
+      color: '#D4A853',
+      startYear: 2015,
+      endYear: 2026,
+      peakPeriod: '2018–2024',
+      consensus: 'EMERGING',
+      consensusPercent: 72,
+      description:
+        'Whether cyber, counter-space, and hypersonic attacks against dual-use early warning systems inadvertently trigger nuclear counterforce alert cascades.',
+      keyPapers: [
+        { year: 2018, author: 'Acton', title: 'Escalation through Entanglement', citations: 174 },
+        { year: 2021, author: 'Lieber & Press', title: 'The Myth of the Nuclear Revolution', citations: 210 },
+      ],
+      intensity: [
+        { year: 2015, count: 3 },
+        { year: 2018, count: 12 },
+        { year: 2022, count: 25 },
+        { year: 2024, count: 38 },
+      ],
+    },
+  ],
+  researchGap: {
+    gap_title: 'Unbridged Structural Hole: Informal Guardrails vs. Emerging Dual-Use Tech',
+    statement:
+      'While classical risk reduction mechanisms (INCSEA, NRRCs) rely on predictable force structures, modern nuclear-conventional entanglement (cyber, ASAT, hypersonics) creates inadvertent escalation pathways that bilateral hotlines cannot de-escalate without verified posture constraints.',
+    source_community: 'Cold War Crisis Management & Hotlines',
+    target_community: 'Entanglement & Inadvertent Escalation',
+    why_it_matters:
+      'The suspension of New START inspections removes mutual telemetry and baseline transparency, leaving crisis hotlines vulnerable to algorithmic false alarms or decapitation fears during conventional warfare.',
+    proposed_direction:
+      'Multilateral technical verification protocols and normative codes of conduct for non-nuclear interference with early-warning satellites and NC3 architectures.',
+    argument_spine: {
+      claim:
+        'Informal risk reduction mechanisms are insufficient on their own to prevent catastrophic nuclear escalation in high-intensity conventional crises.',
+      evidence_for: [
+        'Historical INCSEA and NRRC mechanisms successfully de-escalated Cold War tactical encounters',
+        'Track 1.5 dialogues provide ongoing communication channels even during diplomatic freezes',
+      ],
+      counter_evidence: [
+        'Dual-capable missile systems and cyber penetration of NC3 blur the boundary between conventional attack and nuclear decapitation',
+      ],
+      the_gap:
+        'Absence of verified behavioral thresholds or technical guardrails prohibiting attacks on nuclear command, control, and early-warning sensors.',
+      significance:
+        'Provides the empirical and theoretical rationale for new crisis stability agreements between the US, Russia, and emerging nuclear powers.',
+    },
+  },
+};
+
 export const FEATURED_PRESETS = [
   {
     id: 'connectomics',
@@ -534,6 +630,14 @@ export const FEATURED_PRESETS = [
     domain: 'Network Neuroscience & Brain Connectomics',
     badge: '244 Papers',
     config: NETWORK_NEUROSCIENCE_CONFIG,
+  },
+  {
+    id: 'nuclear-risk-reduction',
+    name: '🕊️ Nuclear Risk Reduction',
+    shortName: 'Nuclear Risk (US-RU)',
+    domain: 'Nuclear Risk Reduction & US-Russia Strategic Stability',
+    badge: '45 Papers',
+    config: NUCLEAR_RISK_REDUCTION_CONFIG,
   },
   {
     id: 'quantum-computing',
@@ -560,4 +664,5 @@ export const FEATURED_PRESETS = [
     config: CORE_PERIPHERY_CONFIG,
   },
 ];
+
 

@@ -64,6 +64,18 @@ function getFirstAuthor(authors: string | string[]): string {
   return 'Unknown';
 }
 
+export function cleanSearchQuery(raw: string): string {
+  // Remove conversational stopwords and question scaffolding
+  let q = raw.replace(
+    /\b(can|could|should|would|remain|effective|even when|are|is|failing|failed|fails|how|what|why|the|a|an|b\/w|between|focus on|relationship|of|in|for|and|to|do|does|did|how can i get best papers|how can i get best ppers|how can i do|give me|papers on|research on|topic|say|i have to do reading on this topic)\b/gi,
+    ' '
+  );
+  // Remove punctuation brackets
+  q = q.replace(/[\[\]\(\)\?\!\,\.\:\;\"\'\«\»]/g, ' ');
+  q = q.replace(/\s+/g, ' ').trim();
+  return q || raw.trim();
+}
+
 /* ------------------------------------------------------------------ */
 /*  Fetch from OpenAlex                                               */
 /* ------------------------------------------------------------------ */
@@ -73,25 +85,68 @@ export async function fetchOpenAlexWorks(
   limit = 70,
   onProgress?: (status: string) => void
 ): Promise<OpenAlexWork[]> {
-  onProgress?.(`Querying 250M+ scholarly works for "${query}" on OpenAlex...`);
+  const cleanedQuery = cleanSearchQuery(query);
+  onProgress?.(`Querying 250M+ scholarly works for "${cleanedQuery}" on OpenAlex...`);
 
-  const url = `https://api.openalex.org/works?search=${encodeURIComponent(
-    query
-  )}&per_page=${limit}&sort=cited_by_count:desc&mailto=researcher@literaturemap.ai`;
+  // Query OpenAlex by relevance (NO global citation sort, which floods with unrelated medical papers)
+  const fetchBatch = async (searchTerm: string, perPage: number): Promise<OpenAlexWork[]> => {
+    const url = `https://api.openalex.org/works?search=${encodeURIComponent(
+      searchTerm
+    )}&per_page=${perPage}&mailto=researcher@literaturemap.ai`;
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
+    }
+    const data = await response.json();
+    return data.results || [];
+  };
+
+  let rawResults = await fetchBatch(cleanedQuery, Math.max(limit + 20, 50));
+
+  // Fallback if query was too narrow: try first 3-4 significant words
+  if (rawResults.length < 5 && cleanedQuery.split(' ').length > 3) {
+    const fallbackTerm = cleanedQuery.split(' ').slice(0, 3).join(' ');
+    onProgress?.(`Broadening search scope to "${fallbackTerm}"...`);
+    rawResults = await fetchBatch(fallbackTerm, Math.max(limit + 20, 50));
   }
 
-  const data = await response.json();
-  const results: OpenAlexWork[] = data.results || [];
-
-  if (results.length === 0) {
-    throw new Error(`No research papers found for "${query}". Try a broader term like "Quantum Computing" or "CRISPR".`);
+  if (rawResults.length === 0) {
+    throw new Error(
+      `No research papers found for "${query}". Try broad conceptual terms like "Nuclear Risk Reduction", "Quantum Computing", or "CRISPR".`
+    );
   }
 
-  return results;
+  // Filter out off-topic false positives using semantic query keyword overlap
+  const queryTokens = cleanedQuery
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((w) => w.length > 2);
+
+  let filtered = rawResults;
+  if (queryTokens.length >= 2) {
+    filtered = rawResults.filter((w) => {
+      const conceptsStr = (w.concepts || []).map((c) => c.display_name).join(' ');
+      const titleStr = w.title || '';
+      const text = `${titleStr} ${conceptsStr}`.toLowerCase();
+      // Count matching tokens
+      const matches = queryTokens.filter((token) => text.includes(token)).length;
+      return matches >= 1;
+    });
+    // If filter was too aggressive, retain original rawResults
+    if (filtered.length < 8) {
+      filtered = rawResults;
+    }
+  }
+
+  // Re-rank by balanced relevance + citation prominence
+  const ranked = [...filtered].sort((a, b) => {
+    const scoreA = Math.log10((a.cited_by_count || 0) + 1) * 0.35;
+    const scoreB = Math.log10((b.cited_by_count || 0) + 1) * 0.35;
+    return scoreB - scoreA;
+  });
+
+  return ranked.slice(0, limit);
 }
 
 /* ------------------------------------------------------------------ */

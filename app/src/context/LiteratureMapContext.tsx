@@ -383,6 +383,20 @@ export function LiteratureMapProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    if (presetId === 'nuclear-risk-reduction') {
+      setIsLoadingBundle(true);
+      try {
+        const nuclearBundle = await import('@/data/presets/nuclear_risk_reduction_bundle.json');
+        const normalized = normalizeBundle(nuclearBundle.default);
+        setConfig(normalized.config);
+        setNetworkData(normalized.networkData);
+        setAnalysisData(normalized.analysisData);
+      } finally {
+        setIsLoadingBundle(false);
+      }
+      return;
+    }
+
     if (presetId === 'quantum-computing') {
       setConfig(QUANTUM_COMPUTING_CONFIG);
       const qNodes = generateSyntheticQuantumData();

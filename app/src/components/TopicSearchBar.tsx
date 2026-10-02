@@ -11,12 +11,12 @@ interface TopicSearchBarProps {
 }
 
 const POPULAR_TOPICS = [
+  { label: 'Nuclear Risk (US-Russia)', icon: '🕊️', query: 'nuclear risk reduction arms control US Russia strategic stability' },
   { label: 'CRISPR Cas9', icon: '🧬', query: 'CRISPR Cas9 gene editing' },
   { label: 'Quantum Error Correction', icon: '⚛️', query: 'Quantum error correction fault tolerance' },
   { label: 'LLM Alignment & RLHF', icon: '🤖', query: 'Large language model alignment reinforcement learning' },
   { label: 'Perovskite Solar Cells', icon: '☀️', query: 'Perovskite solar cells efficiency stability' },
   { label: 'CAR-T Cell Therapy', icon: '🔬', query: 'CAR-T cell immunotherapy oncology' },
-  { label: 'Topological Quantum Matter', icon: '🪐', query: 'Topological insulators quantum computing' },
 ];
 
 export default function TopicSearchBar({
