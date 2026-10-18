@@ -492,6 +492,8 @@ export default function WritingSection() {
     <section
       id="writing"
       ref={sectionRef}
+      role="region"
+      aria-label="Literature Review Writing Assistant"
       className="w-full bg-off-white py-space-24"
     >
       <div className="section-container">

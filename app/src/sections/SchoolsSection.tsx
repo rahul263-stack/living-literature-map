@@ -348,6 +348,8 @@ export default function SchoolsSection() {
     <section
       id="schools"
       ref={sectionRef}
+      role="region"
+      aria-label="Schools of Thought and Research Clusters"
       className="w-full bg-off-white py-space-24"
     >
       <div className="section-container">

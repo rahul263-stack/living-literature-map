@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import ForceGraph2D from 'react-force-graph-2d';
 import { useLiteratureMap } from '@/context/LiteratureMapContext';
 import { getCommunityColor } from '@/lib/colors';
-import type { NetworkData } from '@/context/LiteratureMapContext';
+import type { NetworkData, NetworkLink } from '@/types';
 import type { LiteratureMapConfig } from '@/config/mapConfig';
 import {
   Upload,
@@ -65,161 +65,13 @@ interface GraphLink {
 
 const STORAGE_KEY = 'literature-map-uploaded-papers';
 
-/* ────────────────────────────────────────────────
-   CSV & BibTeX Parsers
-   ──────────────────────────────────────────────── */
+import {
+  parseCSVRows,
+  parseBibTeX,
+  jaccardSimilarity,
+  authorOverlap,
+} from '@/lib/paperParsers';
 
-function parseCSVRows(text: string): Record<string, string>[] {
-  const rows: string[][] = [];
-  let currentRow: string[] = [];
-  let currentField = '';
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const nextChar = text[i + 1];
-
-    if (inQuotes) {
-      if (char === '"') {
-        if (nextChar === '"') {
-          currentField += '"';
-          i++;
-        } else {
-          inQuotes = false;
-        }
-      } else {
-        currentField += char;
-      }
-    } else {
-      if (char === '"') {
-        inQuotes = true;
-      } else if (char === ',') {
-        currentRow.push(currentField.trim());
-        currentField = '';
-      } else if (char === '\r') {
-        if (nextChar === '\n') i++;
-        currentRow.push(currentField.trim());
-        if (currentRow.some((c) => c.length > 0)) rows.push(currentRow);
-        currentRow = [];
-        currentField = '';
-      } else if (char === '\n') {
-        currentRow.push(currentField.trim());
-        if (currentRow.some((c) => c.length > 0)) rows.push(currentRow);
-        currentRow = [];
-        currentField = '';
-      } else {
-        currentField += char;
-      }
-    }
-  }
-
-  if (currentField.length > 0 || currentRow.length > 0) {
-    currentRow.push(currentField.trim());
-    if (currentRow.some((c) => c.length > 0)) rows.push(currentRow);
-  }
-
-  if (rows.length < 2) return [];
-
-  const headers = rows[0].map((h) => h.toLowerCase().replace(/^["']|["']$/g, '').trim());
-  const records: Record<string, string>[] = [];
-
-  for (let r = 1; r < rows.length; r++) {
-    const row = rows[r];
-    const obj: Record<string, string> = {};
-    for (let c = 0; c < headers.length; c++) {
-      obj[headers[c]] = row[c] !== undefined ? row[c] : '';
-    }
-    records.push(obj);
-  }
-
-  return records;
-}
-
-function parseBibTeX(content: string): Array<{
-  title: string;
-  authors: string;
-  year: number;
-  journal: string;
-  doi: string;
-  abstract: string;
-  keywords: string;
-}> {
-  const entries: Array<{
-    title: string;
-    authors: string;
-    year: number;
-    journal: string;
-    doi: string;
-    abstract: string;
-    keywords: string;
-  }> = [];
-
-  const entryRegex = /@\w+\s*\{[\s\S]*?\n\s*\}/g;
-  const entries_raw = content.match(entryRegex) || [];
-
-  for (const raw of entries_raw) {
-    const extractField = (name: string): string => {
-      const bracePattern = name + '[ \t]*=[ \t]*\\{([ ^}]*(?:\\{[^}]*\\}[^}]*)*)\\}';
-      const braceRe = new RegExp(bracePattern, 'i');
-      let m = raw.match(braceRe);
-      if (m && m[1]) return m[1].replace(/\\([{}&%$#_~^\\])/g, '$1').trim();
-
-      const quotePattern = name + '[ \t]*=[ \t]*"([^"]*)"';
-      const quoteRe = new RegExp(quotePattern, 'i');
-      m = raw.match(quoteRe);
-      if (m && m[1]) return m[1].replace(/\\([{}&%$#_~^\\])/g, '$1').trim();
-
-      return '';
-    };
-
-    const title = extractField('title');
-    const authorRaw = extractField('author');
-    const yearStr = extractField('year');
-    const journal = extractField('journal') || extractField('booktitle') || extractField('journaltitle') || '';
-    const doi = extractField('doi');
-    const abstract = extractField('abstract');
-    const keywords = extractField('keywords');
-
-    const authors = authorRaw
-      .split(/\s+and\s+/i)
-      .map((a: string) => a.trim())
-      .filter(Boolean)
-      .join(', ');
-
-    const year = parseInt(yearStr, 10) || new Date().getFullYear();
-    if (title) {
-      entries.push({ title, authors, year, journal, doi, abstract, keywords });
-    }
-  }
-
-  return entries;
-}
-
-function jaccardSimilarity(a: string[], b: string[]): number {
-  if (a.length === 0 || b.length === 0) return 0;
-  const setA = new Set(a.map((s) => s.toLowerCase().trim()));
-  const setB = new Set(b.map((s) => s.toLowerCase().trim()));
-  const intersection = [...setA].filter((x) => setB.has(x));
-  const union = new Set([...setA, ...setB]);
-  return intersection.length / union.size;
-}
-
-function authorOverlap(authorsA: string, authorsB: string): number {
-  if (!authorsA || !authorsB) return 0;
-  const a = authorsA.split(',').map((s) => s.trim().toLowerCase());
-  const b = authorsB.split(',').map((s) => s.trim().toLowerCase());
-  let matches = 0;
-  for (const name of a) {
-    if (name.length < 2) continue;
-    for (const other of b) {
-      if (other.includes(name) || name.includes(other)) {
-        matches++;
-        break;
-      }
-    }
-  }
-  return matches;
-}
 
 /* ────────────────────────────────────────────────
    Main Component
@@ -799,7 +651,7 @@ export default function UploadSection() {
       val: 5,
     }));
 
-    const newLinks: any[] = [];
+    const newLinks: NetworkLink[] = [];
     for (const newNode of addedNodes) {
       for (const existingNode of (networkData.nodes || [])) {
         const kwA = new Set(newNode.keywords.map((k) => k.toLowerCase()));
@@ -807,7 +659,7 @@ export default function UploadSection() {
           (Array.isArray(existingNode.keywords)
             ? existingNode.keywords
             : String(existingNode.keywords || '').split(/[,;|]/)
-          ).map((k: any) => String(k).toLowerCase().trim())
+          ).map((k: unknown) => String(k).toLowerCase().trim())
         );
         const intersection = [...kwA].filter((k) => kwB.has(k)).length;
         if (intersection > 0 || newNode.community === existingNode.community) {
@@ -963,7 +815,13 @@ export default function UploadSection() {
      ──────────────────────────────────────────────── */
 
   return (
-    <section id="upload" ref={sectionRef} className="w-full bg-warm-gray py-space-24">
+    <section
+      id="upload"
+      ref={sectionRef}
+      role="region"
+      aria-label="Universal Literature Ingestion Center"
+      className="w-full bg-warm-gray py-space-24"
+    >
       <div className="section-container">
         {/* Header */}
         <div className="scroll-animate mb-space-4">

@@ -544,7 +544,7 @@ export default function JournalSection() {
 
   if (!data) {
     return (
-      <section id="journals" ref={sectionRef} className="w-full bg-warm-gray py-space-24">
+      <section id="journals" ref={sectionRef} role="region" aria-label="Publication Landscape and Journal Analysis" className="w-full bg-warm-gray py-space-24">
         <div className="section-container">
           <div className="scroll-animate mb-space-6"><span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 06</span></div>
           <h2 className="scroll-animate heading-1 font-serif text-accent-indigo mb-space-4">Publication Landscape</h2>
@@ -555,7 +555,7 @@ export default function JournalSection() {
   }
 
   return (
-    <section id="journals" ref={sectionRef} className="w-full bg-warm-gray py-space-24">
+    <section id="journals" ref={sectionRef} role="region" aria-label="Publication Landscape and Journal Analysis" className="w-full bg-warm-gray py-space-24">
       <div className="section-container">
         <div className="scroll-animate mb-space-6">
           <span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 06</span>

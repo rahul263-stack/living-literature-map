@@ -435,6 +435,8 @@ export default function DebateSection() {
     <section
       id="debates"
       ref={sectionRef}
+      role="region"
+      aria-label="Scientific Debates and Consensus Timeline"
       className="w-full bg-warm-gray py-space-24"
     >
       <div className="section-container">

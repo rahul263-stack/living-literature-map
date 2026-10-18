@@ -24,7 +24,7 @@ interface PaperNode {
   community?: number;
   community_name?: string;
   abstract?: string;
-  doi?: string;
+  doi?: string | null;
   keywords?: string[];
   val?: number;
 }
@@ -260,6 +260,8 @@ export default function DownloadSection() {
     <section
       id="download"
       ref={sectionRef}
+      role="region"
+      aria-label="Corpus Export and Download Center"
       className="w-full bg-off-white py-space-24 pb-space-16"
     >
       <div className="section-container">

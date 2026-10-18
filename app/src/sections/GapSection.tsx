@@ -369,6 +369,8 @@ export default function GapSection() {
     <section
       id="gap"
       ref={sectionRef}
+      role="region"
+      aria-label="Research Gap Analysis and Structural Holes"
       className="w-full bg-off-white py-space-24"
     >
       <div className="section-container">

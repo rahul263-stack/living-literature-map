@@ -541,7 +541,7 @@ export default function ClusterSection() {
 
   if (!data) {
     return (
-      <section id="clusters" ref={sectionRef} className="w-full bg-warm-gray py-space-24">
+      <section id="clusters" ref={sectionRef} role="region" aria-label="Cluster Evolution and Network Structure" className="w-full bg-warm-gray py-space-24">
         <div className="section-container">
           <div className="scroll-animate mb-space-6"><span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 04</span></div>
           <h2 className="scroll-animate heading-1 font-serif text-accent-indigo mb-space-4">Cluster Evolution &amp; Network Structure</h2>
@@ -557,7 +557,7 @@ export default function ClusterSection() {
   const modularityQ = data.modularity_q ?? 0.08;
 
   return (
-    <section id="clusters" ref={sectionRef} className="w-full bg-warm-gray py-space-24">
+    <section id="clusters" ref={sectionRef} role="region" aria-label="Cluster Evolution and Network Structure" className="w-full bg-warm-gray py-space-24">
       <div className="section-container">
         <div className="scroll-animate mb-space-6">
           <span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 04</span>

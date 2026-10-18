@@ -1,36 +1,27 @@
-import { useEffect, useState, useRef, useCallback, useMemo, lazy, Suspense } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo, lazy, Suspense, type ComponentType } from 'react';
 import { cn } from '@/lib/utils';
 import * as THREE from 'three';
 import { forceCollide, forceCenter } from 'd3-force';
-import { SCHOOL_COLORS, SCHOOL_NAMES, getCommunityColor } from '@/lib/colors';
+import { SCHOOL_NAMES, getCommunityColor } from '@/lib/colors';
 import { useLiteratureMap } from '@/context/LiteratureMapContext';
 import TopicSearchBar from '@/components/TopicSearchBar';
-import { Copy, Check, Bookmark, ExternalLink, BookOpen, Quote, BarChart2, Layers, X, RotateCcw } from 'lucide-react';
+import { BarChart2, Layers, X, RotateCcw } from 'lucide-react';
+import type { NetworkNode } from '@/types';
+import { HeroStatItem } from '@/components/hero/HeroStatItem';
+import { HeroPaperDetailOverlay } from '@/components/hero/HeroPaperDetailOverlay';
 
 const ForceGraph3D = lazy(async () => {
   const mod = await import('react-force-graph-3d');
-  return { default: mod.default || (mod as any) };
+  const Component = (mod.default || mod) as ComponentType<any>;
+  return { default: Component };
 });
-
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
-interface NetworkNode {
-  id: string; title: string; authors: string; year: number;
-  journal: string; citations: number; community: number;
-  community_name: string; abstract: string; doi: string;
-  keywords: string[]; val: number;
-  link_url?: string; link_type?: string;
-  x?: number; y?: number; z?: number;
-  fx?: number; fy?: number; fz?: number;
-}
-
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
-function getFirstAuthor(authors: string): string {
+function getFirstAuthor(authors: string | string[]): string {
   if (!authors) return 'Unknown';
+  if (Array.isArray(authors)) return authors[0] || 'Unknown';
   return authors.split(',')[0]?.trim() || 'Unknown';
 }
 
@@ -70,21 +61,6 @@ function getCachedMaterial(color: string, dimmed: boolean): THREE.SpriteMaterial
   return mat;
 }
 
-function StatItem({ value, label, tip }: { value: string | number; label: string; tip?: string }) {
-  const [show, setShow] = useState(false);
-  return (
-    <div className="text-center relative" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)} style={{ cursor: 'default' }}>
-      <div className="font-mono text-[16px] font-bold" style={{ color: '#D4A853' }}>{value}</div>
-      <div className="font-mono text-[9px] uppercase tracking-[0.06em]" style={{ color: 'rgba(255,255,255,0.4)' }}>{label}</div>
-      {show && tip && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 font-mono text-[10px] rounded-lg px-3 py-2 z-50"
-             style={{ width: 200, background: 'rgba(10,10,20,0.92)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.7)', whiteSpace: 'normal', lineHeight: 1.4 }}>
-          {tip}
-        </div>
-      )}
-    </div>
-  );
-}
 
 function getNodeColor(n: NetworkNode, mode: string, top5Threshold: number): string {
   if (n.citations >= top5Threshold) return '#FFF6D8';
@@ -157,6 +133,8 @@ export default function HeroSection() {
     featuredPresets,
     focusedSchool,
     setFocusedSchool,
+    isSaved,
+    toggleSavePaper,
   } = useLiteratureMap();
 
   const [colorMode, setColorMode] = useState<ColorMode>('school');
@@ -488,52 +466,9 @@ export default function HeroSection() {
     setGraphReady(true);
   }, []);
 
-  const [copiedBib, setCopiedBib] = useState(false);
-  const [copiedApa, setCopiedApa] = useState(false);
-  const [savedPapers, setSavedPapers] = useState<string[]>(() => {
-    if (typeof window === 'undefined') return [];
-    try {
-      return JSON.parse(localStorage.getItem('litmap_saved_papers') || '[]');
-    } catch {
-      return [];
-    }
-  });
-
   const handleNodeClick = useCallback((node: any) => {
     setSelectedNode(node as NetworkNode);
-    setCopiedBib(false);
-    setCopiedApa(false);
   }, []);
-
-  const handleCopyBibtex = () => {
-    if (!selectedNode || !navigator.clipboard) return;
-    const firstAuth = getFirstAuthor(selectedNode.authors).replace(/[^a-zA-Z]/g, '').toLowerCase() || 'paper';
-    const bibKey = `${firstAuth}${selectedNode.year || 2024}`;
-    const bib = `@article{${bibKey},\n  title = {${selectedNode.title}},\n  author = {${selectedNode.authors}},\n  year = {${selectedNode.year}},\n  journal = {${selectedNode.journal || 'Academic Paper'}},\n  doi = {${selectedNode.doi || ''}}\n}`;
-    navigator.clipboard.writeText(bib);
-    setCopiedBib(true);
-    setTimeout(() => setCopiedBib(false), 2000);
-  };
-
-  const handleCopyApa = () => {
-    if (!selectedNode || !navigator.clipboard) return;
-    const apa = `${selectedNode.authors} (${selectedNode.year}). ${selectedNode.title}. ${selectedNode.journal ? `${selectedNode.journal}. ` : ''}${selectedNode.doi ? `https://doi.org/${selectedNode.doi}` : ''}`;
-    navigator.clipboard.writeText(apa);
-    setCopiedApa(true);
-    setTimeout(() => setCopiedApa(false), 2000);
-  };
-
-  const handleToggleSavePaper = () => {
-    if (!selectedNode) return;
-    setSavedPapers((prev) => {
-      const isSaved = prev.includes(selectedNode.id);
-      const next = isSaved ? prev.filter((id) => id !== selectedNode.id) : [...prev, selectedNode.id];
-      try {
-        localStorage.setItem('litmap_saved_papers', JSON.stringify(next));
-      } catch {}
-      return next;
-    });
-  };
 
   const vis = (phase: number) => entrancePhase >= phase ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2';
 
@@ -548,7 +483,14 @@ export default function HeroSection() {
   }
 
   return (
-    <section ref={sectionRef} id="network" className="relative w-full h-[88dvh] lg:h-[100dvh] overflow-hidden" style={{ background: '#05060B' }}>
+    <section
+      ref={sectionRef}
+      id="network"
+      role="region"
+      aria-label="3D Interactive Literature Constellation"
+      className="relative w-full h-[88dvh] lg:h-[100dvh] overflow-hidden"
+      style={{ background: '#05060B' }}
+    >
       {/* 3D Force Graph Container */}
       <div
         style={{
@@ -673,14 +615,14 @@ export default function HeroSection() {
       {/* Stats bar — Desktop (lg+) */}
       <div className={`absolute z-20 pointer-events-auto transition-all duration-500 ease-out hidden lg:block ${vis(6)}`} style={{ bottom: '32px', left: '32px' }}>
         <div className="grid grid-cols-4 gap-x-6 gap-y-3 rounded-lg px-4 py-3" style={{ background: 'rgba(10,10,20,0.4)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.06)' }}>
-          <StatItem value={data.nodes.length} label="Papers" tip="Total papers in the corpus." />
-          <StatItem value={communitiesList.length} label="Schools" tip="Research communities found by Louvain community detection." />
-          <StatItem value={Math.min(500, data.links.length).toLocaleString()} label="Edges" tip="Keyword co-occurrence links rendered (top-weighted subset)." />
-          <StatItem value={analysisData?.modularity_q ? analysisData.modularity_q.toFixed(2) : (metrics ? metrics.density : '—')} label="Modularity Q" tip="How tightly the field clusters. >0.3 = strong communities, <0.3 = interdisciplinary." />
-          <StatItem value={metrics ? metrics.totalCit.toLocaleString() : '—'} label="Total Cites" tip="Sum of citations across all papers." />
-          <StatItem value={metrics ? metrics.avgCit.toLocaleString() : '—'} label="Avg Cites" tip="Mean citations per paper." />
-          <StatItem value={metrics ? metrics.h : '—'} label="h-index" tip="h papers each cited at least h times — corpus size+impact." />
-          <StatItem value={metrics ? metrics.density : '—'} label="Density" tip="Network density: actual edges ÷ all possible edges. Higher = more interconnected." />
+          <HeroStatItem value={data.nodes.length} label="Papers" tip="Total papers in the corpus." />
+          <HeroStatItem value={communitiesList.length} label="Schools" tip="Research communities found by Louvain community detection." />
+          <HeroStatItem value={Math.min(500, data.links.length).toLocaleString()} label="Edges" tip="Keyword co-occurrence links rendered (top-weighted subset)." />
+          <HeroStatItem value={analysisData?.modularity_q ? analysisData.modularity_q.toFixed(2) : (metrics ? metrics.density : '—')} label="Modularity Q" tip="How tightly the field clusters. >0.3 = strong communities, <0.3 = interdisciplinary." />
+          <HeroStatItem value={metrics ? metrics.totalCit.toLocaleString() : '—'} label="Total Cites" tip="Sum of citations across all papers." />
+          <HeroStatItem value={metrics ? metrics.avgCit.toLocaleString() : '—'} label="Avg Cites" tip="Mean citations per paper." />
+          <HeroStatItem value={metrics ? metrics.h : '—'} label="h-index" tip="h papers each cited at least h times — corpus size+impact." />
+          <HeroStatItem value={metrics ? metrics.density : '—'} label="Density" tip="Network density: actual edges ÷ all possible edges. Higher = more interconnected." />
         </div>
       </div>
 
@@ -989,152 +931,12 @@ export default function HeroSection() {
 
       {/* Node Detail Slide-in Panel / Mobile Bottom Sheet */}
       {selectedNode && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-stretch justify-end bg-black/60 backdrop-blur-sm"
-             onClick={(e) => { if (e.target === e.currentTarget) setSelectedNode(null); }}>
-          <div className="h-auto max-h-[85vh] sm:max-h-full sm:h-full overflow-y-auto border-t sm:border-t-0 sm:border-l border-white/15 w-full sm:w-[420px] max-w-full rounded-t-2xl sm:rounded-none bg-[#080910]/95 backdrop-blur-xl relative"
-               style={{ animation: 'slideIn 0.3s ease forwards' }}
-               onClick={(e) => e.stopPropagation()}>
-            {/* Mobile drag handle */}
-            <div className="sm:hidden w-12 h-1 bg-white/20 rounded-full mx-auto mt-3 mb-1" />
-            <button onClick={() => setSelectedNode(null)}
-                    className="absolute top-3 sm:top-4 right-4 text-white/60 hover:text-white p-2 rounded-full hover:bg-white/10 z-10 transition-colors cursor-pointer"
-                    aria-label="Close details">
-              <X size={20} />
-            </button>
-            <div className="p-4 sm:p-6 pt-5 sm:pt-12">
-              {/* Badges row */}
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span
-                  className="font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-white/20 font-semibold"
-                  style={{
-                    backgroundColor: `${SCHOOL_COLORS[selectedNode.community] || '#D4A853'}30`,
-                    color: SCHOOL_COLORS[selectedNode.community] || '#D4A853',
-                  }}
-                >
-                  {selectedNode.community_name || `Cluster #${selectedNode.community}`}
-                </span>
-                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-white/10 text-white/70">
-                  {selectedNode.year}
-                </span>
-                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#D4A853]/20 text-[#D4A853] font-bold">
-                  {(selectedNode.citations || 0).toLocaleString()} citations
-                </span>
-              </div>
-
-              <h2 className="font-serif text-[20px] text-white leading-snug font-medium">{selectedNode.title}</h2>
-              <p className="font-mono text-[11px] text-white/60 mt-2">{selectedNode.authors}</p>
-              <p className="font-mono text-[10px] text-white/40 mt-1 italic">
-                {selectedNode.journal || 'Peer-reviewed scientific publication'}
-              </p>
-
-              {/* Fast Academic Actions */}
-              <div className="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-white/10">
-                <button
-                  onClick={handleCopyBibtex}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono text-[10px] border border-white/20 bg-white/5 hover:bg-white/10 text-white/80 transition-colors cursor-pointer"
-                  title="Copy BibTeX reference to clipboard"
-                >
-                  {copiedBib ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
-                  <span>{copiedBib ? 'BibTeX Copied!' : 'Copy BibTeX'}</span>
-                </button>
-
-                <button
-                  onClick={handleCopyApa}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono text-[10px] border border-white/20 bg-white/5 hover:bg-white/10 text-white/80 transition-colors cursor-pointer"
-                  title="Copy APA formatted reference"
-                >
-                  {copiedApa ? <Check size={12} className="text-emerald-400" /> : <Quote size={12} />}
-                  <span>{copiedApa ? 'APA Copied!' : 'Copy APA'}</span>
-                </button>
-
-                <button
-                  onClick={handleToggleSavePaper}
-                  className={cn(
-                    'flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono text-[10px] border transition-colors cursor-pointer',
-                    savedPapers.includes(selectedNode.id)
-                      ? 'border-[#D4A853] bg-[#D4A853]/20 text-[#D4A853]'
-                      : 'border-white/20 bg-white/5 hover:bg-white/10 text-white/80'
-                  )}
-                  title="Add to Lab Reading List"
-                >
-                  <Bookmark size={12} className={savedPapers.includes(selectedNode.id) ? 'fill-[#D4A853]' : ''} />
-                  <span>{savedPapers.includes(selectedNode.id) ? 'Saved in Lab List' : 'Save Paper'}</span>
-                </button>
-              </div>
-              {selectedNode.abstract && (
-                <div className="mt-5 overflow-y-auto" style={{ maxHeight: 300 }}>
-                  <p className="font-mono text-[12px] text-white/80 leading-relaxed">{selectedNode.abstract}</p>
-                </div>
-              )}
-              {/* Keywords chips */}
-              {(() => {
-                const kw = selectedNode.keywords;
-                const kwList: string[] = Array.isArray(kw)
-                  ? kw
-                      .map((item: any) => (typeof item === 'string' ? item : item?.name || item?.keyword || String(item)))
-                      .map((s) => s.trim())
-                      .filter(Boolean)
-                  : typeof kw === 'string'
-                  ? (kw as string).split(/[,;|]/).map((s) => s.trim()).filter(Boolean)
-                  : [];
-                if (kwList.length === 0) return null;
-                return (
-                  <div className="flex flex-wrap gap-1.5 mt-5">
-                    {kwList.map((item: string, i: number) => (
-                      <span
-                        key={`${item}-${i}`}
-                        className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-white/10 text-white/70"
-                        style={{ backgroundColor: `${SCHOOL_COLORS[selectedNode.community] || '#D4A853'}20` }}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                );
-              })()}
-              {/* Scholarly Outlinks */}
-              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap gap-2">
-                <a
-                  href={
-                    selectedNode.link_url ||
-                    (selectedNode.doi
-                      ? `https://doi.org/${selectedNode.doi}`
-                      : `https://scholar.google.com/scholar?q=${encodeURIComponent(
-                          selectedNode.title + ' ' + getFirstAuthor(selectedNode.authors || '')
-                        )}`)
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full font-mono text-[10px] uppercase tracking-wider border border-[#D4A853] text-[#D4A853] hover:bg-[#D4A853]/20 transition-colors"
-                >
-                  <ExternalLink size={11} />
-                  <span>{selectedNode.doi ? 'Open DOI / PDF' : 'Find Paper'}</span>
-                </a>
-
-                <a
-                  href={`https://scholar.google.com/scholar?q=${encodeURIComponent(
-                    selectedNode.title + ' ' + getFirstAuthor(selectedNode.authors || '')
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-full font-mono text-[10px] border border-white/20 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-                >
-                  <BookOpen size={11} />
-                  <span>Google Scholar</span>
-                </a>
-
-                <a
-                  href={`https://www.semanticscholar.org/search?q=${encodeURIComponent(selectedNode.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-full font-mono text-[10px] border border-white/20 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-                >
-                  <span>Semantic Scholar</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HeroPaperDetailOverlay
+          selectedNode={selectedNode}
+          onClose={() => setSelectedNode(null)}
+          isSaved={isSaved(selectedNode.id)}
+          onToggleSave={(node) => toggleSavePaper(node)}
+        />
       )}
 
       {/* Distance = relatedness chip (Desktop only to prevent mobile HUD overlap) */}

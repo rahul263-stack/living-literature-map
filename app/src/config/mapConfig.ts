@@ -2,114 +2,18 @@
 /*  Literature Map Domain Configuration Types & Presets                */
 /* ------------------------------------------------------------------ */
 
-export interface DebateItem {
-  id: number;
-  name: string;
-  color?: string;
-  startYear: number;
-  endYear: number;
-  peakPeriod: string;
-  consensus: 'SETTLED' | 'ONGOING' | 'EMERGING';
-  consensusPercent: number;
-  description: string;
-  keyPapers: { year: number; author: string; title: string; citations?: number }[];
-  intensity: { year: number; count: number }[];
-}
-
-export interface SchoolConfig {
-  id: number;
-  name: string;
-  color?: string;
-  description?: string;
-  paperCount?: number;
-  papers_count?: number;
-  key_authors?: string[];
-  core_concepts?: string[];
-}
-
-export interface ResearchGapConfig {
-  statement: string;
-  gap_title?: string;
-  title?: string;
-  metric?: string;
-  metric_label?: string;
-  detected_via?: string;
-  source_community?: string;
-  target_community?: string;
-  why_it_matters?: string;
-  proposed_direction?: string;
-  gap_metrics?: {
-    structural_hole_weight?: number;
-    mean_weight?: number;
-    gap_pct?: string;
-    description?: string;
-    density_deficit?: string | number;
-    expected_density?: string | number;
-    actual_density?: string | number;
-    cross_citations?: number;
-    inter_community_edges?: number;
-    inter_cluster_edges?: number;
-    inter_modular_density?: number;
-  };
-  cross_community_bars?: Array<{
-    pair: string;
-    sourceSchool?: string;
-    targetSchool?: string;
-    value?: number;
-    weight?: number;
-    highlight?: boolean;
-    isReference?: boolean;
-    expected?: number;
-    actual?: number;
-    density?: number;
-  }>;
-  argument_spine?: {
-    claim?: any;
-    evidence_for?: string[];
-    counter_evidence?: string[];
-    the_gap?: string;
-    significance?: string;
-    evidence?: any;
-    counter?: any;
-    gap?: any;
-    why?: any;
-  };
-  argumentSpine?: {
-    claim: string;
-    evidence: string;
-    counter: string;
-    gap: string;
-    whyItMatters: string;
-  };
-}
-
-export interface LiteratureMapConfig {
-  id: string;
-  title: string;
-  subtitle: string;
-  supertitle?: string;
-  domain: string;
-  domainName?: string;
-  yearRange: [number, number];
-  primaryFacetName: string;
-  facets: string[];
-  theme?: {
-    accentGold: string;
-    accentIndigo: string;
-    darkBg: string;
-  };
-  schools?: SchoolConfig[];
-  topic?: string;
-  stats?: {
-    numPapers: number;
-    numSchools: number;
-    numLinks: number;
-    modularityQ: number;
-    yearRange?: string;
-  };
-  debates: DebateItem[];
-  researchGap: ResearchGapConfig;
-}
+export type {
+  DebateItem,
+  SchoolConfig,
+  ArgumentSpineBullet,
+  ArgumentSpineSection,
+  ArgumentSpineData,
+  CrossCommunityBar,
+  GapMetrics,
+  ResearchGapConfig,
+  LiteratureMapConfig,
+} from '@/types';
+import type { LiteratureMapConfig } from '@/types';
 
 /* ------------------------------------------------------------------ */
 /*  Default Preset: Network Neuroscience & Brain Connectomics         */

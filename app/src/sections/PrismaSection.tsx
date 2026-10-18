@@ -186,6 +186,8 @@ export default function PrismaSection() {
     <section
       id="prisma"
       ref={sectionRef}
+      role="region"
+      aria-label="PRISMA 2020 Selection and Methodology"
       className="w-full bg-off-white py-space-24"
     >
       <div className="section-container">

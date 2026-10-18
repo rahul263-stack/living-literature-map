@@ -456,7 +456,7 @@ export default function BridgeSection() {
 
   if (!data) {
     return (
-      <section id="bridges" ref={sectionRef} className="w-full bg-off-white py-space-24">
+      <section id="bridges" ref={sectionRef} role="region" aria-label="Bridge Papers and Collaboration Networks" className="w-full bg-off-white py-space-24">
         <div className="section-container">
           <div className="scroll-animate mb-space-6"><span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 05</span></div>
           <h2 className="scroll-animate heading-1 font-serif text-accent-indigo mb-space-4">Bridge Papers &amp; Collaboration Networks</h2>
@@ -467,7 +467,7 @@ export default function BridgeSection() {
   }
 
   return (
-    <section id="bridges" ref={sectionRef} className="w-full bg-off-white py-space-24">
+    <section id="bridges" ref={sectionRef} role="region" aria-label="Bridge Papers and Collaboration Networks" className="w-full bg-off-white py-space-24">
       <div className="section-container">
         <div className="scroll-animate mb-space-6">
           <span className="label text-accent-gold tracking-[0.08em]">ANALYSIS 05</span>
