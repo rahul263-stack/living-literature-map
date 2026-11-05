@@ -3,11 +3,44 @@ import type { TopicHistoryItem, LiteratureMapConfig, NetworkData, AnalysisData }
 import { generateLiteratureMapForTopic } from '@/services/openAlexService';
 
 const HISTORY_STORAGE_KEY = 'litmap_topic_history';
+const RESULT_CACHE_KEY = 'litmap_result_cache';
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
 
 export interface GeneratedTopicResult {
   config: LiteratureMapConfig;
   networkData: NetworkData;
   analysisData: AnalysisData;
+}
+
+function loadCachedResults(): Record<string, { data: GeneratedTopicResult; ts: number }> {
+  if (typeof window === 'undefined') return {};
+  try {
+    const raw = localStorage.getItem(RESULT_CACHE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveCachedResult(key: string, data: GeneratedTopicResult) {
+  try {
+    const cache = loadCachedResults();
+    // Keep only the 5 most recent entries to avoid bloating localStorage
+    const entries = Object.entries(cache).sort((a, b) => b[1].ts - a[1].ts).slice(0, 4);
+    const pruned = Object.fromEntries(entries);
+    pruned[key] = { data, ts: Date.now() };
+    localStorage.setItem(RESULT_CACHE_KEY, JSON.stringify(pruned));
+  } catch (e) {
+    console.warn('Failed to cache topic result:', e);
+  }
+}
+
+function getCachedResult(key: string): GeneratedTopicResult | null {
+  const cache = loadCachedResults();
+  const entry = cache[key];
+  if (!entry) return null;
+  if (Date.now() - entry.ts > CACHE_TTL_MS) return null; // Expired
+  return entry.data;
 }
 
 export function useTopicSearch() {
@@ -37,11 +70,20 @@ export function useTopicSearch() {
       const trimmed = query.trim();
       if (!trimmed) return null;
 
-      // Check cache first
-      if (topicCache[trimmed.toLowerCase()]) {
-        const cached = topicCache[trimmed.toLowerCase()];
+      // Check in-memory cache first
+      const cacheKey = trimmed.toLowerCase();
+      if (topicCache[cacheKey]) {
+        const cached = topicCache[cacheKey];
         if (onSuccess) onSuccess(cached);
         return cached;
+      }
+
+      // Check localStorage cache (survives page reloads, 30min TTL)
+      const diskCached = getCachedResult(cacheKey);
+      if (diskCached) {
+        setTopicCache((prev) => ({ ...prev, [cacheKey]: diskCached }));
+        if (onSuccess) onSuccess(diskCached);
+        return diskCached;
       }
 
       setIsGeneratingTopic(true);
@@ -61,6 +103,9 @@ export function useTopicSearch() {
           [presetId]: generated,
           [trimmed.toLowerCase()]: generated,
         }));
+
+        // Persist to localStorage for cross-reload caching
+        saveCachedResult(trimmed.toLowerCase(), generated);
 
         // Update topic history in localStorage
         const newHistoryItem: TopicHistoryItem = {

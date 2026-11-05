@@ -1,4 +1,5 @@
 import type { LiteratureMapConfig, SchoolConfig, ResearchGapConfig, DebateItem } from '@/config/mapConfig';
+import { fetchSemanticScholarWorks, convertS2ToOpenAlexShape } from '@/services/semanticScholarService';
 import type { NetworkData, NetworkNode, NetworkLink, AnalysisData, CommunityRecord } from '@/context/LiteratureMapContext';
 
 /* ------------------------------------------------------------------ */
@@ -77,8 +78,42 @@ export function cleanSearchQuery(raw: string): string {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Fetch from OpenAlex                                               */
+/*  Fetch from OpenAlex (with rate-limit handling)                    */
 /* ------------------------------------------------------------------ */
+
+// Replace with your real email to get into OpenAlex's polite pool (10x higher rate limit)
+const OPENALEX_MAILTO = 'rahulpathak263@gmail.com';
+
+async function fetchWithRetry(
+  url: string,
+  maxRetries = 1,
+  onProgress?: (status: string) => void
+): Promise<Response> {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const response = await fetch(url);
+
+    if (response.ok) return response;
+
+    if (response.status === 429) {
+      if (attempt >= maxRetries) {
+        throw new Error(
+          'OpenAlex API rate limit exceeded. Please wait a moment and try again.'
+        );
+      }
+      // Single 30-second retry with live countdown
+      const waitSeconds = 30;
+      for (let remaining = waitSeconds; remaining > 0; remaining--) {
+        onProgress?.(`Rate limited by OpenAlex — retrying in ${remaining}s...`);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+      continue;
+    }
+
+    throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
+  }
+
+  throw new Error('OpenAlex API request failed after retries.');
+}
 
 export async function fetchOpenAlexWorks(
   query: string,
@@ -90,14 +125,12 @@ export async function fetchOpenAlexWorks(
 
   // Query OpenAlex by relevance (NO global citation sort, which floods with unrelated medical papers)
   const fetchBatch = async (searchTerm: string, perPage: number): Promise<OpenAlexWork[]> => {
+    const selectedFields = 'id,doi,title,display_name,publication_year,cited_by_count,primary_location,authorships,concepts,referenced_works,abstract_inverted_index';
     const url = `https://api.openalex.org/works?search=${encodeURIComponent(
       searchTerm
-    )}&per_page=${perPage}&mailto=researcher@literaturemap.ai`;
+    )}&per_page=${perPage}&select=${selectedFields}&mailto=${encodeURIComponent(OPENALEX_MAILTO)}`;
 
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
-    }
+    const response = await fetchWithRetry(url, 1, onProgress);
     const data = await response.json();
     return data.results || [];
   };
@@ -723,6 +756,36 @@ export async function generateLiteratureMapForTopic(
   networkData: NetworkData;
   analysisData: AnalysisData;
 }> {
-  const works = await fetchOpenAlexWorks(query, limit, onProgress);
+  let works;
+
+  try {
+    works = await fetchOpenAlexWorks(query, limit, onProgress);
+  } catch (err: unknown) {
+    const isRateLimit =
+      err instanceof Error &&
+      (err.message.includes('rate limit') || err.message.includes('429'));
+
+    if (isRateLimit) {
+      onProgress?.('OpenAlex rate-limited — switching to Semantic Scholar...');
+      try {
+        const s2Papers = await fetchSemanticScholarWorks(query, limit, onProgress);
+        works = convertS2ToOpenAlexShape(s2Papers);
+        if (works.length === 0) {
+          throw new Error(
+            `No research papers found for "${query}" on either OpenAlex or Semantic Scholar. Try broader terms.`
+          );
+        }
+        onProgress?.(`Found ${works.length} papers via Semantic Scholar fallback.`);
+      } catch (s2Err) {
+        // If both fail, throw the more descriptive error
+        throw new Error(
+          `Both OpenAlex and Semantic Scholar failed for "${query}". Please wait a minute and try again.`
+        );
+      }
+    } else {
+      throw err; // Non-rate-limit errors, rethrow as-is
+    }
+  }
+
   return buildLiteratureMapFromWorks(query, works, onProgress);
 }
