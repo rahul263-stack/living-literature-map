@@ -781,33 +781,27 @@ export async function generateLiteratureMapForTopic(
   try {
     works = await fetchOpenAlexWorks(query, limit, onProgress);
   } catch (err: unknown) {
-    const isRateLimit =
-      err instanceof Error &&
-      (err.message.includes('rate limit') || err.message.includes('429'));
+    const errStatus = err instanceof Error ? err.message : String(err);
+    onProgress?.(`OpenAlex server issue (${errStatus}) — switching to alternative sources...`);
 
-    if (isRateLimit) {
-      onProgress?.('OpenAlex rate-limited — trying Semantic Scholar...');
-      // Tier 2: Try Semantic Scholar
+    // Tier 2: Try Semantic Scholar
+    try {
+      const s2Papers = await fetchSemanticScholarWorks(query, limit, onProgress);
+      works = convertS2ToOpenAlexShape(s2Papers);
+      if (works.length === 0) throw new Error('No S2 papers');
+      onProgress?.(`Found ${works.length} papers via Semantic Scholar.`);
+    } catch {
+      // Tier 3: Try Crossref (150M+ open registry, no rate-limiting or server outages)
+      onProgress?.('Connecting to Crossref scholarly registry (150M+ works)...');
       try {
-        const s2Papers = await fetchSemanticScholarWorks(query, limit, onProgress);
-        works = convertS2ToOpenAlexShape(s2Papers);
-        if (works.length === 0) throw new Error('No S2 papers');
-        onProgress?.(`Found ${works.length} papers via Semantic Scholar.`);
-      } catch (s2Err) {
-        // Tier 3: Try Crossref (150M+ open registry, no rate-limiting)
-        onProgress?.('Connecting to Crossref open scholarly registry (150M+ works)...');
-        try {
-          works = await fetchCrossrefWorks(query, limit, onProgress);
-          if (works.length === 0) {
-            throw new Error(`No research papers found for "${query}". Try broader conceptual terms.`);
-          }
-          onProgress?.(`Found ${works.length} papers via Crossref.`);
-        } catch (crErr: any) {
-          throw new Error(crErr?.message || `Failed to retrieve papers for "${query}".`);
+        works = await fetchCrossrefWorks(query, limit, onProgress);
+        if (works.length === 0) {
+          throw new Error(`No research papers found for "${query}". Try broader conceptual terms.`);
         }
+        onProgress?.(`Found ${works.length} papers via Crossref.`);
+      } catch (crErr: any) {
+        throw new Error(crErr?.message || `Failed to retrieve papers for "${query}".`);
       }
-    } else {
-      throw err;
     }
   }
 
