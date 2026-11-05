@@ -96,26 +96,47 @@ async function fetchWithRetry(
   onProgress?: (status: string) => void
 ): Promise<Response> {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
-    const response = await fetch(url);
+    const controller = new AbortController();
+    const timeoutTimer = setTimeout(() => controller.abort(), 6000);
 
-    if (response.ok) return response;
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutTimer);
 
-    if (response.status === 429) {
-      if (attempt >= maxRetries) {
-        throw new Error(
-          'OpenAlex API rate limit exceeded. Please wait a moment and try again.'
-        );
+      if (response.ok) return response;
+
+      // Handle 429 (rate-limit) and 503/502/504 (service temporarily unavailable/overloaded)
+      const isTemporary = response.status === 429 || response.status === 503 || response.status === 502 || response.status === 504;
+      if (isTemporary) {
+        if (attempt >= maxRetries) {
+          throw new Error(
+            `OpenAlex API responded with HTTP status ${response.status}`
+          );
+        }
+        // Single 5-second retry with live countdown
+        const waitSeconds = 5;
+        for (let remaining = waitSeconds; remaining > 0; remaining--) {
+          onProgress?.(`OpenAlex status ${response.status} — retrying in ${remaining}s...`);
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+        continue;
       }
-      // Single 30-second retry with live countdown
-      const waitSeconds = 30;
-      for (let remaining = waitSeconds; remaining > 0; remaining--) {
-        onProgress?.(`Rate limited by OpenAlex — retrying in ${remaining}s...`);
+
+      throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
+    } catch (err: any) {
+      clearTimeout(timeoutTimer);
+      if (err.name === 'AbortError') {
+        throw new Error('OpenAlex API request timed out (5s)');
+      }
+      if (attempt >= maxRetries) {
+        throw err;
+      }
+      // Brief 5-second wait on network retry
+      for (let remaining = 5; remaining > 0; remaining--) {
+        onProgress?.(`OpenAlex connection issue — retrying in ${remaining}s...`);
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
-      continue;
     }
-
-    throw new Error(`OpenAlex API responded with HTTP status ${response.status}`);
   }
 
   throw new Error('OpenAlex API request failed after retries.');
