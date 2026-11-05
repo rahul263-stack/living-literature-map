@@ -1,5 +1,7 @@
 import type { LiteratureMapConfig, SchoolConfig, ResearchGapConfig, DebateItem } from '@/config/mapConfig';
 import { fetchSemanticScholarWorks, convertS2ToOpenAlexShape } from '@/services/semanticScholarService';
+import { fetchCrossrefWorks } from '@/services/crossrefService';
+import { semanticRerankWorks, cosineSimilarity } from '@/services/embeddingService';
 import type { NetworkData, NetworkNode, NetworkLink, AnalysisData, CommunityRecord } from '@/context/LiteratureMapContext';
 
 /* ------------------------------------------------------------------ */
@@ -36,6 +38,8 @@ interface OpenAlexWork {
   concepts?: OpenAlexConcept[];
   referenced_works?: string[];
   abstract_inverted_index?: Record<string, number[]> | null;
+  embedding?: number[];
+  semanticSimilarity?: number;
 }
 
 /* ------------------------------------------------------------------ */
@@ -66,8 +70,10 @@ function getFirstAuthor(authors: string | string[]): string {
 }
 
 export function cleanSearchQuery(raw: string): string {
+  // Normalize common typos (e.g. escallation -> escalation)
+  let q = raw.replace(/\bescallation\b/gi, 'escalation');
   // Remove conversational stopwords and question scaffolding
-  let q = raw.replace(
+  q = q.replace(
     /\b(can|could|should|would|remain|effective|even when|are|is|failing|failed|fails|how|what|why|the|a|an|b\/w|between|focus on|relationship|of|in|for|and|to|do|does|did|how can i get best papers|how can i get best ppers|how can i do|give me|papers on|research on|topic|say|i have to do reading on this topic)\b/gi,
     ' '
   );
@@ -322,18 +328,31 @@ export function buildLiteratureMapFromWorks(
     }
   });
 
-  // Semantic Concept & Author Similarity Links
+  // Semantic Neural Vector & Concept Similarity Links
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const nA = nodes[i];
       const nB = nodes[j];
+      const embA = works[i]?.embedding;
+      const embB = works[j]?.embedding;
 
-      // Jaccard on keywords
-      const setA = new Set(nA.keywords.map((k) => k.toLowerCase()));
-      const common = nB.keywords.filter((k) => setA.has(k.toLowerCase())).length;
+      let linked = false;
+      // High-precision neural cosine link if embeddings exist
+      if (embA && embB && embA.length > 0 && embB.length > 0) {
+        const cosSim = cosineSimilarity(embA, embB);
+        if (cosSim >= 0.72) {
+          addEdge(nA.id, nB.id, cosSim >= 0.85 ? 3 : 2);
+          linked = true;
+        }
+      }
 
-      if (common >= 2) {
-        addEdge(nA.id, nB.id, common >= 3 ? 2 : 1);
+      // Fallback: Jaccard keyword overlap
+      if (!linked) {
+        const setA = new Set(nA.keywords.map((k) => k.toLowerCase()));
+        const common = nB.keywords.filter((k) => setA.has(k.toLowerCase())).length;
+        if (common >= 2) {
+          addEdge(nA.id, nB.id, common >= 3 ? 2 : 1);
+        }
       }
     }
   }
@@ -756,8 +775,9 @@ export async function generateLiteratureMapForTopic(
   networkData: NetworkData;
   analysisData: AnalysisData;
 }> {
-  let works;
+  let works: OpenAlexWork[] = [];
 
+  // Tier 1: Try OpenAlex
   try {
     works = await fetchOpenAlexWorks(query, limit, onProgress);
   } catch (err: unknown) {
@@ -766,25 +786,46 @@ export async function generateLiteratureMapForTopic(
       (err.message.includes('rate limit') || err.message.includes('429'));
 
     if (isRateLimit) {
-      onProgress?.('OpenAlex rate-limited — switching to Semantic Scholar...');
+      onProgress?.('OpenAlex rate-limited — trying Semantic Scholar...');
+      // Tier 2: Try Semantic Scholar
       try {
         const s2Papers = await fetchSemanticScholarWorks(query, limit, onProgress);
         works = convertS2ToOpenAlexShape(s2Papers);
-        if (works.length === 0) {
-          throw new Error(
-            `No research papers found for "${query}" on either OpenAlex or Semantic Scholar. Try broader terms.`
-          );
-        }
-        onProgress?.(`Found ${works.length} papers via Semantic Scholar fallback.`);
+        if (works.length === 0) throw new Error('No S2 papers');
+        onProgress?.(`Found ${works.length} papers via Semantic Scholar.`);
       } catch (s2Err) {
-        // If both fail, throw the more descriptive error
-        throw new Error(
-          `Both OpenAlex and Semantic Scholar failed for "${query}". Please wait a minute and try again.`
-        );
+        // Tier 3: Try Crossref (150M+ open registry, no rate-limiting)
+        onProgress?.('Connecting to Crossref open scholarly registry (150M+ works)...');
+        try {
+          works = await fetchCrossrefWorks(query, limit, onProgress);
+          if (works.length === 0) {
+            throw new Error(`No research papers found for "${query}". Try broader conceptual terms.`);
+          }
+          onProgress?.(`Found ${works.length} papers via Crossref.`);
+        } catch (crErr: any) {
+          throw new Error(crErr?.message || `Failed to retrieve papers for "${query}".`);
+        }
       }
     } else {
-      throw err; // Non-rate-limit errors, rethrow as-is
+      throw err;
     }
+  }
+
+  // Tier 4: Dense Neural Semantic Re-ranking & Embedding
+  try {
+    const { ranked } = await semanticRerankWorks(
+      query,
+      works.map((w) => ({
+        ...w,
+        abstract: reconstructAbstract(w.abstract_inverted_index),
+      })),
+      onProgress
+    );
+    if (ranked.length > 0) {
+      works = ranked.slice(0, limit) as OpenAlexWork[];
+    }
+  } catch (embErr) {
+    console.warn('Embedding model re-ranking skipped, using lexical sort:', embErr);
   }
 
   return buildLiteratureMapFromWorks(query, works, onProgress);
